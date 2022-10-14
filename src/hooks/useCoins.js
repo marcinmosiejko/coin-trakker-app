@@ -7,43 +7,75 @@ lcwAPI.defaults.headers = {
   'x-api-key': process.env.REACT_APP_LCW_TOKEN,
 };
 
-const fetchData = async (page, limit, setData) => {
+const fetchData = async (setFetchedData) => {
   try {
-    const { data } = await lcwAPI.post('/coins/list', {
-      currency: 'USD',
-      sort: 'rank',
-      order: 'ascending',
-      offset: page * limit,
-      limit: 20,
-      meta: true,
-    });
-    console.log(data);
-    setData(data);
+    const apiLimit = 100;
+    let finalData = [];
+
+    for (let i = 0; i < 10; i++) {
+      const { data } = await lcwAPI.post('/coins/list', {
+        currency: 'USD',
+        sort: 'rank',
+        order: 'ascending',
+        offset: i * apiLimit,
+        limit: apiLimit,
+        meta: true,
+      });
+      finalData = [...finalData, ...data];
+    }
+    console.log(finalData);
+    setFetchedData(finalData);
   } catch (err) {
     console.error(err);
   }
 };
 
+const handleSetDisplayData = ({
+  fetchedData,
+  currentPage,
+  perPageLimit,
+  setDisplayData,
+}) => {
+  if (!fetchedData) return;
+  const pageStartIndex = (currentPage - 1) * perPageLimit;
+  const pageEndIndex = currentPage * perPageLimit;
+
+  const displayData = fetchedData.slice(pageStartIndex, pageEndIndex);
+  setDisplayData(displayData);
+};
+
 const useCoins = () => {
-  const [data, setData] = useState(null);
-  const [page, setPage] = useState(0);
-  const limit = 20;
+  const [fetchedData, setFetchedData] = useState(null);
+  const [displayData, setDisplayData] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPageLimit = 20;
 
   useEffect(() => {
-    fetchData(page, limit, setData);
-  }, [page]);
+    fetchData(setFetchedData);
+    setInterval(() => fetchData(setFetchedData), 30000);
+  }, []);
+
+  useEffect(() => {
+    handleSetDisplayData({
+      fetchedData,
+      currentPage,
+      perPageLimit,
+      setDisplayData,
+    });
+  }, [fetchedData, currentPage]);
 
   const handlePagination = (direction) => {
-    const newPage = page + direction;
+    const newPage = currentPage + direction;
     // Stop if new page less then 0
     if (newPage < 0) return;
-
-    setPage(newPage);
+    // Stop if new page has no results
+    if (!fetchedData[(newPage - 1) * perPageLimit]) return;
+    setCurrentPage(newPage);
   };
 
   return {
-    data,
-    page,
+    displayData,
+    currentPage,
     handlePagination,
   };
 };

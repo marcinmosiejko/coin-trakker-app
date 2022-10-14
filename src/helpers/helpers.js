@@ -15,6 +15,6 @@ export function roundPrice(price) {
 export function roundMarketCapAndVol(cap) {
   if (cap > 100000000) return round(cap / 1000000000) + ' B';
   if (cap > 100000) return round(cap / 1000000) + ' M';
-  if (cap > 1000) return round(cap / 1000) + ' T';
+  if (cap > 1000) return round(cap / 1000) + ' K';
   return cap;
 }

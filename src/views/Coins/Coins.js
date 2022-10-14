@@ -5,14 +5,17 @@ import Pagination from 'components/molecules/Pagination/Pagination';
 import useCoins from 'hooks/useCoins';
 
 const Coins = () => {
-  const { data, page, handlePagination } = useCoins();
+  const { displayData, currentPage, handlePagination } = useCoins();
 
   return (
     <Wrapper>
-      {data ? (
+      {displayData ? (
         <>
-          <CoinsTable data={data} />
-          <Pagination page={page} handlePagination={handlePagination} />
+          <CoinsTable data={displayData} />
+          <Pagination
+            currentPage={currentPage}
+            handlePagination={handlePagination}
+          />
         </>
       ) : // Replace nul with a spinner
       null}

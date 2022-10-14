@@ -1,11 +1,11 @@
 import React from 'react';
 import { Wrapper } from './Pagination.styles';
 
-const Pagination = ({ page, handlePagination }) => {
+const Pagination = ({ currentPage, handlePagination }) => {
   return (
     <Wrapper>
       <button onClick={() => handlePagination(-1)}>-</button>
-      <span>{page + 1}</span>
+      <span>{currentPage}</span>
       <button onClick={() => handlePagination(1)}>+</button>
     </Wrapper>
   );
