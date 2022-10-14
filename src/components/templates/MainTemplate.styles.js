@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  min-height: 100vh;
   width: 100%;
-  min-width: 95rem;
-
+  min-height: 100vh;
   background-color: ${({ theme }) => theme.colors.tintSecondary.dark3};
 
   display: flex;
@@ -14,6 +12,9 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledMain = styled.main`
+  width: 100%;
+  /* min-width: 95rem; */
+
   display: flex;
   justify-content: center;
 `;

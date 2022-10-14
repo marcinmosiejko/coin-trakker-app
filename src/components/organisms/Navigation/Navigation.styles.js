@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Wrapper = styled.nav`
+export const Wrapper = styled.header`
   height: 8rem;
   background-color: ${({ theme }) => theme.colors.secondary};
 
@@ -9,7 +9,7 @@ export const Wrapper = styled.nav`
   justify-content: center;
 `;
 
-export const LinksWrapper = styled.div`
+export const LinksWrapper = styled.nav`
   width: 100%;
   max-width: 80rem;
 

@@ -17,7 +17,7 @@ const Coins = () => {
             handlePagination={handlePagination}
           />
         </>
-      ) : // Replace nul with a spinner
+      ) : // Replace null with a spinner
       null}
     </Wrapper>
   );

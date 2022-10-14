@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  min-width: 90rem;
+  width: 95%;
+  max-width: 100rem;
   min-height: 100rem;
   padding: 2rem;
+  padding-left: 3rem;
   border-radius: 1.5rem;
   background-color: ${({ theme }) => theme.colors.secondary};
   overflow: auto;
@@ -20,11 +22,4 @@ export const Wrapper = styled.div`
     cursor: pointer;
     padding: 0.2rem 2rem;
   }
-`;
-
-export const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
 `;
