@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { scrollbar } from 'assets/styles/mixins';
 
 export const TableWrapper = styled.div`
   width: 100%;
   overflow: auto;
   box-shadow: inset -20px 0px 10px -14px rgba(19, 22, 30, 0.9);
+
+  ${scrollbar}
 `;
 
 export const Table = styled.table`

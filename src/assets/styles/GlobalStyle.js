@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { scrollbar } from './mixins';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -18,11 +19,12 @@ body {
 
     font-size: 1.6rem;
     color: ${({ theme }) => theme.colors.tintSecondary.light1};
+
+    ${scrollbar}
 }
 
 a, button {
     font-family: 'Roboto', sans-serif;
-
 }
 
 `;

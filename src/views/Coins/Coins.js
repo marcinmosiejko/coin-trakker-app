@@ -1,11 +1,10 @@
 import React from 'react';
-import { Wrapper } from './Coins.styles';
+import { Wrapper, Pagination } from './Coins.styles';
 import CoinsTable from 'components/organisms/CoinsTable/CoinsTable';
-import Pagination from 'components/molecules/Pagination/Pagination';
 import useCoins from 'hooks/useCoins';
 
 const Coins = () => {
-  const { displayData, currentPage, handlePagination } = useCoins();
+  const { displayData, lastPage, handlePagination, perPageLimit } = useCoins();
 
   return (
     <Wrapper>
@@ -13,12 +12,16 @@ const Coins = () => {
         <>
           <CoinsTable data={displayData} />
           <Pagination
-            currentPage={currentPage}
-            handlePagination={handlePagination}
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePagination}
+            pageRangeDisplayed={perPageLimit}
+            pageCount={lastPage}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
           />
         </>
-      ) : // Replace null with a spinner
-      null}
+      ) : null}
     </Wrapper>
   );
 };
