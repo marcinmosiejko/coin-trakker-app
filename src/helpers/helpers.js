@@ -18,3 +18,9 @@ export function roundMarketCapAndVol(cap) {
   if (cap > 1000) return round(cap / 1000) + ' K';
   return cap;
 }
+
+export function truncateString(string, desiredLength) {
+  if (string.length <= desiredLength) return string;
+
+  return string.slice(0, desiredLength - 3) + '...';
+}

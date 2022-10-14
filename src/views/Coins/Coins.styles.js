@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   min-width: 90rem;
-  max-width: 120rem;
   min-height: 100rem;
   padding: 2rem;
   border-radius: 1.5rem;

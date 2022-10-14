@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
-  width: 100%;
-
+  width: 96%;
   border-collapse: collapse;
+  padding: 2rem;
+
+  td {
+    padding: 1.6rem 2rem;
+  }
 
   thead {
     tr {
@@ -12,7 +16,7 @@ export const Table = styled.table`
     }
 
     td {
-      padding: 1rem 2rem;
+      padding-bottom: 1rem;
     }
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper } from './Coins.styles';
-import CoinsTable from 'components/molecules/CoinsTable/CoinsTable';
+import CoinsTable from 'components/organisms/CoinsTable/CoinsTable';
 import Pagination from 'components/molecules/Pagination/Pagination';
 import useCoins from 'hooks/useCoins';
 

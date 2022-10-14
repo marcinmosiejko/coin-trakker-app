@@ -4,6 +4,7 @@ export const theme = {
     white: '#FFFFFF',
     primary: '#63e6be',
     secondary: '#293143',
+    red: '#ff6b6b',
     tintPrimary: {
       dark1: '#040506',
       dark2: '#0b0d12',

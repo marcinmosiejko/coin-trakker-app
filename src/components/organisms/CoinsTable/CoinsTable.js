@@ -1,8 +1,11 @@
 import React from 'react';
-import TableRow from 'components/atoms/TableRow/TableRow';
+import TableRow from 'components/molecules/TableRow/TableRow';
 import { Table } from './CoinsTable.styles';
-import { StyledRank } from 'components/atoms/TableRow/TableRow.styles';
 import { StyledTd } from 'components/atoms/StyledTd/StyledTd';
+import { StyledRank } from 'components/atoms/StyledRank/StyledRank';
+import { StyledPrice } from 'components/atoms/StyledPrice/StyledPrice';
+import { StyledCapAndVol } from 'components/atoms/StyledCapAndVol/StyledCapAndVol';
+import { Styled24h } from 'components/atoms/Styled24h/Styled24h';
 
 const CoinsTable = ({ data }) => {
   return (
@@ -13,10 +16,10 @@ const CoinsTable = ({ data }) => {
             <tr>
               <StyledRank>#</StyledRank>
               <StyledTd isLeft>Coin</StyledTd>
-              <StyledTd>Price</StyledTd>
-              <StyledTd>Market Cap</StyledTd>
-              <StyledTd>Volume 24h</StyledTd>
-              <StyledTd>24h</StyledTd>
+              <StyledPrice>Price</StyledPrice>
+              <StyledCapAndVol>Market Cap</StyledCapAndVol>
+              <StyledCapAndVol>Volume 24h</StyledCapAndVol>
+              <Styled24h>24h</Styled24h>
               <StyledTd>7d</StyledTd>
             </tr>
           </thead>
