@@ -4,7 +4,7 @@ import {
   roundPrice,
   roundMarketCapAndVol,
   getPercentageChange,
-} from 'helpers/helpers';
+} from 'helpers/general';
 import { StyledRow } from './TableRow.styles';
 import { StyledRank } from 'components/atoms/StyledRank/StyledRank';
 import { StyledTd } from '../../atoms/StyledTd/StyledTd';

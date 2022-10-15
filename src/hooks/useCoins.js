@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PER_PAGE_LIMIT_DEFAULT } from 'helpers/config';
+import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 
 const handleSetDisplayData = ({
   coinsList,

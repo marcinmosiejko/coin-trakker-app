@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper, StyledImage, NameWrapper, Name } from './CoinBody.styles';
-import { truncateString } from 'helpers/helpers';
+import { truncateString } from 'helpers/general';
 
 const CoinBody = ({ data: { name, code, webp64 } }) => {
   return (
