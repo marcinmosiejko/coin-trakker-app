@@ -30,7 +30,7 @@ const useCoins = (coinsList) => {
     });
 
     if (!coinsList) return;
-    setLastPage(Math.floor(coinsList.length / perPageLimit));
+    setLastPage(Math.ceil(coinsList.length / perPageLimit));
   }, [coinsList, currentPage, perPageLimit]);
 
   const handlePagination = (event) => {
