@@ -6,7 +6,7 @@ const Navigation = () => {
     <Wrapper>
       <LinksWrapper>
         {/* <StyledLink to="/">Home</StyledLink> */}
-        <StyledLink to="/watchlist">Coins</StyledLink>
+        <StyledLink to="/coins">Coins</StyledLink>
         <StyledLink to="/portfolio">Portfolio</StyledLink>
       </LinksWrapper>
     </Wrapper>
