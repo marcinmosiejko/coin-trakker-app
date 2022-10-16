@@ -13,19 +13,6 @@ export const TableWrapper = styled.div`
     td {
       padding: 1.6rem 2rem;
     }
-
-    thead {
-      font-size: 1.4rem;
-
-      tr {
-        border-bottom: 2px solid
-          ${({ theme }) => theme.colors.tintSecondary.dark4};
-      }
-
-      td {
-        padding-bottom: 1rem;
-      }
-    }
   }
 `;
 
@@ -44,19 +31,11 @@ export const Table = styled.table`
     color: ${({ theme }) => theme.colors.tintSecondary.light11};
   }
 
-  thead tr {
-    border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark4};
-  }
-
   tbody {
     tr:first-of-type {
       td {
         padding-top: 2.2rem;
       }
-    }
-
-    tr:hover {
-      background-color: ${({ theme }) => theme.colors.tintSecondary.dark7};
     }
   }
 `;

@@ -6,18 +6,13 @@ import {
   getPercentageChange,
 } from 'helpers/general';
 import { StyledRow } from './TableRow.styles';
-import { StyledRank } from 'components/atoms/StyledRank/StyledRank';
-import { StyledTd } from '../../atoms/StyledTd/StyledTd';
-import { StyledPrice } from 'components/atoms/StyledPrice/StyledPrice';
-import { StyledCapAndVol } from 'components/atoms/StyledCapAndVol/StyledCapAndVol';
-import { Styled24h } from 'components/atoms/Styled24h/Styled24h';
 import CoinBody from 'components/atoms/CoinBody/CoinBody';
+import TdTh from 'components/atoms/TdTh.js/TdTh';
 
 const TableRow = ({
   data,
   data: {
     rank,
-    name,
     rate,
     cap,
     volume,
@@ -26,13 +21,21 @@ const TableRow = ({
 }) => {
   return (
     <StyledRow>
-      <StyledRank>{rank}</StyledRank>
+      <TdTh type="rank">{rank}</TdTh>
       <CoinBody data={data} />
-      <StyledPrice>${roundPrice(rate)}</StyledPrice>
-      <StyledCapAndVol>{roundMarketCapAndVol(cap)}</StyledCapAndVol>
-      <StyledCapAndVol>{roundMarketCapAndVol(volume)}</StyledCapAndVol>
-      <Styled24h change={day}>{round(getPercentageChange(day))}%</Styled24h>
-      <StyledTd>7d</StyledTd>
+      <TdTh type="rate" isRight>
+        ${roundPrice(rate)}
+      </TdTh>
+      <TdTh type="cap" isRight>
+        {roundMarketCapAndVol(cap)}
+      </TdTh>
+      <TdTh type="vol" isRight>
+        {roundMarketCapAndVol(volume)}
+      </TdTh>
+      <TdTh type="vol" isRight change={day}>
+        {round(getPercentageChange(day))}%
+      </TdTh>
+      <TdTh isRight>7d</TdTh>
     </StyledRow>
   );
 };

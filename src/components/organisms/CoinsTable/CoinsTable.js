@@ -7,32 +7,12 @@ import {
   StickyTable,
   SideShadow,
 } from './CoinsTable.styles';
-import { StyledTd } from 'components/atoms/StyledTd/StyledTd';
-import { StyledRank } from 'components/atoms/StyledRank/StyledRank';
-import { StyledPrice } from 'components/atoms/StyledPrice/StyledPrice';
-import { StyledCapAndVol } from 'components/atoms/StyledCapAndVol/StyledCapAndVol';
-import { Styled24h } from 'components/atoms/Styled24h/Styled24h';
 import useStickyTableHead from 'hooks/useStickyTableHead';
+import TableHead from 'components/molecules/TableHead/TableHead';
 
 const CoinsTable = ({ data }) => {
   const { tableRef, tableContainerRef, isSticky, leftPosition } =
     useStickyTableHead();
-
-  const renderHeader = () => {
-    return (
-      <thead>
-        <tr>
-          <StyledRank>#</StyledRank>
-          <StyledTd isLeft>Coin</StyledTd>
-          <StyledPrice>Price</StyledPrice>
-          <StyledCapAndVol>Market Cap</StyledCapAndVol>
-          <StyledCapAndVol>Volume 24h</StyledCapAndVol>
-          <Styled24h>24h</Styled24h>
-          <StyledTd>7d</StyledTd>
-        </tr>
-      </thead>
-    );
-  };
 
   return (
     <TableWrapper>
@@ -41,13 +21,10 @@ const CoinsTable = ({ data }) => {
           <caption>Live Crypto Prices</caption>
           {data ? (
             <>
-              {renderHeader()}
+              <TableHead />
               <tbody>
                 {data.map((crypto) => (
-                  <TableRow
-                    key={crypto.name + crypto.cap + crypto.rate}
-                    data={crypto}
-                  />
+                  <TableRow key={crypto.name + crypto.symbol} data={crypto} />
                 ))}
               </tbody>
             </>
@@ -56,10 +33,9 @@ const CoinsTable = ({ data }) => {
 
         {isSticky && (
           <StickyTable leftPosition={leftPosition}>
-            {renderHeader()}
+            <TableHead />
           </StickyTable>
         )}
-
         <SideShadow />
       </TableContainer>
     </TableWrapper>

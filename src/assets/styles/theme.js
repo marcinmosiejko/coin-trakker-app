@@ -36,4 +36,19 @@ export const theme = {
     },
   },
   fontSize: {},
+  tableStyle: {
+    coins: {
+      tdth: {
+        width: {
+          regular: '15rem',
+          cap: '15rem',
+          volume: '15rem',
+          rate: '13rem',
+          day: '10rem',
+          rank: '5rem',
+          coin: '18rem', // same as CoinBody Wrapper
+        },
+      },
+    },
+  },
 };
