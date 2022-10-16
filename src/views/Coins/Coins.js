@@ -11,20 +11,18 @@ const Coins = () => {
 
   return (
     <Wrapper>
-      {displayData ? (
-        <>
-          <CoinsTable data={displayData} />
-          <Pagination
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePagination}
-            pageRangeDisplayed={perPageLimit}
-            pageCount={lastPage}
-            previousLabel="<"
-            renderOnZeroPageCount={null}
-          />
-        </>
-      ) : null}
+      <>
+        <CoinsTable data={displayData} />
+        <Pagination
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePagination}
+          pageRangeDisplayed={perPageLimit}
+          pageCount={lastPage}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+        />
+      </>
     </Wrapper>
   );
 };
