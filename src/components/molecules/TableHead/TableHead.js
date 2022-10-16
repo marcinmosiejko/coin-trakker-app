@@ -20,9 +20,9 @@ const TableHead = () => {
         <TdTh type="day" isRight>
           24h
         </TdTh>
-        <TdTh type="regular" isRight>
+        {/* <TdTh type="regular" isRight>
           7d
-        </TdTh>
+        </TdTh> */}
       </StyledRow>
     </thead>
   );

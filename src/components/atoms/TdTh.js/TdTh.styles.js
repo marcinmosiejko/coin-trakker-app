@@ -18,10 +18,6 @@ const getColor = (change, theme) => {
   if (change >= 1) return theme.colors.primary;
 };
 
-const getTdThStyles = () => {
-  return ``;
-};
-
 export const Td = styled.td`
   width: ${({ type, theme }) => getWidth(type, theme)};
 
@@ -30,10 +26,4 @@ export const Td = styled.td`
   color: ${({ change, theme }) => getColor(change, theme)};
 `;
 
-export const Th = styled.th`
-  width: ${({ type, theme }) => getWidth(type, theme)};
-
-  text-align: ${({ isLeft, isRight }) => getTextAlign(isLeft, isRight)};
-
-  color: ${({ change, theme }) => getColor(change, theme)};
-`;
+export const Th = styled.th(Td);

@@ -35,7 +35,7 @@ const TableRow = ({
       <TdTh type="vol" isRight change={day}>
         {round(getPercentageChange(day))}%
       </TdTh>
-      <TdTh isRight>7d</TdTh>
+      {/* <TdTh isRight>7d</TdTh> */}
     </StyledRow>
   );
 };
