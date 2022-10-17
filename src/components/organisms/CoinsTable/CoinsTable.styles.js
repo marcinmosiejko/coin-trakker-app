@@ -7,7 +7,7 @@ export const TableWrapper = styled.div`
 
   table {
     table-layout: fixed;
-    width: 96rem;
+    width: 90rem;
     border-collapse: collapse;
 
     td {

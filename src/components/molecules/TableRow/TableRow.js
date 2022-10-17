@@ -28,10 +28,10 @@ const TableRow = ({
         ${roundPrice(rate)}
       </TdTh>
       <TdTh type="cap" isRight>
-        {roundMarketCapAndVol(cap)}
+        ${roundMarketCapAndVol(cap)}
       </TdTh>
       <TdTh type="vol" isRight>
-        {roundMarketCapAndVol(volume)}
+        ${roundMarketCapAndVol(volume)}
       </TdTh>
       <TdTh type="day" isRight change={day}>
         {round(getPercentageChange(day))}%

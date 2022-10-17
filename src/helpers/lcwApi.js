@@ -82,27 +82,28 @@ export const getHistory7dCoinsList = async (
 };
 
 export const createFinalHistoryData = (data) => {
-  const retrievedData = [];
+  // const retrievedData = [];
 
-  for (let obj of data) {
-    // Iterate through data array and check if current object's date is same as retrievedData last's object's date
-    // If yes, skip to next object
-    // If not, push that data object to retrievedData array
-    if (
-      dayjs(obj.date).date() ===
-      dayjs(retrievedData.slice(-1).pop()?.date).date()
-    )
-      continue;
+  // for (let obj of data) {
+  //   // Iterate through data array and check if current object's date is same as retrievedData last's object's date
+  //   // If yes, skip to next object
+  //   // If not, push that data object to retrievedData array
+  //   if (
+  //     dayjs(obj.date).date() ===
+  //     dayjs(retrievedData.slice(-1).pop()?.date).date()
+  //   )
+  //     continue;
 
-    retrievedData.push(obj);
-  }
+  //   retrievedData.push(obj);
+  // }
 
-  // Replace last data point with the most recent one
-  retrievedData.pop();
-  retrievedData.push(data.at(-1));
+  // // Replace last data point with the most recent one
+  // retrievedData.pop();
+  // retrievedData.push(data.at(-1));
 
-  const finalData = retrievedData.map((obj) => obj.rate);
-  return finalData;
+  // const finalData = retrievedData.map((obj) => obj.rate);
+  // return finalData;
+  return data.map((obj) => obj.rate);
 };
 
 export const handleSetPageCoinsList = ({

@@ -22,14 +22,18 @@ export const getChartConfig = (chartDataset) => {
     elements: {
       point: {
         display: false,
+        hoverRadius: 0,
       },
     },
     layout: {
       padding: 0,
     },
+    interaction: {
+      intersect: false,
+    },
   };
 
-  const labels = ['1', '2', '3', '4', '5', '6', '7'];
+  const labels = chartDataset?.map((dp, i) => i);
 
   const data = {
     labels,
