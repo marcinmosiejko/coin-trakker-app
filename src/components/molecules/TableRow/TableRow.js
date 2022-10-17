@@ -6,8 +6,9 @@ import {
   getPercentageChange,
 } from 'helpers/general';
 import { StyledRow } from './TableRow.styles';
-import CoinBody from 'components/atoms/CoinBody/CoinBody';
+import CoinBody from 'components/atoms/CoinID/CoinID';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
+import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
 
 const TableRow = ({
   data,
@@ -32,10 +33,12 @@ const TableRow = ({
       <TdTh type="vol" isRight>
         {roundMarketCapAndVol(volume)}
       </TdTh>
-      <TdTh type="vol" isRight change={day}>
+      <TdTh type="day" isRight change={day}>
         {round(getPercentageChange(day))}%
       </TdTh>
-      {/* <TdTh isRight>7d</TdTh> */}
+      <TdTh isRight>
+        <Coin7dChart coinCode={data.code} />
+      </TdTh>
     </StyledRow>
   );
 };

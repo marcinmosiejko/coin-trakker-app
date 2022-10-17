@@ -47,6 +47,7 @@ export const theme = {
           day: '10rem',
           rank: '5rem',
           coin: '18rem', // same as CoinBody Wrapper
+          week: '20rem',
         },
       },
     },

@@ -9,8 +9,10 @@ import {
 } from './CoinsTable.styles';
 import useStickyTableHead from 'hooks/useStickyTableHead';
 import TableHead from 'components/molecules/TableHead/TableHead';
+import { useLcwCoinsList } from 'hooks/useLcwCoinsList';
 
-const CoinsTable = ({ data }) => {
+const CoinsTable = () => {
+  const { pageCoinsList } = useLcwCoinsList();
   const { tableRef, tableContainerRef, isSticky, leftPosition } =
     useStickyTableHead();
 
@@ -18,12 +20,12 @@ const CoinsTable = ({ data }) => {
     <TableWrapper>
       <TableContainer ref={tableContainerRef}>
         <Table ref={tableRef}>
-          <caption>Live Crypto Prices</caption>
-          {data ? (
+          {pageCoinsList ? (
             <>
+              <caption>Live Crypto Prices</caption>
               <TableHead />
               <tbody>
-                {data.map((crypto) => (
+                {pageCoinsList.map((crypto) => (
                   <TableRow key={crypto.name + crypto.symbol} data={crypto} />
                 ))}
               </tbody>

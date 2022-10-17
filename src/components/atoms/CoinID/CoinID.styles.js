@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.td`
   width: 18rem;
+  height: 8rem;
 
   display: flex;
   align-items: center;

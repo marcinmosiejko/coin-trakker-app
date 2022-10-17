@@ -7,17 +7,18 @@ export const TableWrapper = styled.div`
 
   table {
     table-layout: fixed;
-    width: 100rem;
+    width: 96rem;
     border-collapse: collapse;
 
     td {
-      padding: 1.6rem 2rem;
+      padding: 0.8rem 2rem;
     }
   }
 `;
 
 export const TableContainer = styled.div`
   width: 100%;
+
   overflow: auto;
   ${scrollbar}
 `;
@@ -34,7 +35,7 @@ export const Table = styled.table`
   tbody {
     tr:first-of-type {
       td {
-        padding-top: 2.2rem;
+        /* padding-top: 2rem; */
       }
     }
   }

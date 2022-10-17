@@ -3,17 +3,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
-import { LcwApiProvider } from 'hooks/useLcwApi';
+import { LcwCoinsListProvider } from 'hooks/useLcwCoinsList';
 
 const AppProviders = ({ children }) => {
   return (
     <>
       <Router>
         <ThemeProvider theme={theme}>
-          <LcwApiProvider>
+          <LcwCoinsListProvider>
             <GlobalStyle />
             {children}
-          </LcwApiProvider>
+          </LcwCoinsListProvider>
         </ThemeProvider>
       </Router>
     </>

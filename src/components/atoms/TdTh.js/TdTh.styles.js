@@ -20,9 +20,7 @@ const getColor = (change, theme) => {
 
 export const Td = styled.td`
   width: ${({ type, theme }) => getWidth(type, theme)};
-
   text-align: ${({ isLeft, isRight }) => getTextAlign(isLeft, isRight)};
-
   color: ${({ change, theme }) => getColor(change, theme)};
 `;
 

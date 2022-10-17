@@ -6,6 +6,6 @@ export const StyledRow = styled.tr`
   border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark4};
 
   td {
-    padding: 1.6rem 0 1rem;
+    padding-top: 1.6rem !important;
   }
 `;

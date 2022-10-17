@@ -6,8 +6,4 @@ export const StyledRow = styled.tr`
   &:hover {
     background-color: ${({ theme }) => theme.colors.tintSecondary.dark7};
   }
-
-  td {
-    padding: 1.6rem 0;
-  }
 `;
