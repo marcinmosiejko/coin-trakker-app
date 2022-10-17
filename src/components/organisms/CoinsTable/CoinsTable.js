@@ -10,6 +10,7 @@ import {
 import useStickyTableHead from 'hooks/useStickyTableHead';
 import TableHead from 'components/molecules/TableHead/TableHead';
 import { useLcwCoinsList } from 'hooks/useLcwCoinsList';
+import Spinner from 'components/atoms/Spinner/Spinner';
 
 const CoinsTable = () => {
   const { pageCoinsList } = useLcwCoinsList();
@@ -18,27 +19,27 @@ const CoinsTable = () => {
 
   return (
     <TableWrapper>
+      {!pageCoinsList && <Spinner />}
       <TableContainer ref={tableContainerRef}>
+        {pageCoinsList && <SideShadow />}
         <Table ref={tableRef}>
-          {pageCoinsList ? (
+          {pageCoinsList && (
             <>
-              <caption>Live Crypto Prices</caption>
               <TableHead />
               <tbody>
                 {pageCoinsList.map((crypto) => (
                   <TableRow key={crypto.name + crypto.symbol} data={crypto} />
                 ))}
               </tbody>
+              <caption>Live Crypto Prices</caption>
             </>
-          ) : null}
+          )}
         </Table>
-
         {isSticky && (
           <StickyTable leftPosition={leftPosition}>
             <TableHead />
           </StickyTable>
         )}
-        <SideShadow />
       </TableContainer>
     </TableWrapper>
   );

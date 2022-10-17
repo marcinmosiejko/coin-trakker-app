@@ -24,6 +24,9 @@ export const getChartConfig = (chartDataset) => {
         display: false,
       },
     },
+    layout: {
+      padding: 0,
+    },
   };
 
   const labels = ['1', '2', '3', '4', '5', '6', '7'];
