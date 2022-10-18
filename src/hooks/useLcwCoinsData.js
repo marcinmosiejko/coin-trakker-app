@@ -56,6 +56,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
         );
 
         // Avoid updating state if there's nothing to add, and there won't be nothign to add if the history data for specified coins was already in state
+        // Also stops from endless loop due to having history7dCoinsList in dependency list (no guard clause would make history7dCoinsList update every time it's being updated)
         if (historyList?.length === 0) return;
 
         // Add all history data to the state keeping all data from previous state. That way we have to fetch historical data only once for each coin
