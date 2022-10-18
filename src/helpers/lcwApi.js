@@ -95,3 +95,16 @@ export const getUpdatedCoinsList = (prevState, newData) => {
 
   return updatedData;
 };
+
+export const add7DayHistoryDataToCoinsData = (prevState, newHistory7dCoins) => {
+  const enrichedState = prevState.map((coin) => {
+    const coinHistory = newHistory7dCoins.find((c) => c.code === coin.code);
+
+    if (!coinHistory) return coin;
+
+    const enrichedCoinData = { ...coin, history7d: coinHistory.history };
+    return enrichedCoinData;
+  });
+
+  return enrichedState;
+};

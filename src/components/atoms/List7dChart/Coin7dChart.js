@@ -14,21 +14,16 @@ import {
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
-const getChartDataset = (data, coinCode) => {
-  return data?.find((item) => item.code === coinCode)?.history;
-};
-
-const Coin7dChart = ({ coinCode }) => {
+const Coin7dChart = ({ chartDataset }) => {
   const { history7dCoinsList } = useLcwCoinsData();
   const [chartData, setChartData] = useState(null);
   const [chartOptions, setChartOptions] = useState(null);
 
   useEffect(() => {
-    const chartDataset = getChartDataset(history7dCoinsList, coinCode);
     const { chartData, chartOptions } = getChartConfig(chartDataset);
     setChartData(chartData);
     setChartOptions(chartOptions);
-  }, [history7dCoinsList, coinCode]);
+  }, [history7dCoinsList, chartDataset]);
 
   return (
     <Wrapper>

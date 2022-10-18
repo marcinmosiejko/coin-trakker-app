@@ -4,6 +4,7 @@ import {
   fetchCoinsListData,
   getHistory7dCoinsList,
   getUpdatedCoinsList,
+  add7DayHistoryDataToCoinsData,
 } from 'helpers/lcwApi';
 
 const LcwCoinsDataContext = React.createContext({});
@@ -21,7 +22,6 @@ export const LcwCoinsDataProvider = ({ children }) => {
       const pageEndIndex = currentPage * perPageLimit;
 
       const pageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
-
       setPageCoinsList(pageCoinsList);
     },
     [coinsData]
@@ -50,19 +50,29 @@ export const LcwCoinsDataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const historyList = await getHistory7dCoinsList(
+        const newHistory7dCoins = await getHistory7dCoinsList(
           pageCoinsList,
           history7dCoinsList
         );
 
         // Avoid updating state if there's nothing to add, and there won't be nothign to add if the history data for specified coins was already in state
         // Also stops from endless loop due to having history7dCoinsList in dependency list (no guard clause would make history7dCoinsList update every time it's being updated)
-        if (historyList?.length === 0) return;
+        if (newHistory7dCoins?.length === 0) return;
 
-        // Add all history data to the state keeping all data from previous state. That way we have to fetch historical data only once for each coin
+        // Add all history data to the state keeping all data from previous state. That way we have to fetch historical data only once for each coin as getHisotry7dCoinsList fetches only data for coins that are not yet in history7dCoinsList
         setHistory7dCoinsList((prevState) => {
-          if (!prevState) return historyList;
-          if (prevState) return [...prevState, ...historyList];
+          if (!prevState) return newHistory7dCoins;
+          return [...prevState, ...newHistory7dCoins];
+        });
+
+        // Add 7d history data to coinsData so all data for rendering views listing coins can bo sourced from one place
+        setCoinsData((prevState) => {
+          if (!prevState) return;
+          const enrichedState = add7DayHistoryDataToCoinsData(
+            prevState,
+            newHistory7dCoins
+          );
+          return enrichedState;
         });
       } catch (err) {
         console.error(err);

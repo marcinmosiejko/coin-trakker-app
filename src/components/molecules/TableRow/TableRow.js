@@ -18,6 +18,7 @@ const TableRow = ({
     cap,
     volume,
     delta: { day },
+    history7d,
   },
 }) => {
   return (
@@ -37,7 +38,7 @@ const TableRow = ({
         {round(getPercentageChange(day))}%
       </TdTh>
       <TdTh isRight>
-        <Coin7dChart coinCode={data.code} />
+        <Coin7dChart chartDataset={history7d} />
       </TdTh>
     </StyledRow>
   );
