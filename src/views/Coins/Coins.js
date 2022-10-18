@@ -6,17 +6,19 @@ import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 
 const Coins = () => {
   const { pageCoinsList } = useLcwCoinsData();
-  const { lastPage, handlePagination, perPageLimit } = useCoins();
+  const { lastPage, handlePagination } = useCoins();
 
   return (
     <Wrapper>
       <>
         <CoinsTable data={pageCoinsList} />
+
         <Pagination
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePagination}
-          pageRangeDisplayed={perPageLimit}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
           pageCount={lastPage}
           previousLabel="<"
           renderOnZeroPageCount={null}
