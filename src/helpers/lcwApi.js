@@ -8,7 +8,7 @@ lcwAPI.defaults.headers = {
   'x-api-key': process.env.REACT_APP_LCW_TOKEN,
 };
 
-export const fetchCoinsListData = async () => {
+export const fetchCoinsListData = async (meta = false) => {
   try {
     let finalData = [];
 
@@ -19,7 +19,7 @@ export const fetchCoinsListData = async () => {
         order: 'ascending',
         offset: i * API_LIMIT,
         limit: API_LIMIT,
-        meta: true,
+        meta,
       });
       finalData = [...finalData, ...data];
     }
@@ -62,7 +62,7 @@ export const getHistory7dCoinsList = async (
 
       const { history: historyData } = await fetchCoinsHistoryData(pc.code);
 
-      const finalHistoryData = createFinalHistoryData(historyData);
+      const finalHistoryData = historyData.map((obj) => obj.rate);
 
       return {
         name: pc.name,
@@ -81,31 +81,6 @@ export const getHistory7dCoinsList = async (
   return historyList;
 };
 
-export const createFinalHistoryData = (data) => {
-  // const retrievedData = [];
-
-  // for (let obj of data) {
-  //   // Iterate through data array and check if current object's date is same as retrievedData last's object's date
-  //   // If yes, skip to next object
-  //   // If not, push that data object to retrievedData array
-  //   if (
-  //     dayjs(obj.date).date() ===
-  //     dayjs(retrievedData.slice(-1).pop()?.date).date()
-  //   )
-  //     continue;
-
-  //   retrievedData.push(obj);
-  // }
-
-  // // Replace last data point with the most recent one
-  // retrievedData.pop();
-  // retrievedData.push(data.at(-1));
-
-  // const finalData = retrievedData.map((obj) => obj.rate);
-  // return finalData;
-  return data.map((obj) => obj.rate);
-};
-
 export const handleSetPageCoinsList = ({
   coinsList,
   currentPage,
@@ -118,4 +93,22 @@ export const handleSetPageCoinsList = ({
 
   const pageCoinsList = coinsList.slice(pageStartIndex, pageEndIndex);
   setPageCoinsList(pageCoinsList);
+};
+
+export const getUpdatedCoinsList = (prevState, newData) => {
+  const updatedData = prevState.map((stateCoin) => {
+    // If there's no matching coin fall back to current data
+    const { rate, volume, cap, delta } =
+      newData?.find((newCoin) => newCoin.code === stateCoin.code) || stateCoin;
+
+    return {
+      ...stateCoin,
+      rate,
+      volume,
+      cap,
+      delta,
+    };
+  });
+
+  return updatedData;
 };

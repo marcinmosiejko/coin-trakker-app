@@ -4,6 +4,7 @@ import {
   fetchCoinsListData,
   handleSetPageCoinsList,
   getHistory7dCoinsList,
+  getUpdatedCoinsList,
 } from 'helpers/lcwApi';
 
 const LcwCoinsListContext = React.createContext({});
@@ -16,11 +17,16 @@ export const LcwCoinsListProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const data = await fetchCoinsListData();
+        const meta = true;
+        const data = await fetchCoinsListData(meta);
         setCoinsList(data);
         setInterval(async () => {
-          const data = await fetchCoinsListData();
-          setCoinsList(data);
+          const newData = await fetchCoinsListData();
+
+          setCoinsList((prevState) => {
+            const updatedData = getUpdatedCoinsList(prevState, newData);
+            return updatedData;
+          });
         }, DATA_REFRESH_INTERVAL);
       } catch (err) {
         console.error(err);
