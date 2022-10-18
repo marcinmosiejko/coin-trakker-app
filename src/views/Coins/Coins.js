@@ -2,16 +2,16 @@ import React from 'react';
 import { Wrapper, Pagination } from './Coins.styles';
 import CoinsTable from 'components/organisms/CoinsTable/CoinsTable';
 import { useCoins } from 'hooks/useCoins';
-import { useLcwCoinsList } from 'hooks/useLcwCoinsList';
+import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 
 const Coins = () => {
-  const { coinsList } = useLcwCoinsList();
-  const { lastPage, handlePagination, perPageLimit } = useCoins(coinsList);
+  const { pageCoinsList } = useLcwCoinsData();
+  const { lastPage, handlePagination, perPageLimit } = useCoins();
 
   return (
     <Wrapper>
       <>
-        <CoinsTable />
+        <CoinsTable data={pageCoinsList} />
         <Pagination
           breakLabel="..."
           nextLabel=">"

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LCW_API_URL, API_LIMIT } from 'config';
+import { LCW_API_URL, API_LIMIT, API_CALLS } from 'config';
 import dayjs from 'dayjs';
 
 const lcwAPI = axios.create({ baseURL: LCW_API_URL });
@@ -12,7 +12,7 @@ export const fetchCoinsListData = async (meta = false) => {
   try {
     let finalData = [];
 
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < API_CALLS; i++) {
       const { data } = await lcwAPI.post('/coins/list', {
         currency: 'USD',
         sort: 'rank',
@@ -48,7 +48,7 @@ export const getHistory7dCoinsList = async (
   pageCoinsList,
   history7dCoinsList
 ) => {
-  // Iterate through pageCoinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin. Finally add all history data to the history7dCoinsList keeping all history7dCoinsList data that is already in state. That way we fetch historical data for each coin only once
+  // Iterate through pageCoinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
 
   if (!pageCoinsList) return;
 
@@ -75,24 +75,7 @@ export const getHistory7dCoinsList = async (
   // Filter out undefined values (a result of 'if (existingHistoryData) return;' statement when historical data for specified coin is already in state)
   historyList = historyList.filter((i) => i !== undefined);
 
-  // Avoid updating state if there's nothing to add
-  if (historyList.length === 0) return;
-
   return historyList;
-};
-
-export const handleSetPageCoinsList = ({
-  coinsList,
-  currentPage,
-  perPageLimit,
-  setPageCoinsList,
-}) => {
-  if (!coinsList) return;
-  const pageStartIndex = (currentPage - 1) * perPageLimit;
-  const pageEndIndex = currentPage * perPageLimit;
-
-  const pageCoinsList = coinsList.slice(pageStartIndex, pageEndIndex);
-  setPageCoinsList(pageCoinsList);
 };
 
 export const getUpdatedCoinsList = (prevState, newData) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Wrapper } from './Coin7dChart.styles';
-import { useLcwCoinsList } from 'hooks/useLcwCoinsList';
+import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import { getChartConfig } from 'helpers/chartConfig';
 import { Line } from 'react-chartjs-2';
 import {
@@ -19,7 +19,7 @@ const getChartDataset = (data, coinCode) => {
 };
 
 const Coin7dChart = ({ coinCode }) => {
-  const { history7dCoinsList } = useLcwCoinsList();
+  const { history7dCoinsList } = useLcwCoinsData();
   const [chartData, setChartData] = useState(null);
   const [chartOptions, setChartOptions] = useState(null);
 
