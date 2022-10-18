@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
+// Source: https://blog.logrocket.com/using-react-hooks-to-create-sticky-headers/
+
 const useStickyTableHead = (defaultSticky = false) => {
   const [isSticky, setIsSticky] = useState(defaultSticky);
   const tableRef = useRef(null);
@@ -31,6 +33,7 @@ const useStickyTableHead = (defaultSticky = false) => {
     window.addEventListener('resize', handleScroll);
     // Horizontal position adjustment when table overflows table container and table container is being scrolled
     tableContainer.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);

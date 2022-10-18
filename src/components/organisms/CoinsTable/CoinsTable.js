@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TableRow from 'components/molecules/TableRow/TableRow';
 import {
   Table,
@@ -11,9 +11,13 @@ import useStickyTableHead from 'hooks/useStickyTableHead';
 import TableHead from 'components/molecules/TableHead/TableHead';
 import Spinner from 'components/atoms/Spinner/Spinner';
 
-const CoinsTable = ({ data }) => {
+const CoinsTable = ({ data, handleSetTableRef }) => {
   const { tableRef, tableContainerRef, isSticky, leftPosition } =
     useStickyTableHead();
+
+  useEffect(() => {
+    handleSetTableRef(tableRef);
+  }, []);
 
   return (
     <TableWrapper>
