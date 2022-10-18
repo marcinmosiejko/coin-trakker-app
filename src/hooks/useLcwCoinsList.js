@@ -18,10 +18,10 @@ export const LcwCoinsListProvider = ({ children }) => {
       try {
         const data = await fetchCoinsListData();
         setCoinsList(data);
-        setInterval(
-          () => fetchCoinsListData(setCoinsList),
-          DATA_REFRESH_INTERVAL
-        );
+        setInterval(async () => {
+          const data = await fetchCoinsListData();
+          setCoinsList(data);
+        }, DATA_REFRESH_INTERVAL);
       } catch (err) {
         console.error(err);
       }
