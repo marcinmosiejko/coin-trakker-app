@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const StyledPagination = styled(ReactPaginate)`
   list-style-type: none;
@@ -17,7 +18,7 @@ export const StyledPagination = styled(ReactPaginate)`
 
     transition: all 0.25s;
 
-    @media only screen and (max-width: 50em) {
+    @media only screen and (max-width: ${breakPoints.m}) {
       border-radius: 5px;
     }
 
@@ -34,7 +35,7 @@ export const StyledPagination = styled(ReactPaginate)`
       display: block;
       padding: 0.8rem 1.6rem;
 
-      @media only screen and (max-width: 50em) {
+      @media only screen and (max-width: ${breakPoints.m}) {
         font-size: 1.4rem;
         padding: 0.6rem 1.2rem;
       }

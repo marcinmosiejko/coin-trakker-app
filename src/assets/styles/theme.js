@@ -36,14 +36,6 @@ export const theme = {
     },
   },
   fontSize: {},
-  breakPoints: {
-    xxl: '75em', // 1200px
-    xl: '60em', // 960px
-    l: '50em', // 800px
-    m: '40em', // 640px
-    s: '20em', // 320px
-    xs: '15em', // 240px
-  },
   tableStyle: {
     coins: {
       tdth: {
