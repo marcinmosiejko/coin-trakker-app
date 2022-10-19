@@ -38,7 +38,7 @@ const useStickyTableHead = ({ tableRef, defaultSticky = false }) => {
       window.removeEventListener('resize', handleScroll);
       tableContainer.addEventListener('scroll', handleScroll);
     };
-  }, [toggleSticky]);
+  }, [toggleSticky, tableRef]);
 
   return { tableContainerRef, isSticky, leftPosition };
 };

@@ -35,7 +35,7 @@ export const Table = styled.table`
   tbody {
     tr:first-of-type {
       td {
-        /* padding-top: 2rem; */
+        padding-top: 2rem;
       }
     }
   }

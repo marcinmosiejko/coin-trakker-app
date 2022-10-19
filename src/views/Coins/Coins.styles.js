@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import ReactPaginate from 'react-paginate';
 
 export const Wrapper = styled.div`
   min-height: 100rem;

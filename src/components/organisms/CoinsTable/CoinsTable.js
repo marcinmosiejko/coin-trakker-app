@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TableRow from 'components/molecules/TableRow/TableRow';
 import {
   Table,
