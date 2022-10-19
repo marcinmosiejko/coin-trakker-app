@@ -13,6 +13,11 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsData, setCoinsData] = useState(null);
   const [pageCoinsList, setPageCoinsList] = useState(null);
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
+  const [watchlistCoinsList, setWatchlistCoinsList] = useState([]);
+
+  // useEffect(() => {
+  //   console.log(coinsData);
+  // }, [coinsData, history7dCoinsList]);
 
   const handleSetPageCoinsList = useCallback(
     ({ currentPage, perPageLimit }) => {
@@ -22,10 +27,32 @@ export const LcwCoinsDataProvider = ({ children }) => {
       const pageEndIndex = currentPage * perPageLimit;
 
       const pageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
+
       setPageCoinsList(pageCoinsList);
     },
     [coinsData]
   );
+
+  const handleUpdateWatchlist = (coinCode) => {
+    setWatchlistCoinsList((prevState) => {
+      if (!prevState.includes(coinCode)) {
+        const updatedState = [...prevState, coinCode];
+        return updatedState;
+      }
+      const updatedState = prevState.filter((code) => {
+        return code !== coinCode;
+      });
+      return updatedState;
+    });
+    // setCoinsData((prevState) => {
+    //   const updatedState = prevState.map((coin) => {
+    //     if (coin.code === coinCode)
+    //       return { ...coin, onWatchlist: !coin.onWatchlist };
+    //     return coin;
+    //   });
+    //   return updatedState;
+    // });
+  };
 
   useEffect(() => {
     (async () => {
@@ -84,9 +111,11 @@ export const LcwCoinsDataProvider = ({ children }) => {
     <LcwCoinsDataContext.Provider
       value={{
         coinsData,
-        handleSetPageCoinsList,
         pageCoinsList,
         history7dCoinsList,
+        watchlistCoinsList,
+        handleSetPageCoinsList,
+        handleUpdateWatchlist,
       }}
     >
       {children}

@@ -12,7 +12,7 @@ export const TableWrapper = styled.div`
     border-collapse: collapse;
 
     td {
-      padding: 0.8rem 2rem;
+      padding: 0.8rem 1.5rem;
     }
   }
 `;
@@ -33,13 +33,13 @@ export const Table = styled.table`
     color: ${({ theme }) => theme.colors.tintSecondary.light11};
   }
 
-  tbody {
+  /* tbody {
     tr:first-of-type {
       td {
         padding-top: 2rem;
       }
     }
-  }
+  } */
 `;
 
 export const StickyTable = styled.table`

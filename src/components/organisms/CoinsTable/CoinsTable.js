@@ -1,5 +1,4 @@
 import React from 'react';
-import TableRow from 'components/molecules/TableRow/TableRow';
 import {
   Table,
   TableWrapper,
