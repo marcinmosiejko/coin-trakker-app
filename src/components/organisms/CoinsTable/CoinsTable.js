@@ -10,6 +10,7 @@ import {
 import useStickyTableHead from 'hooks/useStickyTableHead';
 import TableHead from 'components/molecules/TableHead/TableHead';
 import Spinner from 'components/atoms/Spinner/Spinner';
+import TableBody from '../TableBody/TableBody';
 
 const CoinsTable = ({ data, tableRef }) => {
   const { tableContainerRef, isSticky, leftPosition } = useStickyTableHead({
@@ -26,11 +27,7 @@ const CoinsTable = ({ data, tableRef }) => {
           {data && (
             <>
               <TableHead />
-              <tbody>
-                {data.map((crypto) => (
-                  <TableRow key={crypto.name + crypto.symbol} data={crypto} />
-                ))}
-              </tbody>
+              <TableBody data={data} />
               <caption>Live Crypto Prices</caption>
             </>
           )}
