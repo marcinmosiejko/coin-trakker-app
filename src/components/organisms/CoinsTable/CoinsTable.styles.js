@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { scrollbar } from 'assets/styles/mixins';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const TableWrapper = styled.div`
   width: 100%;
@@ -35,7 +36,7 @@ export const Table = styled.table`
   tbody {
     tr:first-of-type {
       td {
-        /* padding-top: 2rem; */
+        padding-top: 2rem;
       }
     }
   }
@@ -61,4 +62,9 @@ export const SideShadow = styled.div`
   width: 3rem;
   height: 100%;
   box-shadow: inset -20px 0px 10px -14px rgba(19, 22, 30, 0.9);
+
+  @media only screen and (max-width: ${breakPoints.s}) {
+    // Fixes 1px gap on small screens
+    transform: translateX(1px);
+  }
 `;

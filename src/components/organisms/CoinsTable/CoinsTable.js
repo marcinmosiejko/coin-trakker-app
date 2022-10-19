@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TableRow from 'components/molecules/TableRow/TableRow';
 import {
   Table,
@@ -10,14 +10,13 @@ import {
 import useStickyTableHead from 'hooks/useStickyTableHead';
 import TableHead from 'components/molecules/TableHead/TableHead';
 import Spinner from 'components/atoms/Spinner/Spinner';
+import TableBody from '../TableBody/TableBody';
 
-const CoinsTable = ({ data, handleSetTableRef }) => {
-  const { tableRef, tableContainerRef, isSticky, leftPosition } =
-    useStickyTableHead();
-
-  useEffect(() => {
-    handleSetTableRef(tableRef);
-  }, []);
+const CoinsTable = ({ data, tableRef }) => {
+  const { tableContainerRef, isSticky, leftPosition } = useStickyTableHead({
+    tableRef,
+    defaultSticky: false,
+  });
 
   return (
     <TableWrapper>
@@ -28,11 +27,7 @@ const CoinsTable = ({ data, handleSetTableRef }) => {
           {data && (
             <>
               <TableHead />
-              <tbody>
-                {data.map((crypto) => (
-                  <TableRow key={crypto.name + crypto.symbol} data={crypto} />
-                ))}
-              </tbody>
+              <TableBody data={data} />
               <caption>Live Crypto Prices</caption>
             </>
           )}

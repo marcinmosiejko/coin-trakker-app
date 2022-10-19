@@ -6,6 +6,10 @@ export const GlobalStyle = createGlobalStyle`
 html {
      box-sizing: border-box;
      font-size: 62.5%;
+
+     @media only screen and (max-width: 20em) {
+        font-size: 50%;
+    }
 }
 
 *, *::after, *::before {
@@ -21,6 +25,7 @@ body {
     color: ${({ theme }) => theme.colors.tintSecondary.light1};
 
     ${scrollbar}
+    
 }
 
 a, button {
