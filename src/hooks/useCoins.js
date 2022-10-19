@@ -18,16 +18,16 @@ export const useCoins = () => {
     setLastPage(Math.ceil(coinsData.length / perPageLimit));
   }, [coinsData, currentPage, perPageLimit, handleSetPageCoinsList]);
 
-  const handlePagination = function (event) {
+  const handlePageChange = function (event) {
     setCurrentPage(event.selected + 1);
     window.scrollBy({
-      top: this.current.getBoundingClientRect().y + 5,
+      top: this.current.getBoundingClientRect().y - 90,
       behavior: 'smooth',
     });
   };
 
   return {
     lastPage,
-    handlePagination,
+    handlePageChange,
   };
 };

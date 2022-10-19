@@ -7,7 +7,7 @@ import Pagination from 'components/molecules/Pagination/Pagination';
 
 const Coins = () => {
   const { pageCoinsList } = useLcwCoinsData();
-  const { lastPage, handlePagination } = useCoins();
+  const { lastPage, handlePageChange } = useCoins();
   const tableRef = useRef(null);
 
   return (
@@ -17,7 +17,7 @@ const Coins = () => {
 
         <Pagination
           lastPage={lastPage}
-          handlePagination={handlePagination.bind(tableRef)}
+          handlePageChange={handlePageChange.bind(tableRef)}
         />
       </>
     </Wrapper>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyledPagination } from './Pagination.styles';
 
-const Pagination = ({ lastPage, handlePagination }) => {
+const Pagination = ({ lastPage, handlePageChange }) => {
   return (
     <StyledPagination
       breakLabel="..."
       nextLabel=">"
-      onPageChange={handlePagination}
+      onPageChange={handlePageChange}
       pageRangeDisplayed={1}
       marginPagesDisplayed={1}
       pageCount={lastPage}
