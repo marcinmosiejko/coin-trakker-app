@@ -61,4 +61,9 @@ export const SideShadow = styled.div`
   width: 3rem;
   height: 100%;
   box-shadow: inset -20px 0px 10px -14px rgba(19, 22, 30, 0.9);
+
+  @media only screen and (max-width: 20em) {
+    // Fixes 1px gap on small screens
+    transform: translateX(1px);
+  }
 `;
