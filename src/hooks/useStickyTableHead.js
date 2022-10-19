@@ -2,9 +2,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 
 // Source: https://blog.logrocket.com/using-react-hooks-to-create-sticky-headers/
 
-const useStickyTableHead = (defaultSticky = false) => {
+const useStickyTableHead = ({ tableRef, defaultSticky = false }) => {
   const [isSticky, setIsSticky] = useState(defaultSticky);
-  const tableRef = useRef(null);
   const tableContainerRef = useRef(null);
   const [leftPosition, setLeftPosition] = useState(null);
 
@@ -41,7 +40,7 @@ const useStickyTableHead = (defaultSticky = false) => {
     };
   }, [toggleSticky]);
 
-  return { tableRef, tableContainerRef, isSticky, leftPosition };
+  return { tableContainerRef, isSticky, leftPosition };
 };
 
 export default useStickyTableHead;

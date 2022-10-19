@@ -11,13 +11,11 @@ import useStickyTableHead from 'hooks/useStickyTableHead';
 import TableHead from 'components/molecules/TableHead/TableHead';
 import Spinner from 'components/atoms/Spinner/Spinner';
 
-const CoinsTable = ({ data, handleSetTableRef }) => {
-  const { tableRef, tableContainerRef, isSticky, leftPosition } =
-    useStickyTableHead();
-
-  useEffect(() => {
-    handleSetTableRef(tableRef);
-  }, []);
+const CoinsTable = ({ data, tableRef }) => {
+  const { tableContainerRef, isSticky, leftPosition } = useStickyTableHead({
+    tableRef,
+    defaultSticky: false,
+  });
 
   return (
     <TableWrapper>
