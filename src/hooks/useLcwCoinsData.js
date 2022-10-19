@@ -44,14 +44,6 @@ export const LcwCoinsDataProvider = ({ children }) => {
       });
       return updatedState;
     });
-    // setCoinsData((prevState) => {
-    //   const updatedState = prevState.map((coin) => {
-    //     if (coin.code === coinCode)
-    //       return { ...coin, onWatchlist: !coin.onWatchlist };
-    //     return coin;
-    //   });
-    //   return updatedState;
-    // });
   };
 
   useEffect(() => {

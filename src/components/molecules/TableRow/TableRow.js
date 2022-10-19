@@ -26,9 +26,7 @@ const TableRow = ({
   return (
     <StyledRow>
       <TdTh type="rank">
-        <RankAndWatch onWatchlist={data?.onWatchlist} coinCode={code}>
-          {rank}
-        </RankAndWatch>
+        <RankAndWatch coinCode={code}>{rank}</RankAndWatch>
       </TdTh>
       <TdTh>
         <CoinID data={data} />

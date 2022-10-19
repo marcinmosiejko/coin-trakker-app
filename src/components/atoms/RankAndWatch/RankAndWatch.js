@@ -3,7 +3,7 @@ import { Wrapper, Rank } from './RankAndWatch.styles';
 import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
 import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 
-const RankAndWatch = ({ onWatchlist, coinCode, children }) => {
+const RankAndWatch = ({ coinCode, children }) => {
   const { watchlistCoinsList, handleUpdateWatchlist } = useLcwCoinsData();
   const [isOnWatchlist, setIsOnWatchlist] = useState(null);
 
@@ -17,7 +17,6 @@ const RankAndWatch = ({ onWatchlist, coinCode, children }) => {
       <Rank>{children}</Rank>
       <WatchlistIcon
         isOnWatchlist={isOnWatchlist}
-        onWatchlist={onWatchlist}
         onClick={() => handleUpdateWatchlist(coinCode)}
       />
     </Wrapper>
