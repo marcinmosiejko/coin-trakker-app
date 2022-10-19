@@ -11,11 +11,11 @@
   "rules": {
     "prettier/prettier": [
       "error",
-      { "singleQuote": true },
-      {
-        "endOfLine": "auto"
-      }
-    ]
+      { "endOfLine": "auto" },
+      { "usePrettierrc": true }
+    ], // Use our .prettierrc file as source
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   },
 
   "env": {
