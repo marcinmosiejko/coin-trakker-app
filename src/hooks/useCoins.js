@@ -3,20 +3,20 @@ import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 import { useLcwCoinsData } from './useLcwCoinsData';
 
 export const useCoins = () => {
-  const { coinsData, handleSetPageCoinsList } = useLcwCoinsData();
+  const { coinsData, handleSetCoinsCurPageCoinsList } = useLcwCoinsData();
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
   useEffect(() => {
-    handleSetPageCoinsList({
+    handleSetCoinsCurPageCoinsList({
       currentPage,
       perPageLimit,
     });
 
     if (!coinsData) return;
     setLastPage(Math.ceil(coinsData.length / perPageLimit));
-  }, [coinsData, currentPage, perPageLimit, handleSetPageCoinsList]);
+  }, [coinsData, currentPage, perPageLimit, handleSetCoinsCurPageCoinsList]);
 
   const handlePageChange = function (event) {
     setCurrentPage(event.selected + 1);

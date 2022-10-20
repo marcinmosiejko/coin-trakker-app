@@ -11,7 +11,8 @@ const LcwCoinsDataContext = React.createContext({});
 
 export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsData, setCoinsData] = useState(null);
-  const [pageCoinsList, setPageCoinsList] = useState(null);
+  const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
+  // To avoid repeatedly fetching 7d history data for same coin
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
   const [watchlistCoinsList, setWatchlistCoinsList] = useState([]);
 
@@ -19,7 +20,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
   //   console.log(coinsData);
   // }, [coinsData, history7dCoinsList]);
 
-  const handleSetPageCoinsList = useCallback(
+  const handleSetCoinsCurPageCoinsList = useCallback(
     ({ currentPage, perPageLimit }) => {
       if (!coinsData) return;
 
@@ -28,7 +29,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
 
       const pageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
 
-      setPageCoinsList(pageCoinsList);
+      setCoinsCurPageCoinsList(pageCoinsList);
     },
     [coinsData]
   );
@@ -70,7 +71,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
     (async () => {
       try {
         const newHistory7dCoins = await getHistory7dCoinsList(
-          pageCoinsList,
+          coinsCurPageCoinsList,
           history7dCoinsList
         );
 
@@ -97,16 +98,16 @@ export const LcwCoinsDataProvider = ({ children }) => {
         console.error(err);
       }
     })();
-  }, [pageCoinsList, history7dCoinsList]);
+  }, [coinsCurPageCoinsList, history7dCoinsList]);
 
   return (
     <LcwCoinsDataContext.Provider
       value={{
         coinsData,
-        pageCoinsList,
+        coinsCurPageCoinsList,
         history7dCoinsList,
         watchlistCoinsList,
-        handleSetPageCoinsList,
+        handleSetCoinsCurPageCoinsList,
         handleUpdateWatchlist,
       }}
     >

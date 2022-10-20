@@ -6,14 +6,14 @@ import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import Pagination from 'components/molecules/Pagination/Pagination';
 
 const Coins = () => {
-  const { pageCoinsList } = useLcwCoinsData();
+  const { coinsCurPageCoinsList } = useLcwCoinsData();
   const { lastPage, handlePageChange } = useCoins();
   const tableRef = useRef(null);
 
   return (
     <Wrapper>
       <>
-        <CoinsTable tableRef={tableRef} data={pageCoinsList} />
+        <CoinsTable tableRef={tableRef} data={coinsCurPageCoinsList} />
 
         <Pagination
           lastPage={lastPage}
