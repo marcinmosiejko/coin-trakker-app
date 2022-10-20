@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyledPagination } from './Pagination.styles';
 
 const Pagination = ({ lastPage, currentPage, handlePageChange }) => {
-  useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage]);
-
   return (
     <StyledPagination
       forcePage={currentPage}

@@ -17,7 +17,7 @@ const RankAndWatch = ({ coinCode, children }) => {
     <Wrapper>
       <Rank>{children}</Rank>
       <WatchlistIcon
-        isOnWatchlist={isOnWatchlist}
+        isYellow={isOnWatchlist}
         onClick={() => handleUpdateWatchlistCoinCodesList(coinCode)}
       />
     </Wrapper>

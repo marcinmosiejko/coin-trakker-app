@@ -19,7 +19,7 @@ export const StyledButton = styled.button`
 const ShowWatchlist = ({ showWatchlist, handleSetShowWatchlist }) => {
   return (
     <StyledButton onClick={handleSetShowWatchlist}>
-      <WatchlistIcon isOnWatchlist={showWatchlist} />
+      <WatchlistIcon isYellow={showWatchlist} />
       <span>Watchlist</span>
     </StyledButton>
   );
