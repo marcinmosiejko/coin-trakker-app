@@ -24,3 +24,7 @@ export function truncateString(string, desiredLength) {
 
   return string.slice(0, desiredLength - 3) + '...';
 }
+
+export function compareObjBy(a, b) {
+  return a[this] - b[this];
+}

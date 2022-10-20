@@ -14,14 +14,14 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
   // To avoid repeatedly fetching 7d history data for same coin
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
-  const [watchlistCoinsList, setWatchlistCoinsList] = useState([]);
+  const [watchlistCoinCodesList, setWatchlistCoinCodesList] = useState([]);
 
   const handleSetCoinsCurPageCoinsList = useCallback((data) => {
     setCoinsCurPageCoinsList(data);
   }, []);
 
-  const handleUpdateWatchlist = (coinCode) => {
-    setWatchlistCoinsList((prevState) => {
+  const handleUpdateWatchlistCoinCodesList = (coinCode) => {
+    setWatchlistCoinCodesList((prevState) => {
       if (!prevState.includes(coinCode)) {
         const updatedState = [...prevState, coinCode];
         return updatedState;
@@ -92,9 +92,9 @@ export const LcwCoinsDataProvider = ({ children }) => {
         coinsData,
         coinsCurPageCoinsList,
         history7dCoinsList,
-        watchlistCoinsList,
+        watchlistCoinCodesList,
         handleSetCoinsCurPageCoinsList,
-        handleUpdateWatchlist,
+        handleUpdateWatchlistCoinCodesList,
       }}
     >
       {children}

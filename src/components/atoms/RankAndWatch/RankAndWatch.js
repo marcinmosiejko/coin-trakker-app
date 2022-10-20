@@ -4,20 +4,21 @@ import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
 import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 
 const RankAndWatch = ({ coinCode, children }) => {
-  const { watchlistCoinsList, handleUpdateWatchlist } = useLcwCoinsData();
+  const { watchlistCoinCodesList, handleUpdateWatchlistCoinCodesList } =
+    useLcwCoinsData();
   const [isOnWatchlist, setIsOnWatchlist] = useState(null);
 
   useEffect(() => {
-    const isOnWatchlist = !!watchlistCoinsList?.includes(coinCode);
+    const isOnWatchlist = !!watchlistCoinCodesList?.includes(coinCode);
     setIsOnWatchlist(isOnWatchlist);
-  }, [watchlistCoinsList, coinCode]);
+  }, [watchlistCoinCodesList, coinCode]);
 
   return (
     <Wrapper>
       <Rank>{children}</Rank>
       <WatchlistIcon
         isOnWatchlist={isOnWatchlist}
-        onClick={() => handleUpdateWatchlist(coinCode)}
+        onClick={() => handleUpdateWatchlistCoinCodesList(coinCode)}
       />
     </Wrapper>
   );

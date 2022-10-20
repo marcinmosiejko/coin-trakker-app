@@ -3,12 +3,13 @@ import { scrollbar } from 'assets/styles/mixins';
 import { breakPoints } from 'assets/styles/breakPoints';
 
 export const TableWrapper = styled.div`
+  min-height: 50rem;
   width: 100%;
   position: relative;
 
   table {
     table-layout: fixed;
-    width: 90rem;
+    width: 91rem;
     border-collapse: collapse;
 
     td {

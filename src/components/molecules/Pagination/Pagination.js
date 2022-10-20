@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyledPagination } from './Pagination.styles';
 
-const Pagination = ({ lastPage, handlePageChange }) => {
+const Pagination = ({ lastPage, currentPage, handlePageChange }) => {
   return (
     <StyledPagination
+      forcePage={currentPage}
       breakLabel="..."
       nextLabel=">"
       onPageChange={handlePageChange}
