@@ -10,11 +10,12 @@ export function getCurPageCoinsList({
   perPageLimit,
   showWatchlist,
   watchlistCoinCodesList,
+  setCurrentPage,
   setLastPage,
   setShowWatchlist,
 }) {
-  const pageStartIndex = (currentPage - 1) * perPageLimit;
-  const pageEndIndex = currentPage * perPageLimit;
+  const pageStartIndex = currentPage * perPageLimit;
+  const pageEndIndex = (currentPage + 1) * perPageLimit;
 
   // showWatchlist controls what will be set as coinsCurrentPageCoinsList
   let curPageCoinsList;
@@ -35,6 +36,7 @@ export function getCurPageCoinsList({
     setLastPage(getLastPage(watchlistCoinsList, perPageLimit));
 
     curPageCoinsList = watchlistCoinsList.slice(pageStartIndex, pageEndIndex);
+    setCurrentPage(0);
   }
 
   return curPageCoinsList;

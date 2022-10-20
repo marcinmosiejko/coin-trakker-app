@@ -10,8 +10,8 @@ export const useCoins = () => {
     handleSetCoinsCurPageCoinsList,
     watchlistCoinCodesList,
   } = useLcwCoinsData();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [lastPage, setLastPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [lastPage, setLastPage] = useState(0);
   const [showWatchlist, setShowWatchlist] = useState(false);
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
@@ -24,12 +24,12 @@ export const useCoins = () => {
       perPageLimit,
       showWatchlist,
       watchlistCoinCodesList,
+      setCurrentPage,
       setLastPage,
       setShowWatchlist,
     });
 
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
-    setCurrentPage(1);
   }, [
     coinsData,
     currentPage,
@@ -46,7 +46,7 @@ export const useCoins = () => {
   }, [coinsData, perPageLimit]);
 
   const handlePageChange = function (event) {
-    setCurrentPage(event.selected + 1);
+    setCurrentPage(event.selected);
     window.scrollBy({
       top: this.current.getBoundingClientRect().y - 90,
       behavior: 'smooth',
