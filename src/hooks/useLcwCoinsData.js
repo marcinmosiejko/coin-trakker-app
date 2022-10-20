@@ -90,6 +90,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
     <LcwCoinsDataContext.Provider
       value={{
         coinsData,
+        coinsCurPageCoinsList,
         history7dCoinsList,
         watchlistCoinsList,
         handleSetCoinsCurPageCoinsList,

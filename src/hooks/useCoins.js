@@ -3,8 +3,8 @@ import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 import { useLcwCoinsData } from './useLcwCoinsData';
 
 export const useCoins = () => {
-  const { coinsData, handleSetCoinsCurPageCoinsList } = useLcwCoinsData();
-  const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
+  const { coinsData, coinsCurPageCoinsList, handleSetCoinsCurPageCoinsList } =
+    useLcwCoinsData();
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
@@ -17,7 +17,6 @@ export const useCoins = () => {
 
     const curPageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
 
-    setCoinsCurPageCoinsList(curPageCoinsList);
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
   }, [coinsData, currentPage, perPageLimit, handleSetCoinsCurPageCoinsList]);
 
