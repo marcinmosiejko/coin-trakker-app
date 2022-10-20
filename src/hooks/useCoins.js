@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 import { useLcwCoinsData } from './useLcwCoinsData';
-import { getCurPageCoinsList } from 'helpers/coins';
+import { getLastPage, getWatchlistCoinsList } from 'helpers/coins';
 
 export const useCoins = () => {
   const {
@@ -18,16 +18,25 @@ export const useCoins = () => {
   useEffect(() => {
     if (!coinsData) return;
 
-    const curPageCoinsList = getCurPageCoinsList({
-      coinsData,
-      currentPage,
-      perPageLimit,
-      showWatchlist,
-      watchlistCoinCodesList,
-      setCurrentPage,
-      setLastPage,
-      setShowWatchlist,
-    });
+    const pageStartIndex = currentPage * perPageLimit;
+    const pageEndIndex = (currentPage + 1) * perPageLimit;
+
+    // showWatchlist controls what will be set as coinsCurrentPageCoinsList
+    let curPageCoinsList;
+    if (!showWatchlist || watchlistCoinCodesList.length === 0) {
+      curPageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
+      setShowWatchlist(false);
+      setLastPage(getLastPage(coinsData, perPageLimit));
+    } else {
+      // Get watchlistCoinsList from watchlistCoinCodes and based on that calculate last page as watchlistCoinCodes will be stored in localStorage / backend and between user sessions coinsData may change and not all coins that are stored will be avaiable on coinsData (due to new coins getting into top fetched coins) which may skew the result
+      const watchlistCoinsList = getWatchlistCoinsList(
+        coinsData,
+        watchlistCoinCodesList
+      );
+      setLastPage(getLastPage(watchlistCoinsList, perPageLimit));
+      curPageCoinsList = watchlistCoinsList.slice(pageStartIndex, pageEndIndex);
+      setCurrentPage(0);
+    }
 
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
   }, [
