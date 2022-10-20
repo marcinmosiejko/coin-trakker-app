@@ -4,7 +4,6 @@ import { useLcwCoinsData } from './useLcwCoinsData';
 
 export const useCoins = () => {
   const { coinsData, handleSetCoinsCurPageCoinsList } = useLcwCoinsData();
-
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
@@ -20,13 +19,13 @@ export const useCoins = () => {
 
     setCoinsCurPageCoinsList(curPageCoinsList);
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
-  }, [coinsData, currentPage, perPageLimit]);
+  }, [coinsData, currentPage, perPageLimit, handleSetCoinsCurPageCoinsList]);
 
   useEffect(() => {
     if (!coinsData) return;
 
     setLastPage(Math.ceil(coinsData.length / perPageLimit));
-  }, [coinsData]);
+  }, [coinsData, perPageLimit]);
 
   const handlePageChange = function (event) {
     setCurrentPage(event.selected + 1);

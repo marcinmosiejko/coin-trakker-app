@@ -16,9 +16,9 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
   const [watchlistCoinsList, setWatchlistCoinsList] = useState([]);
 
-  const handleSetCoinsCurPageCoinsList = (data) => {
+  const handleSetCoinsCurPageCoinsList = useCallback((data) => {
     setCoinsCurPageCoinsList(data);
-  };
+  }, []);
 
   const handleUpdateWatchlist = (coinCode) => {
     setWatchlistCoinsList((prevState) => {
@@ -90,7 +90,6 @@ export const LcwCoinsDataProvider = ({ children }) => {
     <LcwCoinsDataContext.Provider
       value={{
         coinsData,
-        coinsCurPageCoinsList,
         history7dCoinsList,
         watchlistCoinsList,
         handleSetCoinsCurPageCoinsList,
