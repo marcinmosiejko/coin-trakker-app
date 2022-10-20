@@ -16,23 +16,9 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
   const [watchlistCoinsList, setWatchlistCoinsList] = useState([]);
 
-  // useEffect(() => {
-  //   console.log(coinsData);
-  // }, [coinsData, history7dCoinsList]);
-
-  const handleSetCoinsCurPageCoinsList = useCallback(
-    ({ currentPage, perPageLimit }) => {
-      if (!coinsData) return;
-
-      const pageStartIndex = (currentPage - 1) * perPageLimit;
-      const pageEndIndex = currentPage * perPageLimit;
-
-      const pageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
-
-      setCoinsCurPageCoinsList(pageCoinsList);
-    },
-    [coinsData]
-  );
+  const handleSetCoinsCurPageCoinsList = (data) => {
+    setCoinsCurPageCoinsList(data);
+  };
 
   const handleUpdateWatchlist = (coinCode) => {
     setWatchlistCoinsList((prevState) => {
