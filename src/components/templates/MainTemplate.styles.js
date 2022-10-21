@@ -18,12 +18,3 @@ export const StyledMain = styled.main`
   display: flex;
   justify-content: center;
 `;
-
-export const Footer = styled.footer`
-  height: 8rem;
-  background-color: ${({ theme }) => theme.colors.secondary};
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
