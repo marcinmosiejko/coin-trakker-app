@@ -3,7 +3,7 @@ import { Wrapper } from './Coins.styles';
 import CoinsTable from 'components/organisms/CoinsTable/CoinsTable';
 import { useCoins } from 'hooks/useCoins';
 import Pagination from 'components/molecules/Pagination/Pagination';
-import ShowWatchlist from 'components/atoms/ShowWatchlist/ShowWatchlist';
+import ButtonShowWatchlist from 'components/atoms/ButtonShowWatchlist/ButtonShowWatchlist';
 import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
 
 const Coins = () => {
@@ -22,7 +22,7 @@ const Coins = () => {
       <>
         <div>
           <TableOptionsWrapper>
-            <ShowWatchlist
+            <ButtonShowWatchlist
               showWatchlist={showWatchlist}
               handleSetShowWatchlist={handleSetShowWatchlist}
             />
