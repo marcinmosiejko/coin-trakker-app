@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Wrapper, Rank } from './RankAndWatch.styles';
 import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
 import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
