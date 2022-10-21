@@ -12,9 +12,4 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 3rem;
-
-  button {
-    cursor: pointer;
-    padding: 0.2rem 2rem;
-  }
 `;
