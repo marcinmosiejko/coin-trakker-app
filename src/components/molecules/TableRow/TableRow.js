@@ -21,12 +21,15 @@ const TableRow = ({
     volume,
     delta: { day },
     history7d,
+    onWatchlist,
   },
 }) => {
   return (
     <StyledRow>
       <TdTh type="rank">
-        <RankAndWatch coinCode={code}>{rank}</RankAndWatch>
+        <RankAndWatch onWatchlist={onWatchlist} coinCode={code}>
+          {rank}
+        </RankAndWatch>
       </TdTh>
       <TdTh>
         <CoinID data={data} />

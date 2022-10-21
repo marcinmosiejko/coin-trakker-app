@@ -30,7 +30,7 @@ const Coins = () => {
         <Pagination
           currentPage={currentPage}
           lastPage={lastPage}
-          handlePageChange={handlePageChange.bind(tableRef)}
+          handlePageChange={(e) => handlePageChange(e, tableRef)}
         />
       </>
     </Wrapper>

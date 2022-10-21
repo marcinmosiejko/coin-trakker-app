@@ -54,10 +54,10 @@ export const useCoins = () => {
     setLastPage(Math.ceil(coinsData.length / perPageLimit));
   }, [coinsData, perPageLimit]);
 
-  const handlePageChange = function (event) {
-    setCurrentPage(event.selected);
+  const handlePageChange = function (e, tableRef) {
+    setCurrentPage(e.selected);
     window.scrollBy({
-      top: this.current.getBoundingClientRect().y - 90,
+      top: tableRef.current.getBoundingClientRect().y - 90,
       behavior: 'smooth',
     });
   };

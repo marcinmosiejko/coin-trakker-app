@@ -95,6 +95,34 @@ export const getUpdatedCoinsList = (prevState, newData) => {
   return updatedData;
 };
 
+export const getUpdatedCoinsListWithWatchlist = (
+  prevState,
+  watchlistCoinCodesList
+) => {
+  const updatedData = prevState.map((coin) => {
+    if (watchlistCoinCodesList.includes(coin.code))
+      return { ...coin, onWatchlist: true };
+
+    return { ...coin, onWatchlist: false };
+  });
+
+  return updatedData;
+};
+
+export const getUpdatedCoinsListWithWatchlistCoinCode = (
+  prevState,
+  coinCode
+) => {
+  const updatedData = prevState.map((coin) => {
+    if (coin.code === coinCode) {
+      return { ...coin, onWatchlist: !coin.onWatchlist };
+    }
+    return coin;
+  });
+
+  return updatedData;
+};
+
 export const add7DayHistoryDataToCoinsData = (prevState, newHistory7dCoins) => {
   const enrichedState = prevState.map((stateCoin) => {
     const coinHistory = newHistory7dCoins.find(

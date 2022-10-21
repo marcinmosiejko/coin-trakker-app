@@ -5,6 +5,8 @@ import {
   getHistory7dCoinsList,
   getUpdatedCoinsList,
   add7DayHistoryDataToCoinsData,
+  getUpdatedCoinsListWithWatchlist,
+  getUpdatedCoinsListWithWatchlistCoinCode,
 } from 'helpers/lcwApi';
 import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
 
@@ -32,6 +34,11 @@ export const LcwCoinsDataProvider = ({ children }) => {
         updatedState = prevState.filter((code) => code !== coinCode);
       }
 
+      // + make the coin in coinsData also hold current info about being on watchlist
+      setCoinsData((prevState) =>
+        getUpdatedCoinsListWithWatchlistCoinCode(prevState, coinCode)
+      );
+
       return updatedState;
     });
   };
@@ -43,15 +50,15 @@ export const LcwCoinsDataProvider = ({ children }) => {
         const meta = true;
         const data = await fetchCoinsListData(meta);
         setCoinsData(data);
-
+        // Update coinsData if they are on watchlist
+        setCoinsData((prevState) =>
+          getUpdatedCoinsListWithWatchlist(prevState, watchlistCoinCodesList)
+        );
         // Fetch new coins data without metadata to keep it up to date
         setInterval(async () => {
           const newData = await fetchCoinsListData();
 
-          setCoinsData((prevState) => {
-            const updatedData = getUpdatedCoinsList(prevState, newData);
-            return updatedData;
-          });
+          setCoinsData((prevState) => getUpdatedCoinsList(prevState, newData));
         }, DATA_REFRESH_INTERVAL);
       } catch (err) {
         console.error(err);
