@@ -6,6 +6,7 @@ import {
   getUpdatedCoinsList,
   add7DayHistoryDataToCoinsData,
 } from 'helpers/lcwApi';
+import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
 
 const LcwCoinsDataContext = React.createContext({});
 
@@ -14,7 +15,9 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
   // To avoid repeatedly fetching 7d history data for same coin
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
-  const [watchlistCoinCodesList, setWatchlistCoinCodesList] = useState([]);
+  const [watchlistCoinCodesList, setWatchlistCoinCodesList] = useState(
+    getFromLocalStorage('usersWatchlist') || []
+  );
 
   const handleSetCoinsCurPageCoinsList = useCallback((data) => {
     setCoinsCurPageCoinsList(data);
@@ -22,13 +25,15 @@ export const LcwCoinsDataProvider = ({ children }) => {
 
   const handleUpdateWatchlistCoinCodesList = (coinCode) => {
     setWatchlistCoinCodesList((prevState) => {
+      let updatedState;
       if (!prevState.includes(coinCode)) {
-        const updatedState = [...prevState, coinCode];
-        return updatedState;
+        updatedState = [...prevState, coinCode];
+      } else {
+        updatedState = prevState.filter((code) => {
+          return code !== coinCode;
+        });
       }
-      const updatedState = prevState.filter((code) => {
-        return code !== coinCode;
-      });
+
       return updatedState;
     });
   };
@@ -36,9 +41,11 @@ export const LcwCoinsDataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
+        // Fetch and set coins data
         const meta = true;
         const data = await fetchCoinsListData(meta);
         setCoinsData(data);
+        // Fetch new coins data without metadata to keep it up to date
         setInterval(async () => {
           const newData = await fetchCoinsListData();
 
@@ -85,6 +92,10 @@ export const LcwCoinsDataProvider = ({ children }) => {
       }
     })();
   }, [coinsCurPageCoinsList, history7dCoinsList]);
+
+  useEffect(() => {
+    saveToLocalStorage('usersWatchlist', watchlistCoinCodesList);
+  }, [watchlistCoinCodesList]);
 
   return (
     <LcwCoinsDataContext.Provider

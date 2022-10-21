@@ -28,3 +28,11 @@ export function truncateString(string, desiredLength) {
 export function compareObjBy(a, b) {
   return a[this] - b[this];
 }
+
+export function getFromLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+export function saveToLocalStorage(key, item) {
+  return localStorage.setItem(key, JSON.stringify(item));
+}
