@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const StyledButton = styled.button`
   border: none;
   border-radius: 5px;
-  margin-bottom: 2rem;
 
   color: ${({ theme }) => theme.colors.tintSecondary.light1};
   background-color: ${({ theme }) => theme.colors.tintSecondary.dark9};

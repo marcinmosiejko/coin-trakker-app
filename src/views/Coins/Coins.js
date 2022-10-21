@@ -4,6 +4,7 @@ import CoinsTable from 'components/organisms/CoinsTable/CoinsTable';
 import { useCoins } from 'hooks/useCoins';
 import Pagination from 'components/molecules/Pagination/Pagination';
 import ShowWatchlist from 'components/atoms/ShowWatchlist/ShowWatchlist';
+import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
 
 const Coins = () => {
   const {
@@ -20,10 +21,12 @@ const Coins = () => {
     <Wrapper>
       <>
         <div>
-          <ShowWatchlist
-            showWatchlist={showWatchlist}
-            handleSetShowWatchlist={handleSetShowWatchlist}
-          />
+          <TableOptionsWrapper>
+            <ShowWatchlist
+              showWatchlist={showWatchlist}
+              handleSetShowWatchlist={handleSetShowWatchlist}
+            />
+          </TableOptionsWrapper>
           <CoinsTable tableRef={tableRef} data={coinsCurPageCoinsList} />
         </div>
 
