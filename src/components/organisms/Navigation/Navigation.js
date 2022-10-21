@@ -7,7 +7,7 @@ const Navigation = () => {
       <LinksWrapper>
         {/* <StyledLink to="/">Home</StyledLink> */}
         <StyledLink to="/coins">Coins</StyledLink>
-        <StyledLink to="/portfolio">Portfolio</StyledLink>
+        {/* <StyledLink to="/portfolio">Portfolio</StyledLink> */}
       </LinksWrapper>
     </Wrapper>
   );
