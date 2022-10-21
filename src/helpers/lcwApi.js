@@ -8,7 +8,7 @@ lcwAPI.defaults.headers = {
   'x-api-key': process.env.REACT_APP_LCW_TOKEN,
 };
 
-export const fetchCoinsListData = async (meta = false) => {
+export const fetchCoinsData = async (meta = false) => {
   try {
     let finalData = [];
 
@@ -77,7 +77,7 @@ export const getHistory7dCoinsList = async (
   return historyList;
 };
 
-export const getUpdatedCoinsList = (prevState, newData) => {
+export const getUpdatedCoinsData = (prevState, newData) => {
   const updatedData = prevState.map((stateCoin) => {
     // If there's no matching coin fall back to current data
     const { rate, volume, cap, delta } =
@@ -95,12 +95,12 @@ export const getUpdatedCoinsList = (prevState, newData) => {
   return updatedData;
 };
 
-export const getUpdatedCoinsListWithWatchlist = (
+export const getUpdatedCoinsDataWithWatchlist = (
   prevState,
-  watchlistCoinCodesList
+  watchlistCoinCodes
 ) => {
   const updatedData = prevState.map((coin) => {
-    if (watchlistCoinCodesList.includes(coin.code))
+    if (watchlistCoinCodes.includes(coin.code))
       return { ...coin, onWatchlist: true };
 
     return { ...coin, onWatchlist: false };
@@ -109,7 +109,7 @@ export const getUpdatedCoinsListWithWatchlist = (
   return updatedData;
 };
 
-export const getUpdatedCoinsListWithWatchlistCoinCode = (
+export const getUpdatedCoinsDataWithWatchlistCoinCode = (
   prevState,
   coinCode
 ) => {

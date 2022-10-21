@@ -4,8 +4,8 @@ export function getLastPage(data, perPageLimit) {
   return Math.ceil(data.length / perPageLimit);
 }
 
-export function getWatchlistCoinsList(coinsData, watchlistCoinCodesList) {
-  const watchlistCoinsList = watchlistCoinCodesList
+export function getWatchlistCoinsList(coinsData, watchlistCoinCodes) {
+  const watchlistCoinsList = watchlistCoinCodes
     .map((coinCode) => {
       const watchedCoin = coinsData.find((coin) => coin.code === coinCode);
       return watchedCoin;
