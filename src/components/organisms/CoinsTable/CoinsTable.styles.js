@@ -3,16 +3,17 @@ import { scrollbar } from 'assets/styles/mixins';
 import { breakPoints } from 'assets/styles/breakPoints';
 
 export const TableWrapper = styled.div`
+  min-height: 50rem;
   width: 100%;
   position: relative;
 
   table {
     table-layout: fixed;
-    width: 90rem;
+    width: 91rem;
     border-collapse: collapse;
 
     td {
-      padding: 0.8rem 2rem;
+      padding: 0.8rem 1.5rem;
     }
   }
 `;
@@ -33,13 +34,13 @@ export const Table = styled.table`
     color: ${({ theme }) => theme.colors.tintSecondary.light11};
   }
 
-  tbody {
+  /* tbody {
     tr:first-of-type {
       td {
         padding-top: 2rem;
       }
     }
-  }
+  } */
 `;
 
 export const StickyTable = styled.table`

@@ -1,45 +1,64 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { DATA_REFRESH_INTERVAL } from 'config';
 import {
-  fetchCoinsListData,
-  getHistory7dCoinsList,
-  getUpdatedCoinsList,
   add7DayHistoryDataToCoinsData,
+  fetchCoinsData,
+  getHistory7dCoinsList,
+  getUpdatedCoinsData,
+  getUpdatedCoinsDataWithWatchlist,
+  getUpdatedCoinsDataWithWatchlistCoinCode,
 } from 'helpers/lcwApi';
+import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
 
 const LcwCoinsDataContext = React.createContext({});
 
 export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsData, setCoinsData] = useState(null);
-  const [pageCoinsList, setPageCoinsList] = useState(null);
+  const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
+  // To avoid repeatedly fetching 7d history data for same coin
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
-
-  const handleSetPageCoinsList = useCallback(
-    ({ currentPage, perPageLimit }) => {
-      if (!coinsData) return;
-
-      const pageStartIndex = (currentPage - 1) * perPageLimit;
-      const pageEndIndex = currentPage * perPageLimit;
-
-      const pageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
-      setPageCoinsList(pageCoinsList);
-    },
-    [coinsData]
+  const [watchlistCoinCodes, setWatchlistCoinCodes] = useState(
+    getFromLocalStorage('usersWatchlist') || []
   );
+
+  const handleSetCoinsCurPageCoinsList = useCallback((data) => {
+    setCoinsCurPageCoinsList(data);
+  }, []);
+
+  const handleUpdateWatchlist = (coinCode) => {
+    setWatchlistCoinCodes((prevState) => {
+      let updatedState;
+      if (!prevState.includes(coinCode)) {
+        updatedState = [...prevState, coinCode];
+      } else {
+        updatedState = prevState.filter((code) => code !== coinCode);
+      }
+
+      // + make the coin in coinsData also hold current info about being on watchlist
+      setCoinsData((prevState) =>
+        getUpdatedCoinsDataWithWatchlistCoinCode(prevState, coinCode)
+      );
+
+      return updatedState;
+    });
+  };
 
   useEffect(() => {
     (async () => {
       try {
+        // Fetch and set coinsData
         const meta = true;
-        const data = await fetchCoinsListData(meta);
+        const data = await fetchCoinsData(meta);
         setCoinsData(data);
+        // Update coinsData if they are on watchlist
+        setCoinsData((prevState) =>
+          getUpdatedCoinsDataWithWatchlist(prevState, watchlistCoinCodes)
+        );
+        // Fetch new coins data without metadata to keep it up to date
         setInterval(async () => {
-          const newData = await fetchCoinsListData();
+          const newData = await fetchCoinsData();
 
-          setCoinsData((prevState) => {
-            const updatedData = getUpdatedCoinsList(prevState, newData);
-            return updatedData;
-          });
+          setCoinsData((prevState) => getUpdatedCoinsData(prevState, newData));
         }, DATA_REFRESH_INTERVAL);
       } catch (err) {
         console.error(err);
@@ -51,7 +70,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
     (async () => {
       try {
         const newHistory7dCoins = await getHistory7dCoinsList(
-          pageCoinsList,
+          coinsCurPageCoinsList,
           history7dCoinsList
         );
 
@@ -78,15 +97,21 @@ export const LcwCoinsDataProvider = ({ children }) => {
         console.error(err);
       }
     })();
-  }, [pageCoinsList, history7dCoinsList]);
+  }, [coinsCurPageCoinsList, history7dCoinsList]);
+
+  useEffect(() => {
+    saveToLocalStorage('usersWatchlist', watchlistCoinCodes);
+  }, [watchlistCoinCodes]);
 
   return (
     <LcwCoinsDataContext.Provider
       value={{
         coinsData,
-        handleSetPageCoinsList,
-        pageCoinsList,
+        coinsCurPageCoinsList,
         history7dCoinsList,
+        handleSetCoinsCurPageCoinsList,
+        handleUpdateWatchlist,
+        watchlistCoinCodes,
       }}
     >
       {children}

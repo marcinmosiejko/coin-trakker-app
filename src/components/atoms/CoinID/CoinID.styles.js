@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.td`
+export const Wrapper = styled.div`
   width: 18rem;
   height: 8rem;
 
@@ -24,4 +24,6 @@ export const NameWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 0.2rem;
+
+  text-align: left;
 `;

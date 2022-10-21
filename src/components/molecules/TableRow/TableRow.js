@@ -6,25 +6,34 @@ import {
   getPercentageChange,
 } from 'helpers/general';
 import { StyledRow } from './TableRow.styles';
-import CoinBody from 'components/atoms/CoinID/CoinID';
+import CoinID from 'components/atoms/CoinID/CoinID';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
 import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
+import RankAndWatch from 'components/atoms/RankAndWatch/RankAndWatch';
 
 const TableRow = ({
   data,
   data: {
     rank,
+    code,
     rate,
     cap,
     volume,
     delta: { day },
     history7d,
+    onWatchlist,
   },
 }) => {
   return (
     <StyledRow>
-      <TdTh type="rank">{rank}</TdTh>
-      <CoinBody data={data} />
+      <TdTh type="rank">
+        <RankAndWatch onWatchlist={onWatchlist} coinCode={code}>
+          {rank}
+        </RankAndWatch>
+      </TdTh>
+      <TdTh>
+        <CoinID data={data} />
+      </TdTh>
       <TdTh type="rate" isRight>
         ${roundPrice(rate)}
       </TdTh>

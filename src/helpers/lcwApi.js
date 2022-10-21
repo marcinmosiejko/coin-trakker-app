@@ -8,7 +8,7 @@ lcwAPI.defaults.headers = {
   'x-api-key': process.env.REACT_APP_LCW_TOKEN,
 };
 
-export const fetchCoinsListData = async (meta = false) => {
+export const fetchCoinsData = async (meta = false) => {
   try {
     let finalData = [];
 
@@ -49,14 +49,13 @@ export const getHistory7dCoinsList = async (
   history7dCoinsList
 ) => {
   // Iterate through pageCoinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
-
   if (!pageCoinsList) return;
 
   let historyList = await Promise.all(
     pageCoinsList.map(async (pc) => {
-      const existingHistoryData = history7dCoinsList?.find((hc) => {
-        return hc.name === pc.name && hc.code === pc.code;
-      });
+      const existingHistoryData = history7dCoinsList?.find(
+        (hc) => hc.name === pc.name && hc.code === pc.code
+      );
 
       if (existingHistoryData) return;
 
@@ -78,7 +77,7 @@ export const getHistory7dCoinsList = async (
   return historyList;
 };
 
-export const getUpdatedCoinsList = (prevState, newData) => {
+export const getUpdatedCoinsData = (prevState, newData) => {
   const updatedData = prevState.map((stateCoin) => {
     // If there's no matching coin fall back to current data
     const { rate, volume, cap, delta } =
@@ -96,13 +95,43 @@ export const getUpdatedCoinsList = (prevState, newData) => {
   return updatedData;
 };
 
+export const getUpdatedCoinsDataWithWatchlist = (
+  prevState,
+  watchlistCoinCodes
+) => {
+  const updatedData = prevState.map((coin) => {
+    if (watchlistCoinCodes.includes(coin.code))
+      return { ...coin, onWatchlist: true };
+
+    return { ...coin, onWatchlist: false };
+  });
+
+  return updatedData;
+};
+
+export const getUpdatedCoinsDataWithWatchlistCoinCode = (
+  prevState,
+  coinCode
+) => {
+  const updatedData = prevState.map((coin) => {
+    if (coin.code === coinCode) {
+      return { ...coin, onWatchlist: !coin.onWatchlist };
+    }
+    return coin;
+  });
+
+  return updatedData;
+};
+
 export const add7DayHistoryDataToCoinsData = (prevState, newHistory7dCoins) => {
-  const enrichedState = prevState.map((coin) => {
-    const coinHistory = newHistory7dCoins.find((c) => c.code === coin.code);
+  const enrichedState = prevState.map((stateCoin) => {
+    const coinHistory = newHistory7dCoins.find(
+      (c) => c.code === stateCoin.code
+    );
 
-    if (!coinHistory) return coin;
+    if (!coinHistory) return stateCoin;
 
-    const enrichedCoinData = { ...coin, history7d: coinHistory.history };
+    const enrichedCoinData = { ...stateCoin, history7d: coinHistory.history };
     return enrichedCoinData;
   });
 
