@@ -29,9 +29,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
       if (!prevState.includes(coinCode)) {
         updatedState = [...prevState, coinCode];
       } else {
-        updatedState = prevState.filter((code) => {
-          return code !== coinCode;
-        });
+        updatedState = prevState.filter((code) => code !== coinCode);
       }
 
       return updatedState;
@@ -41,10 +39,11 @@ export const LcwCoinsDataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        // Fetch and set coins data
+        // Fetch and set coinsData
         const meta = true;
         const data = await fetchCoinsListData(meta);
         setCoinsData(data);
+
         // Fetch new coins data without metadata to keep it up to date
         setInterval(async () => {
           const newData = await fetchCoinsListData();

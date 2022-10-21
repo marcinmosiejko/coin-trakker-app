@@ -49,14 +49,13 @@ export const getHistory7dCoinsList = async (
   history7dCoinsList
 ) => {
   // Iterate through pageCoinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
-
   if (!pageCoinsList) return;
 
   let historyList = await Promise.all(
     pageCoinsList.map(async (pc) => {
-      const existingHistoryData = history7dCoinsList?.find((hc) => {
-        return hc.name === pc.name && hc.code === pc.code;
-      });
+      const existingHistoryData = history7dCoinsList?.find(
+        (hc) => hc.name === pc.name && hc.code === pc.code
+      );
 
       if (existingHistoryData) return;
 
@@ -97,12 +96,14 @@ export const getUpdatedCoinsList = (prevState, newData) => {
 };
 
 export const add7DayHistoryDataToCoinsData = (prevState, newHistory7dCoins) => {
-  const enrichedState = prevState.map((coin) => {
-    const coinHistory = newHistory7dCoins.find((c) => c.code === coin.code);
+  const enrichedState = prevState.map((stateCoin) => {
+    const coinHistory = newHistory7dCoins.find(
+      (c) => c.code === stateCoin.code
+    );
 
-    if (!coinHistory) return coin;
+    if (!coinHistory) return stateCoin;
 
-    const enrichedCoinData = { ...coin, history7d: coinHistory.history };
+    const enrichedCoinData = { ...stateCoin, history7d: coinHistory.history };
     return enrichedCoinData;
   });
 
