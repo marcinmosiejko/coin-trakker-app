@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const LinksWrapper = styled.nav`
-  width: 91rem;
+  width: 95rem;
   padding: 1em 0;
 
   display: flex;

@@ -8,7 +8,7 @@ export const WrapperWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 91rem;
+  width: 95rem;
   padding: 2rem 0;
 `;
 
