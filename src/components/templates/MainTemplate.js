@@ -1,13 +1,14 @@
 import React from 'react';
-import Navigation from 'components/organisms/Navigation/Navigation';
-import { Wrapper, Footer, StyledMain } from './MainTemplate.styles';
+import Header from 'components/organisms/Header/Header';
+import Footer from 'components/organisms/Footer/Footer';
+import { Wrapper, StyledMain } from './MainTemplate.styles';
 
 const MainTemplate = ({ children }) => {
   return (
     <Wrapper>
-      <Navigation />
+      <Header />
       <StyledMain>{children}</StyledMain>
-      <Footer>footer</Footer>
+      <Footer />
     </Wrapper>
   );
 };
