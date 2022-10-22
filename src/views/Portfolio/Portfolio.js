@@ -23,7 +23,7 @@ const Portfolio = () => {
     []
   );
   const [portfolioCoinsList, setPortfolioCoinsList] = useState([]);
-  const { isOpen, handleOpenModal, handleCloseModal } = useModal();
+  const { isOpen, handleOpenModal, handleCloseModal } = useModal(true);
   const tableRef = useRef(null);
 
   return (
