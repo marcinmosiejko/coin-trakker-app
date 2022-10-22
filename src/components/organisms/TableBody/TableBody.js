@@ -1,12 +1,14 @@
 import React from 'react';
-import TableRow from 'components/molecules/TableRow/TableRow';
+import CoinsTableRow from 'components/molecules/CoinsTableRow/CoinsTableRow';
 
-const TableBody = ({ data }) => {
+const TableBody = ({ data, isCoins, isPortfolio }) => {
   return (
     <tbody>
-      {data.map((crypto) => (
-        <TableRow key={crypto.name + crypto.symbol} data={crypto} />
-      ))}
+      {isCoins
+        ? data.map((crypto) => (
+            <CoinsTableRow key={crypto.name + crypto.symbol} data={crypto} />
+          ))
+        : null}
     </tbody>
   );
 };

@@ -5,13 +5,13 @@ import {
   roundMarketCapAndVol,
   getPercentageChange,
 } from 'helpers/general';
-import { StyledRow } from './TableRow.styles';
+import { StyledRow } from './CoinsTableRow.styles';
 import CoinID from 'components/atoms/CoinID/CoinID';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
 import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
 import RankAndWatch from 'components/atoms/RankAndWatch/RankAndWatch';
 
-const TableRow = ({
+const CoinsTableRow = ({
   data,
   data: {
     rank,
@@ -53,4 +53,4 @@ const TableRow = ({
   );
 };
 
-export default TableRow;
+export default CoinsTableRow;

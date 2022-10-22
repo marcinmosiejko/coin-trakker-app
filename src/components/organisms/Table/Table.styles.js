@@ -25,7 +25,7 @@ export const TableContainer = styled.div`
   ${scrollbar}
 `;
 
-export const Table = styled.table`
+export const StyledTable = styled.table`
   caption {
     padding: 2rem 0 3.2rem;
     caption-side: bottom;

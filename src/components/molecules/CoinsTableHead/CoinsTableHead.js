@@ -1,14 +1,14 @@
 import React from 'react';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
-import { StyledRow } from './TableHead.styles';
+import { StyledHeadRow } from 'components/atoms/StyledHeadRow/StyledHeadRow';
 
-const TableHead = () => {
+const CoinsTableHead = () => {
   return (
     <thead>
-      <StyledRow>
+      <StyledHeadRow>
         <TdTh type="rank">#</TdTh>
         <TdTh isLeft>Coin</TdTh>
-        <TdTh type="price" isRight>
+        <TdTh type="rate" isRight>
           Price
         </TdTh>
         <TdTh type="cap" isRight>
@@ -23,9 +23,9 @@ const TableHead = () => {
         <TdTh type="regular" isRight>
           7d
         </TdTh>
-      </StyledRow>
+      </StyledHeadRow>
     </thead>
   );
 };
 
-export default TableHead;
+export default CoinsTableHead;
