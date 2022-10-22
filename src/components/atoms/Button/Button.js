@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledButton } from './Button.styles';
 
 const Button = ({ children, ...props }) => {
+  console.log(props);
   return <StyledButton {...props}>{children}</StyledButton>;
 };
 
