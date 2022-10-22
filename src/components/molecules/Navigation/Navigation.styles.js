@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,10 +9,14 @@ export const Wrapper = styled.div`
 
 export const LinksWrapper = styled.nav`
   width: 95rem;
-  padding: 1em 0;
+  padding: 1em 1em;
 
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: ${breakPoints.xxl}) {
+    padding: 1em 2em;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`

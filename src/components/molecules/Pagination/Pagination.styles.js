@@ -6,6 +6,7 @@ export const StyledPagination = styled(ReactPaginate)`
   list-style-type: none;
 
   display: flex;
+  justify-content: center;
   gap: 1.2rem;
 
   li {

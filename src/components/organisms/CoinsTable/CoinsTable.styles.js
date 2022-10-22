@@ -3,8 +3,8 @@ import { scrollbar } from 'assets/styles/mixins';
 import { breakPoints } from 'assets/styles/breakPoints';
 
 export const TableWrapper = styled.div`
-  min-height: 50rem;
   width: 100%;
+  min-height: 50rem;
   position: relative;
 
   table {
@@ -33,14 +33,6 @@ export const Table = styled.table`
 
     color: ${({ theme }) => theme.colors.tintSecondary.light11};
   }
-
-  /* tbody {
-    tr:first-of-type {
-      td {
-        padding-top: 2rem;
-      }
-    }
-  } */
 `;
 
 export const StickyTable = styled.table`
@@ -64,7 +56,7 @@ export const SideShadow = styled.div`
   height: 100%;
   box-shadow: inset -20px 0px 10px -14px rgba(19, 22, 30, 0.9);
 
-  @media only screen and (max-width: ${breakPoints.s}) {
+  @media only screen and (max-width: ${breakPoints.xxl}) {
     // Fixes 1px gap on small screens
     transform: translateX(1px);
   }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const WrapperWrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.tintSecondary.dark10};
@@ -10,6 +11,10 @@ export const WrapperWrapper = styled.div`
 export const Wrapper = styled.div`
   width: 95rem;
   padding: 2rem 0;
+
+  @media only screen and (max-width: ${breakPoints.xxl}) {
+    padding: 2em 1em;
+  }
 `;
 
 export const Logo = styled.div`
