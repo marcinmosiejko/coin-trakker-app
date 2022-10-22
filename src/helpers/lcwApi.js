@@ -2,7 +2,7 @@ import axios from 'axios';
 import { LCW_API_URL, API_LIMIT, API_CALLS } from 'config';
 import dayjs from 'dayjs';
 
-const lcwAPI = axios.create({ baseURL: LCW_API_URL });
+const lcwAPI = axios.create({ baseURL: LCW_API_URL, timeout: 10000 });
 lcwAPI.defaults.headers = {
   'content-type': 'application/json',
   'x-api-key': process.env.REACT_APP_LCW_TOKEN,
