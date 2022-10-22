@@ -3,8 +3,16 @@ import { Wrapper } from './Portfolio.styles';
 import Table from 'components/organisms/Table/Table';
 import TableBody from 'components/organisms/TableBody/TableBody';
 import PortfolioTableHead from 'components/molecules/PortfolioTableHead/PortfolioTableHead';
+import { usePages } from 'hooks/usePages';
 
 const Portfolio = () => {
+  const {
+    currentPage,
+    lastPage,
+    handlePageChange,
+    handleSetLastPage,
+    handleSetCurPage,
+  } = usePages();
   const [portfolioCurPageCoinsList, setPortfolioCurPageCoinsList] = useState(
     []
   );
