@@ -5,6 +5,8 @@ import PortfolioTableHead from 'components/molecules/PortfolioTableHead/Portfoli
 import TableBody from 'components/organisms/TableBody/TableBody';
 import { usePages } from 'hooks/usePages';
 import Pagination from 'components/molecules/Pagination/Pagination';
+import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
+import Button from 'components/atoms/Button/Button';
 
 const Portfolio = () => {
   const {
@@ -24,6 +26,9 @@ const Portfolio = () => {
     <Wrapper>
       <>
         <div>
+          <TableOptionsWrapper>
+            <Button>Add Coin</Button>
+          </TableOptionsWrapper>
           <Table
             tableRef={tableRef}
             data={portfolioCurPageCoinsList}

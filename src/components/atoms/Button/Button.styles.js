@@ -4,6 +4,7 @@ export const StyledButton = styled.button`
   padding: 0.3rem 1.5rem 0.3rem 1.2rem;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 
   color: ${({ theme }) => theme.colors.tintSecondary.light1};
   background-color: ${({ theme }) => theme.colors.tintSecondary.dark8};
