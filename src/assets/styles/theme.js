@@ -42,13 +42,17 @@ export const theme = {
       tdth: {
         width: {
           regular: '15rem',
-          cap: '15rem',
-          volume: '15rem',
-          rate: '13rem',
-          day: '10rem',
+          cap: '12rem',
+          volume: '11rem',
+          rate: '11rem',
+          day: '9rem',
           rank: '6rem',
-          coin: '15rem', // same as CoinBody Wrapper
+          coin: '15rem', // corelated with CoinId's Wrapper
           week: '20rem',
+          quantity: '8rem',
+          value: '8rem',
+          weekPercentage: '8rem',
+          share: '8rem',
         },
       },
     },

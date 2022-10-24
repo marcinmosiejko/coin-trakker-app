@@ -6,21 +6,15 @@ const CoinsTableHead = () => {
   return (
     <thead>
       <TableHeadRow>
-        <TdTh type="rank">#</TdTh>
+        <TdTh width={5}>#</TdTh>
         <TdTh isLeft>Coin</TdTh>
-        <TdTh type="rate" isRight>
-          Price
-        </TdTh>
-        <TdTh type="cap" isRight>
-          Market Cap
-        </TdTh>
-        <TdTh type="volume" isRight>
-          Volume 24h
-        </TdTh>
-        <TdTh type="day" isRight>
+        <TdTh isRight>Price</TdTh>
+        <TdTh isRight>Market Cap</TdTh>
+        <TdTh isRight>Volume 24h</TdTh>
+        <TdTh width={6.5} isRight>
           24h
         </TdTh>
-        <TdTh type="regular" isRight>
+        <TdTh width={11} isRight>
           7d
         </TdTh>
       </TableHeadRow>

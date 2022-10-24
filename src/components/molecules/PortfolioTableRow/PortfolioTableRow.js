@@ -1,17 +1,24 @@
 import React from 'react';
-import { round, roundPrice, getPercentageChange } from 'helpers/general';
-import { StyledRow } from './CoinsTableRow.styles';
+import {
+  RoundSmallValue,
+  getPercentageChange,
+  roundLargeValue,
+  convertToPercentage,
+} from 'helpers/general';
+import { StyledRow } from './PortfolioTableRow.styles';
 import CoinID from 'components/atoms/CoinID/CoinID';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
-import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
+// import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
 
 const PortfolioTableRow = ({
   data,
+  totalValue,
   data: {
-    code,
     rate,
-    delta: { day },
+    delta: { day, week },
     history7d,
+    quantity,
+    value,
   },
 }) => {
   return (
@@ -20,25 +27,20 @@ const PortfolioTableRow = ({
         <TdTh isLeft>
           <CoinID data={data} />
         </TdTh>
-        <TdTh type="rate" isRight>
-          ${roundPrice(rate)}
+        <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
+        <TdTh isRight>{RoundSmallValue(quantity)}</TdTh>
+        <TdTh isRight>${roundLargeValue(value)}</TdTh>
+        <TdTh isRight change={day}>
+          {getPercentageChange(day)}%
         </TdTh>
-        <TdTh type="regular" isRight>
-          Quantity
-        </TdTh>
-        <TdTh type="regular" isRight>
-          Value
-        </TdTh>
-        <TdTh type="day" isRight change={day}>
-          {round(getPercentageChange(day))}%
+        <TdTh isRight change={week}>
+          {/* <Coin7dChart chartDataset={history7d} /> */}
+          {getPercentageChange(week)}%
         </TdTh>
         <TdTh isRight>
-          <Coin7dChart chartDataset={history7d} />
+          {convertToPercentage((rate * quantity) / totalValue)}%
         </TdTh>
-        <TdTh type="regular" isRight>
-          Share
-        </TdTh>
-        <TdTh type="regular" isRight></TdTh>
+        <TdTh isRight>Edit</TdTh>
       </StyledRow>
       <StyledRow></StyledRow>
     </>

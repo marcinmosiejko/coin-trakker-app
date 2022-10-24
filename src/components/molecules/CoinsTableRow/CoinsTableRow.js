@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   round,
-  roundPrice,
-  roundMarketCapAndVol,
+  RoundSmallValue,
+  roundLargeValue,
   getPercentageChange,
 } from 'helpers/general';
 import { StyledRow } from './CoinsTableRow.styles';
@@ -26,7 +26,7 @@ const CoinsTableRow = ({
 }) => {
   return (
     <StyledRow>
-      <TdTh type="rank">
+      <TdTh>
         <RankAndWatch onWatchlist={onWatchlist} coinCode={code}>
           {rank}
         </RankAndWatch>
@@ -34,16 +34,10 @@ const CoinsTableRow = ({
       <TdTh>
         <CoinID data={data} />
       </TdTh>
-      <TdTh type="rate" isRight>
-        ${roundPrice(rate)}
-      </TdTh>
-      <TdTh type="cap" isRight>
-        ${roundMarketCapAndVol(cap)}
-      </TdTh>
-      <TdTh type="vol" isRight>
-        ${roundMarketCapAndVol(volume)}
-      </TdTh>
-      <TdTh type="day" isRight change={day}>
+      <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
+      <TdTh isRight>${roundLargeValue(cap)}</TdTh>
+      <TdTh isRight>${roundLargeValue(volume)}</TdTh>
+      <TdTh isRight change={day}>
         {round(getPercentageChange(day))}%
       </TdTh>
       <TdTh isRight>

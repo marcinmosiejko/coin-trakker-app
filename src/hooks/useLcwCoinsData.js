@@ -7,6 +7,7 @@ import {
   getUpdatedCoinsData,
   getUpdatedCoinsDataWithWatchlist,
   getUpdatedCoinsDataWithWatchlistCoinCode,
+  filterByCoinNameOrCode,
 } from 'helpers/lcwApi';
 import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
 
@@ -41,6 +42,10 @@ export const LcwCoinsDataProvider = ({ children }) => {
 
       return updatedState;
     });
+  };
+
+  const findCoins = (queryString) => {
+    return filterByCoinNameOrCode(coinsData, queryString);
   };
 
   useEffect(() => {
@@ -113,6 +118,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
         handleSetCoinsCurPageCoinsList,
         handleUpdateWatchlist,
         watchlistCoinCodes,
+        findCoins,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useCoins } from 'hooks/useCoins';
 import Table from 'components/organisms/Table/Table';
 import CoinsTableHead from 'components/molecules/CoinsTableHead/CoinsTableHead';
@@ -7,7 +7,6 @@ import Pagination from 'components/molecules/Pagination/Pagination';
 import ShowWatchlist from 'components/atoms/ShowWatchlist/ShowWatchlist';
 import { Wrapper } from './Coins.styles';
 import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
-import Button from 'components/atoms/Button/Button';
 
 const Coins = () => {
   const {
@@ -19,6 +18,8 @@ const Coins = () => {
     showWatchlist,
   } = useCoins();
   const tableRef = useRef(null);
+
+  useEffect(() => {}, [coinsCurPageCoinsList]);
 
   return (
     <Wrapper>
