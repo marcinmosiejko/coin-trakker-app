@@ -8,6 +8,8 @@ import {
 import { StyledRow } from './PortfolioTableRow.styles';
 import CoinID from 'components/atoms/CoinID/CoinID';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
+import DeleteIcon from 'components/atoms/DeleteIcon/DeleteIcon';
+import EditIcon from 'components/atoms/EditIcon/EditIcon';
 // import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
 
 const PortfolioTableRow = ({
@@ -33,16 +35,21 @@ const PortfolioTableRow = ({
         <TdTh isRight change={day}>
           {getPercentageChange(day)}%
         </TdTh>
-        <TdTh isRight change={week}>
-          {/* <Coin7dChart chartDataset={history7d} /> */}
+        {/* <TdTh isRight change={week}>
+          <Coin7dChart chartDataset={history7d} />
           {getPercentageChange(week)}%
-        </TdTh>
+        </TdTh> */}
         <TdTh isRight>
           {convertToPercentage((rate * quantity) / totalValue)}%
         </TdTh>
-        <TdTh isRight>Edit</TdTh>
+        <TdTh />
+        <TdTh isRight>
+          <EditIcon />
+        </TdTh>
+        <TdTh isRight>
+          <DeleteIcon />
+        </TdTh>
       </StyledRow>
-      <StyledRow></StyledRow>
     </>
   );
 };

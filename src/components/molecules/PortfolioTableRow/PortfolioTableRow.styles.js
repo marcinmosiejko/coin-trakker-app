@@ -6,4 +6,10 @@ export const StyledRow = styled.tr`
   &:hover {
     background-color: ${({ theme }) => theme.colors.tintSecondary.dark7};
   }
+
+  td:nth-last-of-type(2) {
+    border-left: 3px solid ${({ theme }) => theme.colors.tintSecondary.dark5};
+    padding-left: 2.5rem;
+    padding-right: 0.5rem;
+  }
 `;

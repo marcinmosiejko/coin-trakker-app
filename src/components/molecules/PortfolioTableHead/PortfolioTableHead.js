@@ -6,18 +6,22 @@ const PortfolioTableHead = () => {
   return (
     <thead>
       <TableHeadRow>
-        <TdTh width={10} isLeft>
+        <TdTh width={15} isLeft>
           Coin
         </TdTh>
-        <TdTh isRight>Price</TdTh>
+        <TdTh width={14} isRight>
+          Price
+        </TdTh>
         <TdTh isRight>Quantity</TdTh>
-        <TdTh width={8} isRight>
+        <TdTh width={12} isRight>
           Value
         </TdTh>
         <TdTh isRight>24h</TdTh>
-        <TdTh isRight>7d</TdTh>
+        {/* <TdTh isRight>7d</TdTh> */}
         <TdTh isRight>Share</TdTh>
-        <TdTh isRight>Edit</TdTh>
+        <TdTh width={4} />
+        <TdTh width={7} isRight></TdTh>
+        <TdTh width={6} isRight></TdTh>
       </TableHeadRow>
     </thead>
   );
