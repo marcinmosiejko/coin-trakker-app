@@ -31,7 +31,7 @@ export const StyledTable = styled.table`
     caption-side: bottom;
     font-size: 1.4rem;
 
-    color: ${({ theme }) => theme.colors.tintSecondary.light11};
+    color: ${({ theme }) => theme.colors.tintSecondary.light10};
   }
 `;
 

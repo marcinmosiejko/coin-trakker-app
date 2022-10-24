@@ -22,5 +22,9 @@ export const Wrapper = styled.div`
     transition: all 0.3s;
 
     cursor: pointer;
+
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.tintSecondary.light8};
+    }
   }
 `;

@@ -1,13 +1,13 @@
 import React from 'react';
-import Button from '../Button/Button';
+import { StyledButton } from './ShowWatchlist.styles';
 import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
 
 const ShowWatchlist = ({ showWatchlist, ...props }) => {
   return (
-    <Button {...props}>
+    <StyledButton {...props}>
       <WatchlistIcon isYellow={showWatchlist} />
       <span>Watchlist</span>
-    </Button>
+    </StyledButton>
   );
 };
 

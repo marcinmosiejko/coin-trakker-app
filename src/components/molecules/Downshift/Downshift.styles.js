@@ -31,7 +31,7 @@ export const SelectedCoin = styled.div`
   }
 
   div {
-    border: 1px solid ${({ theme }) => theme.colors.tintSecondary.dark9};
+    border: 1px solid ${({ theme }) => theme.colors.tintSecondary.dark11};
     border-radius: 50%;
     width: 2.6rem;
     height: 2.6rem;

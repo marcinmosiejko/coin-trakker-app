@@ -1,15 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Wrapper } from './Portfolio.styles';
+import React, { useRef } from 'react';
+import { Wrapper, ButtonWrapper } from './Portfolio.styles';
 import Table from 'components/organisms/Table/Table';
 import PortfolioTableHead from 'components/molecules/PortfolioTableHead/PortfolioTableHead';
 import TableBody from 'components/organisms/TableBody/TableBody';
 import Modal from 'components/organisms/Modal/Modal';
 import AddCoin from 'components/molecules/AddCoin/AddCoin';
 import Pagination from 'components/molecules/Pagination/Pagination';
-import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
 import Button from 'components/atoms/Button/Button';
-import useModal from 'hooks/useModal';
-
+import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
+import { useModal } from 'hooks/useModal';
 import { usePortfolio } from 'hooks/usePortfolio';
 
 const Portfolio = () => {
@@ -39,7 +38,11 @@ const Portfolio = () => {
       <>
         <div>
           <TableOptionsWrapper>
-            <Button onClick={handleOpenModal}>Add Coin</Button>
+            <ButtonWrapper>
+              <Button isPrimary isL onClick={handleOpenModal}>
+                Add a Coin
+              </Button>
+            </ButtonWrapper>
           </TableOptionsWrapper>
           <Table
             tableRef={tableRef}

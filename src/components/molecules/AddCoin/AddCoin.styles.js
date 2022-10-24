@@ -1,3 +1,4 @@
+import Button from 'components/atoms/Button/Button';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -25,4 +26,9 @@ export const StyledForm = styled.form`
   button {
     margin-top: 0.6rem;
   }
+`;
+
+export const StyledButton = styled(Button)`
+  padding: 0.8rem 2rem;
+  font-size: 1.4rem;
 `;

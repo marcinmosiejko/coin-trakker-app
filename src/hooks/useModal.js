@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useModal = (initialState = false) => {
+export const useModal = (initialState = false) => {
   const [isOpen, setModalState] = useState(initialState);
 
   const handleOpenModal = () => {
@@ -16,5 +16,3 @@ const useModal = (initialState = false) => {
     handleCloseModal,
   };
 };
-
-export default useModal;

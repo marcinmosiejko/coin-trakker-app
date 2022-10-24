@@ -2,12 +2,15 @@ export const theme = {
   // https://www.colorhexa.com/293143
   colors: {
     white: '#FFFFFF',
-    primary: '#63e6be',
+    primary: '#48dcb0',
     secondary: '#293143',
     red: '#ff6b6b',
     redDark: '#fa5252',
     yellow: '#d9bf61',
-    tintPrimary: {},
+    tintPrimary: {
+      dark11: '#22b488',
+      light10: '#69e2be',
+    },
     tintSecondary: {
       dark1: '#040506',
       dark2: '#0b0d12',

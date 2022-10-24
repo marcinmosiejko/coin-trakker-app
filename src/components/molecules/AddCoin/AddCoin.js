@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Wrapper, StyledForm } from './AddCoin.styles';
-import Button from 'components/atoms/Button/Button';
+import { Wrapper, StyledForm, StyledButton } from './AddCoin.styles';
 import { Input } from 'components/atoms/Input/Input';
 import Downshift from '../Downshift/Downshift';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 
 const schema = yup
   .object({
@@ -80,7 +78,9 @@ const AddCoin = ({
         />
         <span>{errors.quantity?.message}</span>
 
-        <Button>Add</Button>
+        <StyledButton isPrimary isL>
+          Add
+        </StyledButton>
       </StyledForm>
     </Wrapper>
   );

@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 export const Name = styled.div`
   font-size: ${({ isSearchResult }) => (isSearchResult ? '1.4rem' : ' 1.2rem')};
-  color: ${({ theme }) => theme.colors.tintSecondary.light11};
+  color: ${({ theme }) => theme.colors.tintSecondary.light10};
 `;
 
 export const StyledImage = styled.img`

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
-import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 import { usePages } from 'hooks/usePages';
 import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
+import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 
 const usersPortfolio = getFromLocalStorage('portfolio');
 
