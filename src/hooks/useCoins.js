@@ -54,14 +54,13 @@ export const useCoins = () => {
     watchlistCoinCodes,
     handleSetLastPage,
     handleSetCurPage,
-    handleSetLastPage,
   ]);
 
   useEffect(() => {
     if (!coinsData) return;
 
     handleSetLastPage(Math.ceil(coinsData.length / perPageLimit));
-  }, [coinsData, perPageLimit]);
+  }, [coinsData, perPageLimit, handleSetLastPage]);
 
   const handleSetShowWatchlist = useCallback(() => {
     setShowWatchlist((prevState) => !prevState);
