@@ -9,11 +9,12 @@ import {
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 
 const usersPortfolio = getFromLocalStorage('portfolio');
-localStorage.clear();
 
 export const usePortfolio = () => {
   const { coinsData, findCoins } = useLcwCoinsData();
-  const [portfolioData, setPortfolioData] = useState(usersPortfolio || null);
+  const [portfolioData, setPortfolioData] = useState(
+    usersPortfolio || [{ code: 'BTC', quantity: 7 }]
+  );
   const [portfolioCoinsList, setPortfolioCoinsList] = useState(null);
   const [portfolioCurPageCoinsList, setPortfolioCurPageCoinsList] =
     useState(null);

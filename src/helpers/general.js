@@ -14,7 +14,7 @@ export function RoundSmallValue(price) {
 
 export function roundLargeValue(cap) {
   if (cap > 100000000) return round(cap / 1000000000) + ' B';
-  if (cap > 100000) return round(cap / 100000) + ' M';
+  if (cap > 1000000) return round(cap / 1000000) + ' M';
   if (cap > 10000) return round(cap / 1000) + ' K';
   return round(cap);
 }

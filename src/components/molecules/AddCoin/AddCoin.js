@@ -13,6 +13,7 @@ const schema = yup
     coin: yup.string().required('Coin is required'),
     quantity: yup
       .number('Quantity is Required')
+      .positive()
       .required('Quantity is Required'),
   })
   .required();
