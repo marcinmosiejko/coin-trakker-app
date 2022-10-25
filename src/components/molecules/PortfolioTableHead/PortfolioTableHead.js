@@ -23,7 +23,7 @@ const PortfolioTableHead = () => {
         <TdTh isRight>Share</TdTh>
         <TdTh width={4} />
         <TdTh width={7} isRight></TdTh>
-        <TdTh width={9} isRight></TdTh>
+        <TdTh width={8} isRight></TdTh>
       </TableHeadRow>
     </thead>
   );

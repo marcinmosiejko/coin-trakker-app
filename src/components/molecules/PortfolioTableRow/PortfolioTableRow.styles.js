@@ -12,4 +12,9 @@ export const StyledRow = styled.tr`
     padding-left: 4.5rem;
     padding-right: 0rem;
   }
+
+  td:nth-last-of-type(1) {
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+  }
 `;
