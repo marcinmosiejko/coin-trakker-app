@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Wrapper, ButtonWrapper } from './Portfolio.styles';
 import Table from 'components/organisms/Table/Table';
+import PortfolioSummary from 'components/molecules/PortfolioSummary/PortfolioSummary';
 import PortfolioTableHead from 'components/molecules/PortfolioTableHead/PortfolioTableHead';
 import TableBody from 'components/organisms/TableBody/TableBody';
 import Modal from 'components/organisms/Modal/Modal';
@@ -88,6 +89,7 @@ const Portfolio = () => {
       ) : null}
       <>
         <div>
+          <PortfolioSummary data={portfolioSummary} />
           <TableOptionsWrapper>
             <ButtonWrapper>
               <Button isPrimary isL onClick={handleOpenAddCoinModal}>
@@ -105,7 +107,6 @@ const Portfolio = () => {
                 <PortfolioTableHead />
                 <TableBody
                   data={portfolioCurPageCoinsList}
-                  totalValue={portfolioSummary.totalValue}
                   handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
                   handleOpenEditCoinModal={handleOpenEditCoinModal}
                   handleSetCoinBeingEditedOrDeleted={

@@ -6,7 +6,6 @@ const TableBody = ({
   data,
   isCoins,
   isPortfolio,
-  totalValue,
   handleOpenDeleteCoinModal,
   handleOpenEditCoinModal,
   handleSetCoinBeingEditedOrDeleted,
@@ -24,7 +23,6 @@ const TableBody = ({
             <PortfolioTableRow
               key={crypto.name + crypto.code}
               data={crypto}
-              totalValue={totalValue}
               handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
               handleSetCoinBeingEditedOrDeleted={
                 handleSetCoinBeingEditedOrDeleted

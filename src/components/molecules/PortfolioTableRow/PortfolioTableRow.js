@@ -14,7 +14,6 @@ import EditIcon from 'components/atoms/EditIcon/EditIcon';
 
 const PortfolioTableRow = ({
   data,
-  totalValue,
   handleOpenDeleteCoinModal,
   handleOpenEditCoinModal,
   handleSetCoinBeingEditedOrDeleted,
