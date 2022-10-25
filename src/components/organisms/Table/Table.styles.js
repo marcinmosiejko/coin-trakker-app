@@ -46,6 +46,10 @@ export const StickyTable = styled.table`
   thead tr {
     border-top: none;
   }
+
+  @media only screen and (max-width: ${breakPoints.xxl}) {
+    display: none;
+  }
 `;
 
 export const SideShadow = styled.div`
@@ -56,7 +60,7 @@ export const SideShadow = styled.div`
   height: 100%;
   box-shadow: inset -20px 0px 10px -14px rgba(19, 22, 30, 0.9);
 
-  @media only screen and (max-width: ${breakPoints.xxl}) {
+  @media only screen and (max-width: ${breakPoints.xl}) {
     // Fixes 1px gap on small screens
     transform: translateX(1px);
   }

@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   padding: 2rem 0;
 
   @media only screen and (max-width: ${breakPoints.xxl}) {
-    padding: 2em 1em;
+    padding: 2rem 1rem;
   }
 `;
 

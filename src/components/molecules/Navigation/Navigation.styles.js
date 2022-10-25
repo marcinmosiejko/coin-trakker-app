@@ -9,13 +9,13 @@ export const Wrapper = styled.div`
 
 export const LinksWrapper = styled.nav`
   width: 95rem;
-  padding: 1em 1em;
+  padding: 1rem 1.5rem;
 
   display: flex;
   align-items: center;
 
   @media only screen and (max-width: ${breakPoints.xxl}) {
-    padding: 1em 2em;
+    padding: 1rem 3rem;
   }
 `;
 
@@ -55,7 +55,7 @@ export const StyledLink = styled(NavLink)`
       right: 0;
       height: 0.2rem;
       background-color: ${({ theme }) => theme.colors.primary};
-      transform: translateY(1.2em);
+      transform: translateY(0.9em);
       opacity: 0;
       transition: all 0.3s;
     }

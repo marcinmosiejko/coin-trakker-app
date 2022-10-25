@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { scrollbar } from './mixins';
+import { breakPoints } from './breakPoints';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -7,7 +8,7 @@ html {
      box-sizing: border-box;
      font-size: 62.5%;
 
-     @media only screen and (max-width: 20em) {
+     @media only screen and (max-width: ${breakPoints.l}) {
         font-size: 50%;
     }
 }
