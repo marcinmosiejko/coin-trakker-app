@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+     <a href="https://study-buddy-hr.netlify.app/">
+    <img src="https://github.com/mosiej803/trakker-app/blob/main/public/favicon.png" alt="Logo" width="64" height="64">
+  </a>
 
-## Available Scripts
+<h3 align="center">Coin Trakker</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    24/7 Cryptocurrency & Portfolio Tracker 
+    <br />
+    <br />
+    <a href="https://study-buddy-hr.netlify.app/">View Demo (under development)</a>
+  </p>
+</div>
 
-### `npm start`
+<br />
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- FEATURES -->
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Track Top Cryptocurrencies 24/7 with live data updates
+* Create and track your Crypto Portfolio
 
-### `npm test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- SCREENSHOTS -->
 
-### `npm run build`
+## Screenshot
+<br />
+<img src="https://github.com/mosiej803/trakker-app/blob/main/src/assets/img/screenshots/screenshot_1.png" alt="desktop usage 1" />
+<img src="https://github.com/mosiej803/trakker-app/blob/main/src/assets/img/screenshots/screenshot_2.png" alt="desktop usage 2" />
+<img src="https://github.com/mosiej803/trakker-app/blob/main/src/assets/img/screenshots/screenshot_3.png" alt="desktop usage 3" />
+<img src="https://github.com/mosiej803/trakker-app/blob/main/src/assets/img/screenshots/screenshot_4.png" alt="desktop usage 4" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- BUILT WITH -->
+## Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [![React][React.js]][React-url]
+* [![JS][Javascript]][Javascript-url]
+* [![SASS][SASS]][SASS-url]
+* [![SCSS3][CSS3]][CSS3-url]
+* [![HTML5][HTML5]][HTML5-url]
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<br />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- RUN LOCALLY -->
+## Run The App Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/mosiej803/trakker-app
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run local server
+   ```sh
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<br />
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- CONTACT -->
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+LinkedIn - [Marcin Mosiejko](https://www.linkedin.com/in/marcin-mosiejko-45937051/)
 
-### Code Splitting
+Twitter - [@mosiej803](https://twitter.com/mosiej803)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Project Link - [https://github.com/mosiej803/trakker-app](https://github.com/mosiej803/trakker-app)
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- LINKS -->
 
-### Advanced Configuration
+[Javascript]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[Javascript-url]: https://www.javascript.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
 
-### Deployment
+[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[CSS3-url]: https://www.w3.org/Style/CSS/Overview.en.html
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[SASS]: https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white
+[SASS-url]: https://sass-lang.com/
 
-### `npm run build` fails to minify
+[HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[HTML5-url]: https://html5.org/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MVC Architecture]: https://img.shields.io/badge/MVC-Architecture-green?style=for-the-badge
+[MVC-url]: https://www.freecodecamp.org/news/the-model-view-controller-pattern-mvc-architecture-and-frameworks-explained/
+
