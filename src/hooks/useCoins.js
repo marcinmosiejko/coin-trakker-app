@@ -52,6 +52,9 @@ export const useCoins = () => {
     showWatchlist,
     handleSetCoinsCurPageCoinsList,
     watchlistCoinCodes,
+    handleSetLastPage,
+    handleSetCurPage,
+    handleSetLastPage,
   ]);
 
   useEffect(() => {

@@ -56,7 +56,11 @@ const Downshift = ({
 
       {isAddCoin ? (
         <SelectedCoin>
-          {selectedCoin ? <img src={selectedCoin.webp32} /> : <div />}
+          {selectedCoin ? (
+            <img src={selectedCoin.webp32} alt="selected coin logo" />
+          ) : (
+            <div />
+          )}
         </SelectedCoin>
       ) : null}
 

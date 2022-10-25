@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const usePages = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [lastPage, setLastPage] = useState(0);
 
-  const handleSetCurPage = (curPage) => {
+  const handleSetCurPage = useCallback((curPage) => {
     setCurrentPage(curPage);
-  };
+  }, []);
 
-  const handleSetLastPage = (lastPage) => {
+  const handleSetLastPage = useCallback((lastPage) => {
     setLastPage(lastPage);
-  };
+  }, []);
 
   const handlePageChange = (curPage, tableRef) => {
     setCurrentPage(curPage);
