@@ -3,13 +3,13 @@ import { DATA_REFRESH_INTERVAL } from 'config';
 import {
   add7DayHistoryDataToCoinsData,
   fetchCoinsData,
-  getHistory7dCoinsList,
   getUpdatedCoinsData,
   getUpdatedCoinsDataWithWatchlist,
   getUpdatedCoinsDataWithWatchlistCoinCode,
   filterByCoinNameOrCode,
 } from 'helpers/lcwApi';
 import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
+import { useHistory7d } from './useHistory7d';
 
 const LcwCoinsDataContext = React.createContext({});
 
@@ -17,7 +17,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsData, setCoinsData] = useState(null);
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
   // To avoid repeatedly fetching 7d history data for same coin
-  const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
+  const { history7dCoinsList } = useHistory7d(coinsCurPageCoinsList);
   const [watchlistCoinCodes, setWatchlistCoinCodes] = useState(
     getFromLocalStorage('usersWatchlist') || []
   );
@@ -75,27 +75,12 @@ export const LcwCoinsDataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const newHistory7dCoins = await getHistory7dCoinsList(
-          coinsCurPageCoinsList,
-          history7dCoinsList
-        );
-
-        // Avoid updating state if there's nothing to add, and there won't be nothign to add if the history data for specified coins was already in state
-        // Also stops from endless loop due to having history7dCoinsList in dependency list (no guard clause would make history7dCoinsList update every time it's being updated)
-        if (newHistory7dCoins?.length === 0) return;
-
-        // Add all history data to the state keeping all data from previous state. That way we have to fetch historical data only once for each coin as getHisotry7dCoinsList fetches only data for coins that are not yet in history7dCoinsList
-        setHistory7dCoinsList((prevState) => {
-          if (!prevState) return newHistory7dCoins;
-          return [...prevState, ...newHistory7dCoins];
-        });
-
         // Add 7d history data to coinsData so all data for rendering views listing coins can bo sourced from one place
         setCoinsData((prevState) => {
           if (!prevState) return;
           const enrichedState = add7DayHistoryDataToCoinsData(
             prevState,
-            newHistory7dCoins
+            history7dCoinsList
           );
           return enrichedState;
         });
@@ -103,7 +88,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
         console.error(err);
       }
     })();
-  }, [coinsCurPageCoinsList, history7dCoinsList]);
+  }, [history7dCoinsList]);
 
   useEffect(() => {
     saveToLocalStorage('usersWatchlist', watchlistCoinCodes);
