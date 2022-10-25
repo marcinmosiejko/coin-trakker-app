@@ -100,7 +100,7 @@ export const getUpdatedCoinsDataWithWatchlist = (
   prevState,
   watchlistCoinCodes
 ) => {
-  const updatedData = prevState.map((coin) => {
+  const updatedData = prevState?.map((coin) => {
     if (watchlistCoinCodes.includes(coin.code))
       return { ...coin, onWatchlist: true };
 
