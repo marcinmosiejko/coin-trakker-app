@@ -39,9 +39,10 @@ export const useCoins = () => {
         coinsData,
         watchlistCoinCodes
       );
-      handleSetLastPage(getLastPage(watchlistCoinsList, perPageLimit));
       curPageCoinsList = watchlistCoinsList.slice(pageStartIndex, pageEndIndex);
-      handleSetCurPage(0);
+      const lastPage = getLastPage(watchlistCoinsList, perPageLimit);
+      handleSetLastPage(lastPage);
+      lastPage === 0 ? handleSetCurPage(-1) : handleSetCurPage(0);
     }
 
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
