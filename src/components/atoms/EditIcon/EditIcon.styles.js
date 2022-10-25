@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
 
   svg {
-    height: 2.4rem;
+    height: 2.2rem;
     stroke-width: 1px;
     opacity: 0.95;
     stroke: ${({ theme }) => theme.colors.tintPrimary.light10};
