@@ -15,6 +15,6 @@ export const StyledRow = styled.tr`
 
   td:nth-last-of-type(1) {
     padding-left: 0.5rem;
-    padding-right: 1rem;
+    padding-right: 1.2rem;
   }
 `;
