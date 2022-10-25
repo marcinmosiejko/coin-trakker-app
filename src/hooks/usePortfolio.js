@@ -9,6 +9,7 @@ import {
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 
 const usersPortfolio = getFromLocalStorage('portfolio');
+localStorage.clear();
 
 export const usePortfolio = () => {
   const { coinsData, findCoins } = useLcwCoinsData();
@@ -54,7 +55,7 @@ export const usePortfolio = () => {
   }, [portfolioData]);
 
   useEffect(() => {
-    if (!coinsData) return;
+    if (!coinsData || !portfolioData) return;
 
     // Get portfolioCoinsList
     const unsortedPortfolioCoinsList = portfolioData

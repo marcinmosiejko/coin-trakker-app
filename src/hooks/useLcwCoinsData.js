@@ -31,6 +31,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
+        if (!usersWatchlist) return;
         // Fetch and set coinsData
         const meta = true;
         const data = await fetchCoinsData(meta);

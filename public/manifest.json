@@ -3,17 +3,17 @@
   "name": "App",
   "icons": [
     {
-      "src": "../src/assets/img/favicon.png",
+      "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/x-icon"
     },
     {
-      "src": "../src/assets/img/favicon-192.png",
+      "src": "favicon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "../src/assets/img/favicon-512.png",
+      "src": "favicon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
