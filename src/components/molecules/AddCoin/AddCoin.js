@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Wrapper, StyledForm, StyledButton } from './AddCoin.styles';
 import { Input } from 'components/atoms/Input/Input';
+import { ErrorMessage } from 'components/atoms/ErrorMessage/ErrorMessage';
 import Downshift from '../Downshift/Downshift';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { allowOnlyNumber } from 'helpers/general';
 
 const schema = yup
   .object({
@@ -17,7 +19,7 @@ const schema = yup
 
 const AddCoin = ({
   handleCloseModal,
-  handleSetPortfolioData,
+  handleAddPortfolioCoin,
   findPortfolioCoins,
 }) => {
   const [selectedCoin, setSelectedCoin] = useState(null);
@@ -33,18 +35,14 @@ const AddCoin = ({
     setSelectedCoin(coin);
   };
 
-  const allowOnlyNumber = (value) => {
-    const matchingValue = value.match(/(?:\d+(?:\.\d*)?|\.\d+)/);
-    if (matchingValue) return matchingValue[0];
-  };
-
   const onSubmit = ({ coin, quantity }) => {
-    handleSetPortfolioData({
+    handleAddPortfolioCoin({
       code: coin.split('.').at(0),
       quantity: +(quantity + '').replaceAll(/^0+/g, ''),
     });
     handleCloseModal();
   };
+
   return (
     <Wrapper>
       <h2>Add a Coin</h2>
@@ -63,7 +61,7 @@ const AddCoin = ({
             />
           )}
         />
-        <span>{errors.coin?.message}</span>
+        <ErrorMessage>{errors.coin?.message}</ErrorMessage>
         <Controller
           name="quantity"
           control={control}
@@ -76,7 +74,7 @@ const AddCoin = ({
             />
           )}
         />
-        <span>{errors.quantity?.message}</span>
+        <ErrorMessage>{errors.quantity?.message}</ErrorMessage>
 
         <StyledButton isPrimary isL>
           Add

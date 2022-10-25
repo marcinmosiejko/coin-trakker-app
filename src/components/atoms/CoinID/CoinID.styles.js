@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 12.5rem;
+  width: 13rem;
   height: ${({ isSearchResult }) => (isSearchResult ? '7rem' : ' 8rem')};
 
   display: flex;
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Name = styled.div`
-  font-size: ${({ isSearchResult }) => (isSearchResult ? '1.4rem' : ' 1.2rem')};
+  font-size: ${({ isSearchResult }) => (isSearchResult ? '1.4rem' : ' 1.3rem')};
   color: ${({ theme }) => theme.colors.tintSecondary.light10};
 `;
 

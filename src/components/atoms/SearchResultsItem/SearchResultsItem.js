@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CoinID from '../CoinID/CoinID';
+import CoinId from '../CoinId/CoinId';
 
 export const StyledLi = styled.li`
   padding: 0 1.5rem;
@@ -19,7 +19,7 @@ const SearchResultsItem = React.forwardRef(
   ({ data, isHighlighted, ...props }, ref) => {
     return (
       <StyledLi ref={ref} isHighlighted={isHighlighted} {...props}>
-        <CoinID data={data} isSearchResult />
+        <CoinId data={data} isSearchResult />
       </StyledLi>
     );
   }

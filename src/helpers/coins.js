@@ -12,7 +12,7 @@ export function getWatchlistCoinsList(coinsData, watchlistCoinCodes) {
     })
     // In case the coin on watchlistCoinsList (for example when retrieved from localStorage) does no longer exist (coins in coinsData has changed)
     .filter((item) => item !== undefined)
-    .sort(compareObjBy.bind('rank'));
+    .sort((a, b) => compareObjBy(a, b, 'rank', true));
 
   return watchlistCoinsList;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Wrapper } from './DeleteIcon.styles';
 
-const DeleteIcon = () => {
+const DeleteIcon = ({ ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
           strokeLinecap="round"

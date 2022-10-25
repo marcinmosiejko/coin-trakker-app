@@ -25,8 +25,10 @@ export function truncateString(string, desiredLength) {
   return string.slice(0, desiredLength - 3) + '...';
 }
 
-export function compareObjBy(a, b) {
-  return a[this] - b[this];
+export function compareObjBy(a, b, key, isAscending) {
+  // const { key, isAscending = true } = this;
+  if (isAscending) return a[key] - b[key];
+  if (!isAscending) return b[key] - a[key];
 }
 
 export function getFromLocalStorage(key) {
@@ -43,4 +45,9 @@ export function convertToPercentage(value) {
 
 export function trimUnderscoresAndSpaces(str) {
   return str.replaceAll('_', '').replaceAll(' ', '');
+}
+
+export function allowOnlyNumber(value) {
+  const matchingValue = value.match(/(?:\d+(?:\.\d*)?|\.\d+)/);
+  if (matchingValue) return matchingValue[0];
 }

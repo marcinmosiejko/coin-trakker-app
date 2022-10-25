@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import { usePages } from 'hooks/usePages';
-import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
+import {
+  compareObjBy,
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from 'helpers/general';
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 
 const usersPortfolio = getFromLocalStorage('portfolio');
@@ -16,8 +20,26 @@ export const usePortfolio = () => {
   const { currentPage, lastPage, handlePageChange } = usePages();
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
-  const handleSetPortfolioData = (coin) => {
-    setPortfolioData((prevState) => [...prevState, coin]);
+  const handleAddPortfolioCoin = (portfolioCoinData) => {
+    setPortfolioData((prevState) => [...prevState, portfolioCoinData]);
+  };
+
+  const handleDeletePortfolioCoin = (coinCode) => {
+    setPortfolioData((prevState) =>
+      prevState.filter((coin) => coin.code !== coinCode)
+    );
+  };
+
+  const handleEditPortfolioCoin = (coinData) => {
+    // Delete previous instance of the coin
+    setPortfolioData((prevState) =>
+      prevState.filter((coin) => coin.code !== coinData.code)
+    );
+    // Add new instance
+    setPortfolioData((prevState) => [
+      ...prevState,
+      { code: coinData.code, quantity: coinData.quantity },
+    ]);
   };
 
   const findPortfolioCoins = (queryString) => {
@@ -34,7 +56,8 @@ export const usePortfolio = () => {
   useEffect(() => {
     if (!coinsData) return;
 
-    const portfolioCoinsList = portfolioData
+    // Get portfolioCoinsList
+    const unsortedPortfolioCoinsList = portfolioData
       .map(({ code: portfolioCoinCode, quantity }) => {
         const portfolioCoin = coinsData.find(
           (coin) => coin.code === portfolioCoinCode
@@ -49,12 +72,21 @@ export const usePortfolio = () => {
       // In case no coins with specified code were found
       .filter((item) => item !== undefined);
 
-    setPortfolioCoinsList(portfolioCoinsList);
-
-    const totalValue = portfolioCoinsList.reduce(
+    // Based on portfolioCoinsList calculate total value
+    const totalValue = unsortedPortfolioCoinsList.reduce(
       (acc, coin) => acc + coin.quantity * coin.rate,
       0
     );
+
+    // Use calculated total value to store share value of each coin so the coins can be sorted by share and displayed that way by default
+    const portfolioCoinsList = unsortedPortfolioCoinsList
+      .map((coin) => ({
+        ...coin,
+        share: coin.value / totalValue,
+      }))
+      .sort((a, b) => compareObjBy(a, b, 'share', false));
+
+    setPortfolioCoinsList(portfolioCoinsList);
     setPortfolioSummary((prevState) => ({ ...prevState, totalValue }));
   }, [coinsData, portfolioData]);
 
@@ -73,12 +105,14 @@ export const usePortfolio = () => {
   }, [portfolioCoinsList, currentPage, perPageLimit]);
 
   return {
-    handleSetPortfolioData,
+    handleAddPortfolioCoin,
     findPortfolioCoins,
     portfolioCurPageCoinsList,
     portfolioSummary,
     currentPage,
     lastPage,
     handlePageChange,
+    handleDeletePortfolioCoin,
+    handleEditPortfolioCoin,
   };
 };

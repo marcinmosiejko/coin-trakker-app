@@ -6,7 +6,7 @@ import {
   getPercentageChange,
 } from 'helpers/general';
 import { StyledRow } from './CoinsTableRow.styles';
-import CoinID from 'components/atoms/CoinID/CoinID';
+import CoinId from 'components/atoms/CoinId/CoinId';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
 import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
 import RankAndWatch from 'components/atoms/RankAndWatch/RankAndWatch';
@@ -32,7 +32,7 @@ const CoinsTableRow = ({
         </RankAndWatch>
       </TdTh>
       <TdTh>
-        <CoinID data={data} />
+        <CoinId data={data} />
       </TdTh>
       <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
       <TdTh isRight>${roundLargeValue(cap)}</TdTh>

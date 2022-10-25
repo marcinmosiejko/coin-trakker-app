@@ -6,7 +6,7 @@ import {
   convertToPercentage,
 } from 'helpers/general';
 import { StyledRow } from './PortfolioTableRow.styles';
-import CoinID from 'components/atoms/CoinID/CoinID';
+import CoinId from 'components/atoms/CoinId/CoinId';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
 import DeleteIcon from 'components/atoms/DeleteIcon/DeleteIcon';
 import EditIcon from 'components/atoms/EditIcon/EditIcon';
@@ -15,19 +15,23 @@ import EditIcon from 'components/atoms/EditIcon/EditIcon';
 const PortfolioTableRow = ({
   data,
   totalValue,
+  handleOpenDeleteCoinModal,
+  handleOpenEditCoinModal,
+  handleSetCoinBeingEditedOrDeleted,
   data: {
     rate,
     delta: { day, week },
     history7d,
     quantity,
     value,
+    share,
   },
 }) => {
   return (
     <>
       <StyledRow>
         <TdTh isLeft>
-          <CoinID data={data} />
+          <CoinId data={data} />
         </TdTh>
         <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
         <TdTh isRight>{RoundSmallValue(quantity)}</TdTh>
@@ -39,15 +43,23 @@ const PortfolioTableRow = ({
           <Coin7dChart chartDataset={history7d} />
           {getPercentageChange(week)}%
         </TdTh> */}
-        <TdTh isRight>
-          {convertToPercentage((rate * quantity) / totalValue)}%
-        </TdTh>
+        <TdTh isRight>{convertToPercentage(share)}%</TdTh>
         <TdTh />
         <TdTh isRight>
-          <EditIcon />
+          <EditIcon
+            onClick={() => {
+              handleSetCoinBeingEditedOrDeleted(data);
+              handleOpenEditCoinModal();
+            }}
+          />
         </TdTh>
         <TdTh isRight>
-          <DeleteIcon />
+          <DeleteIcon
+            onClick={() => {
+              handleSetCoinBeingEditedOrDeleted(data);
+              handleOpenDeleteCoinModal();
+            }}
+          />
         </TdTh>
       </StyledRow>
     </>

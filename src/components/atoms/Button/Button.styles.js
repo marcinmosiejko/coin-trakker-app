@@ -14,12 +14,15 @@ export const StyledButton = styled.button`
     return '1.4rem';
   }};
 
-  color: ${({ theme, isPrimary }) => {
-    if (isPrimary) return theme.colors.tintSecondary.dark1;
+  color: ${({ theme, isPrimary, isRed }) => {
+    if (isPrimary || isRed) return theme.colors.tintSecondary.dark1;
     return theme.colors.tintSecondary.light1;
   }};
-  background-color: ${({ theme, isPrimary }) =>
-    isPrimary ? theme.colors.primary : theme.colors.tintSecondary.dark8};
+  background-color: ${({ theme, isPrimary, isRed }) => {
+    if (isPrimary) return theme.colors.primary;
+    if (isRed) return theme.colors.redDark;
+    return theme.colors.tintSecondary.dark8;
+  }};
 
   display: flex;
   justify-content: center;
@@ -27,8 +30,9 @@ export const StyledButton = styled.button`
   gap: 1rem;
 
   &:hover {
-    background-color: ${({ theme, isPrimary }) => {
+    background-color: ${({ theme, isPrimary, isRed }) => {
       if (isPrimary) return theme.colors.tintPrimary.dark11;
+      if (isRed) return theme.colors.red;
       return theme.colors.tintSecondary.dark9;
     }};
   }
