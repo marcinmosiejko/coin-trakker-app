@@ -1,17 +1,17 @@
 import React from 'react';
 import {
-  Table,
+  StyledTable,
   TableWrapper,
   TableContainer,
   StickyTable,
   SideShadow,
-} from './CoinsTable.styles';
+} from './Table.styles';
 import useStickyTableHead from 'hooks/useStickyTableHead';
-import TableHead from 'components/molecules/TableHead/TableHead';
+import CoinsTableHead from 'components/molecules/CoinsTableHead/CoinsTableHead';
 import Spinner from 'components/atoms/Spinner/Spinner';
-import TableBody from '../TableBody/TableBody';
+import PortfolioTableHead from 'components/molecules/PortfolioTableHead/PortfolioTableHead';
 
-const CoinsTable = ({ data, tableRef }) => {
+const Table = ({ data, tableRef, children, isCoins, isPortfolio }) => {
   const { tableContainerRef, isSticky, leftPosition } = useStickyTableHead({
     tableRef,
     defaultSticky: false,
@@ -22,18 +22,11 @@ const CoinsTable = ({ data, tableRef }) => {
       {!data && <Spinner />}
       <TableContainer ref={tableContainerRef}>
         {data && <SideShadow />}
-        <Table ref={tableRef}>
-          {data && (
-            <>
-              <TableHead />
-              <TableBody data={data} />
-              <caption>Live Crypto Prices</caption>
-            </>
-          )}
-        </Table>
+        <StyledTable ref={tableRef}>{children}</StyledTable>
         {isSticky && (
           <StickyTable leftPosition={leftPosition}>
-            <TableHead />
+            {isCoins ? <CoinsTableHead /> : null}
+            {isPortfolio ? <PortfolioTableHead /> : null}
           </StickyTable>
         )}
       </TableContainer>
@@ -41,4 +34,4 @@ const CoinsTable = ({ data, tableRef }) => {
   );
 };
 
-export default CoinsTable;
+export default Table;

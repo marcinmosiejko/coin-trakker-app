@@ -1,17 +1,19 @@
 import React from 'react';
-import { Wrapper, StyledImage, NameWrapper, Name } from './CoinID.styles';
-import { truncateString } from 'helpers/general';
+import { Wrapper, StyledImage, NameWrapper, Name } from './CoinId.styles';
+import { truncateString, trimUnderscoresAndSpaces } from 'helpers/general';
 
-const CoinID = ({ data: { name, code, webp64 } }) => {
+const CoinId = ({ data: { name, code, webp64 }, isSearchResult, ...props }) => {
   return (
-    <Wrapper>
-      <StyledImage src={webp64} alt="coin logo"></StyledImage>
+    <Wrapper isSearchResult={isSearchResult}>
+      <StyledImage src={webp64} alt="coin logo" {...props}></StyledImage>
       <NameWrapper>
-        <div>{code}</div>
-        <Name>{truncateString(name, 15)}</Name>
+        <div {...props}>{trimUnderscoresAndSpaces(code)}</div>
+        <Name isSearchResult={isSearchResult} {...props}>
+          {isSearchResult ? truncateString(name, 30) : truncateString(name, 13)}
+        </Name>
       </NameWrapper>
     </Wrapper>
   );
 };
 
-export default CoinID;
+export default CoinId;

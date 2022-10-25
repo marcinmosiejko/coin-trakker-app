@@ -2,12 +2,15 @@ export const theme = {
   // https://www.colorhexa.com/293143
   colors: {
     white: '#FFFFFF',
-    primary: '#63e6be',
+    primary: '#48dcb0',
     secondary: '#293143',
     red: '#ff6b6b',
     redDark: '#fa5252',
     yellow: '#d9bf61',
-    tintPrimary: {},
+    tintPrimary: {
+      dark11: '#22b488',
+      light10: '#69e2be',
+    },
     tintSecondary: {
       dark1: '#040506',
       dark2: '#0b0d12',
@@ -42,13 +45,17 @@ export const theme = {
       tdth: {
         width: {
           regular: '15rem',
-          cap: '15rem',
-          volume: '15rem',
-          rate: '13rem',
-          day: '10rem',
+          cap: '12rem',
+          volume: '11rem',
+          rate: '11rem',
+          day: '9rem',
           rank: '6rem',
-          coin: '15rem', // same as CoinBody Wrapper
+          coin: '15rem', // corelated with CoinId's Wrapper
           week: '20rem',
+          quantity: '8rem',
+          value: '8rem',
+          weekPercentage: '8rem',
+          share: '8rem',
         },
       },
     },

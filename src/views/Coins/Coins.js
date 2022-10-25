@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
-import { Wrapper } from './Coins.styles';
-import CoinsTable from 'components/organisms/CoinsTable/CoinsTable';
+import React, { useEffect, useRef } from 'react';
 import { useCoins } from 'hooks/useCoins';
+import Table from 'components/organisms/Table/Table';
+import CoinsTableHead from 'components/molecules/CoinsTableHead/CoinsTableHead';
+import TableBody from 'components/organisms/TableBody/TableBody';
 import Pagination from 'components/molecules/Pagination/Pagination';
-import ButtonShowWatchlist from 'components/atoms/ButtonShowWatchlist/ButtonShowWatchlist';
+import ShowWatchlist from 'components/atoms/ShowWatchlist/ShowWatchlist';
+import { Wrapper } from './Coins.styles';
 import { TableOptionsWrapper } from 'components/atoms/TableOptionsWrapper/TableOptionsWrapper';
 
 const Coins = () => {
@@ -17,23 +19,35 @@ const Coins = () => {
   } = useCoins();
   const tableRef = useRef(null);
 
+  useEffect(() => {}, [coinsCurPageCoinsList]);
+
   return (
     <Wrapper>
       <>
         <div>
           <TableOptionsWrapper>
-            <ButtonShowWatchlist
+            <ShowWatchlist
               showWatchlist={showWatchlist}
-              handleSetShowWatchlist={handleSetShowWatchlist}
+              onClick={handleSetShowWatchlist}
             />
           </TableOptionsWrapper>
-          <CoinsTable tableRef={tableRef} data={coinsCurPageCoinsList} />
+          <Table tableRef={tableRef} data={coinsCurPageCoinsList} isCoins>
+            {coinsCurPageCoinsList && (
+              <>
+                <CoinsTableHead />
+                <TableBody data={coinsCurPageCoinsList} isCoins />
+                <caption>Live Crypto Prices</caption>
+              </>
+            )}
+          </Table>
         </div>
 
         <Pagination
           currentPage={currentPage}
           lastPage={lastPage}
-          handlePageChange={(e) => handlePageChange(e, tableRef)}
+          handlePageChange={({ selected }) =>
+            handlePageChange(selected, tableRef)
+          }
         />
       </>
     </Wrapper>

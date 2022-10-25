@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledRow = styled.tr`
+export const TableHeadRow = styled.tr`
   font-size: 1.4rem;
   border-bottom: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark4};
   border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark4};

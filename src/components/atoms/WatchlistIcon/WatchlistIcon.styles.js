@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
 
   svg {
-    height: 2.6rem;
+    height: 2.4rem;
     stroke-width: 1px;
     opacity: 0.95;
     stroke: ${({ theme, isYellow }) => {
@@ -22,5 +22,9 @@ export const Wrapper = styled.div`
     transition: all 0.3s;
 
     cursor: pointer;
+
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.tintSecondary.light8};
+    }
   }
 `;

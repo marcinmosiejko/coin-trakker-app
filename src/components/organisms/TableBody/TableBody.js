@@ -1,12 +1,36 @@
 import React from 'react';
-import TableRow from 'components/molecules/TableRow/TableRow';
+import CoinsTableRow from 'components/molecules/CoinsTableRow/CoinsTableRow';
+import PortfolioTableRow from 'components/molecules/PortfolioTableRow/PortfolioTableRow';
 
-const TableBody = ({ data }) => {
+const TableBody = ({
+  data,
+  isCoins,
+  isPortfolio,
+  handleOpenDeleteCoinModal,
+  handleOpenEditCoinModal,
+  handleSetCoinBeingEditedOrDeleted,
+}) => {
   return (
     <tbody>
-      {data.map((crypto) => (
-        <TableRow key={crypto.name + crypto.symbol} data={crypto} />
-      ))}
+      {isCoins
+        ? data.map((crypto) => (
+            <CoinsTableRow key={crypto.name + crypto.code} data={crypto} />
+          ))
+        : null}
+
+      {isPortfolio
+        ? data.map((crypto) => (
+            <PortfolioTableRow
+              key={crypto.name + crypto.code}
+              data={crypto}
+              handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
+              handleSetCoinBeingEditedOrDeleted={
+                handleSetCoinBeingEditedOrDeleted
+              }
+              handleOpenEditCoinModal={handleOpenEditCoinModal}
+            />
+          ))
+        : null}
     </tbody>
   );
 };

@@ -1,17 +1,17 @@
 import React from 'react';
 import {
   round,
-  roundPrice,
-  roundMarketCapAndVol,
+  RoundSmallValue,
+  roundLargeValue,
   getPercentageChange,
 } from 'helpers/general';
-import { StyledRow } from './TableRow.styles';
-import CoinID from 'components/atoms/CoinID/CoinID';
+import { StyledRow } from './CoinsTableRow.styles';
+import CoinId from 'components/atoms/CoinId/CoinId';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
 import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
 import RankAndWatch from 'components/atoms/RankAndWatch/RankAndWatch';
 
-const TableRow = ({
+const CoinsTableRow = ({
   data,
   data: {
     rank,
@@ -26,24 +26,18 @@ const TableRow = ({
 }) => {
   return (
     <StyledRow>
-      <TdTh type="rank">
+      <TdTh>
         <RankAndWatch onWatchlist={onWatchlist} coinCode={code}>
           {rank}
         </RankAndWatch>
       </TdTh>
       <TdTh>
-        <CoinID data={data} />
+        <CoinId data={data} />
       </TdTh>
-      <TdTh type="rate" isRight>
-        ${roundPrice(rate)}
-      </TdTh>
-      <TdTh type="cap" isRight>
-        ${roundMarketCapAndVol(cap)}
-      </TdTh>
-      <TdTh type="vol" isRight>
-        ${roundMarketCapAndVol(volume)}
-      </TdTh>
-      <TdTh type="day" isRight change={day}>
+      <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
+      <TdTh isRight>${roundLargeValue(cap)}</TdTh>
+      <TdTh isRight>${roundLargeValue(volume)}</TdTh>
+      <TdTh isRight change={day}>
         {round(getPercentageChange(day))}%
       </TdTh>
       <TdTh isRight>
@@ -53,4 +47,4 @@ const TableRow = ({
   );
 };
 
-export default TableRow;
+export default CoinsTableRow;

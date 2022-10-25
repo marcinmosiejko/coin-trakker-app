@@ -95,11 +95,12 @@ export const getUpdatedCoinsData = (prevState, newData) => {
   return updatedData;
 };
 
+// Updates all coins that are on watchlist after app start (comes from localStorage)
 export const getUpdatedCoinsDataWithWatchlist = (
   prevState,
   watchlistCoinCodes
 ) => {
-  const updatedData = prevState.map((coin) => {
+  const updatedData = prevState?.map((coin) => {
     if (watchlistCoinCodes.includes(coin.code))
       return { ...coin, onWatchlist: true };
 
@@ -109,6 +110,7 @@ export const getUpdatedCoinsDataWithWatchlist = (
   return updatedData;
 };
 
+// Updates one coin after it's added to watchlist
 export const getUpdatedCoinsDataWithWatchlistCoinCode = (
   prevState,
   coinCode
@@ -123,11 +125,9 @@ export const getUpdatedCoinsDataWithWatchlistCoinCode = (
   return updatedData;
 };
 
-export const add7DayHistoryDataToCoinsData = (prevState, newHistory7dCoins) => {
+export const add7DayHistoryDataToCoinsData = (prevState, history7dCoins) => {
   const enrichedState = prevState.map((stateCoin) => {
-    const coinHistory = newHistory7dCoins.find(
-      (c) => c.code === stateCoin.code
-    );
+    const coinHistory = history7dCoins?.find((c) => c.code === stateCoin.code);
 
     if (!coinHistory) return stateCoin;
 
@@ -136,4 +136,16 @@ export const add7DayHistoryDataToCoinsData = (prevState, newHistory7dCoins) => {
   });
 
   return enrichedState;
+};
+
+const isCoinValueMatchingQuery = (coin, key, query) => {
+  return coin[key].toLowerCase().startsWith(query.toLowerCase());
+};
+
+export const filterByCoinNameOrCode = (coinsToFilter, queryString) => {
+  return coinsToFilter.filter(
+    (coin) =>
+      isCoinValueMatchingQuery(coin, 'name', queryString) ||
+      isCoinValueMatchingQuery(coin, 'code', queryString)
+  );
 };
