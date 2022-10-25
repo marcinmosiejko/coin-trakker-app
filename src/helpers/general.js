@@ -40,3 +40,7 @@ export function saveToLocalStorage(key, item) {
 export function convertToPercentage(value) {
   return round(value * 100);
 }
+
+export function trimUnderscoresAndSpaces(str) {
+  return str.replaceAll('_', '').replaceAll(' ', '');
+}
