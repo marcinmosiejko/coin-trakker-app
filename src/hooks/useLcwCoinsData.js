@@ -29,21 +29,17 @@ export const LcwCoinsDataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(coinsData);
-  }, [coinsData]);
-
-  useEffect(() => {
     (async () => {
       try {
-        if (!usersWatchlist) return;
         // Fetch and set coinsData
         const meta = true;
         const data = await fetchCoinsData(meta);
         setCoinsData(data);
         // Update coinsData onWatchlist based on localStorage (usersWatchlist)
-        setCoinsData((prevState) =>
-          getUpdatedCoinsDataWithWatchlist(prevState, usersWatchlist)
-        );
+        if (usersWatchlist)
+          setCoinsData((prevState) =>
+            getUpdatedCoinsDataWithWatchlist(prevState, usersWatchlist)
+          );
         // Fetch new coins data without metadata to keep it up to date
         setInterval(async () => {
           const newData = await fetchCoinsData();
