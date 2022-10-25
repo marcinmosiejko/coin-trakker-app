@@ -14,6 +14,8 @@ export const Wrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
+  padding: 1.5rem 0;
+
   display: flex;
   justify-content: center;
 `;

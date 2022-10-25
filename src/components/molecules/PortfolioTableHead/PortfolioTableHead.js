@@ -6,7 +6,7 @@ const PortfolioTableHead = () => {
   return (
     <thead>
       <TableHeadRow>
-        <TdTh width={15} isLeft>
+        <TdTh width={13.5} isLeft>
           Coin
         </TdTh>
         <TdTh width={14} isRight>

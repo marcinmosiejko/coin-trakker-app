@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     fill: none;
     opacity: 0.7;
 
-    transition: all 0.3s;
+    transition: all 0.15s;
 
     cursor: pointer;
 
