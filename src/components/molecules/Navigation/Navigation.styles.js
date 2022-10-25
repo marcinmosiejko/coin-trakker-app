@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
 `;
 
 export const LinksWrapper = styled.nav`
-  width: 95rem;
+  width: 100%;
+  max-width: 92rem;
   padding: 1rem 1.5rem;
 
   display: flex;

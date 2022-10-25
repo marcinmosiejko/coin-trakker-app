@@ -9,7 +9,8 @@ export const WrapperWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 95rem;
+  width: 100%;
+  max-width: 92rem;
   padding: 2rem 0;
 
   @media only screen and (max-width: ${breakPoints.xxl}) {
