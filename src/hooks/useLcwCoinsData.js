@@ -29,6 +29,10 @@ export const LcwCoinsDataProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    console.log(coinsData);
+  }, [coinsData]);
+
+  useEffect(() => {
     (async () => {
       try {
         if (!usersWatchlist) return;
