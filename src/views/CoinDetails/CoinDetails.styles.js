@@ -1,26 +1,55 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const WrapperWrapperWrapper = styled.div`
   width: 100%;
   max-width: 91rem;
-  min-height: 55rem;
-  padding: 3rem;
+  min-height: 60rem;
+  padding: 3rem 2rem;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.secondary};
 
+  overflow: auto;
+`;
+
+export const WrapperWrapper = styled.div`
+  padding: 2rem 0;
+
+  overflow: auto;
+`;
+
+export const Wrapper = styled.div`
+  height: 100%;
+  min-width: 40rem;
   display: flex;
   flex-direction: column;
-
   gap: 2.8rem;
 `;
 
-export const CoinDescription = styled.div`
+export const CoinDescriptionWide = styled.div`
+  min-width: 40rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+
+  @media only screen and (max-width: 25em) {
+    display: none;
+  }
+`;
+
+export const CoinDescriptionNarrow = styled.div`
+  display: none;
+
+  @media only screen and (max-width: 25em) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 export const Rate = styled.div`
-  font-size: 4.8rem;
+  font-size: 4.2rem;
 `;
 
 export const MainStats = styled.div`
@@ -36,6 +65,7 @@ export const Line = styled.div`
 export const PriceChangeStats = styled.div`
   display: flex;
   gap: 3.8rem;
+  margin-bottom: 1.2rem;
 `;
 
 export const PageError = styled.div`
@@ -49,4 +79,5 @@ export const Message = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
+
 // export const CoinDescription = styled.div``;
