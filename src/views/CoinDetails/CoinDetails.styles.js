@@ -1,20 +1,22 @@
+import { breakPoints } from 'assets/styles/breakPoints';
+import { scrollbar } from 'assets/styles/mixins';
 import styled from 'styled-components';
 
 export const WrapperWrapperWrapper = styled.div`
   width: 100%;
-  max-width: 91rem;
+  max-width: 70rem;
   min-height: 60rem;
   padding: 3rem 2rem;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.secondary};
 
   overflow: auto;
+  ${scrollbar}
 `;
 
 export const WrapperWrapper = styled.div`
-  padding: 2rem 0;
-
   overflow: auto;
+  ${scrollbar}
 `;
 
 export const Wrapper = styled.div`
@@ -30,7 +32,7 @@ export const CoinDescriptionWide = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 3.2rem;
 
   @media only screen and (max-width: 25em) {
     display: none;
@@ -44,26 +46,33 @@ export const CoinDescriptionNarrow = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.2rem;
   }
 `;
 
 export const Rate = styled.div`
   font-size: 4.2rem;
+
+  @media only screen and (max-width: ${breakPoints.l}) {
+    font-size: 3.8rem;
+  }
 `;
 
 export const MainStats = styled.div`
+  margin-left: auto;
   display: flex;
   gap: 3.8rem;
 `;
 
 export const Line = styled.div`
-  margin: 1.4rem 0;
+  margin: 2rem 0;
   border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark5};
 `;
 
 export const PriceChangeStats = styled.div`
+  /* margin-left: auto; */
   display: flex;
+  justify-content: space-between;
   gap: 3.8rem;
   margin-bottom: 1.2rem;
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -27,4 +28,11 @@ export const Name = styled.div`
     if (isCoinDetails) return theme.colors.tintSecondary.light1;
     return theme.colors.tintSecondary.light10;
   }};
+
+  @media only screen and (max-width: ${breakPoints.l}) {
+    font-size: ${({ isCoinDetails }) => {
+      if (isCoinDetails) return '2.4rem';
+      return ' 1.3rem';
+    }};
+  }
 `;

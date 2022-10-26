@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
   width: ${({ isCoinDetails }) => {
@@ -20,6 +21,13 @@ export const StyledImage = styled.img`
     if (isCoinDetails) return '4.8rem';
     return ' 2.8rem';
   }};
+
+  @media only screen and (max-width: ${breakPoints.l}) {
+    font-size: ${({ isCoinDetails }) => {
+      if (isCoinDetails) return '4rem';
+      return ' 2.8rem';
+    }};
+  }
 `;
 
 export const StyledLink = styled(Link)`

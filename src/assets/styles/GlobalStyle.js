@@ -10,7 +10,7 @@ html {
      line-height: 1;
 
      @media only screen and (max-width: ${breakPoints.l}) {
-        font-size: 50%;
+        font-size: 55%;
     }
 }
 
