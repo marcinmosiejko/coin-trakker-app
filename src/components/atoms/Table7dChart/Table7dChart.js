@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Wrapper } from './Table7dChart.styles';
-// import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import { getTableChartConfig } from 'helpers/chartConfig';
 import { Line } from 'react-chartjs-2';
 import {
@@ -15,7 +14,6 @@ import {
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
 const Table7dChart = ({ chartDataset }) => {
-  // const { history7dCoinsList } = useLcwCoinsData();
   const [chartData, setChartData] = useState(null);
   const [chartOptions, setChartOptions] = useState(null);
 
