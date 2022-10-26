@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 html {
      box-sizing: border-box;
      font-size: 62.5%;
+     line-height: 1;
 
      @media only screen and (max-width: ${breakPoints.l}) {
         font-size: 50%;

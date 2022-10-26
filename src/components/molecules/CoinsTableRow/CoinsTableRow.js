@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  round,
   RoundSmallValue,
   roundLargeValue,
   getPercentageChange,
@@ -32,13 +31,13 @@ const CoinsTableRow = ({
         </RankAndWatch>
       </TdTh>
       <TdTh>
-        <CoinId data={data} />
+        <CoinId isLink data={data} />
       </TdTh>
       <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
       <TdTh isRight>${roundLargeValue(cap)}</TdTh>
       <TdTh isRight>${roundLargeValue(volume)}</TdTh>
       <TdTh isRight change={day}>
-        {round(getPercentageChange(day))}%
+        {getPercentageChange(day)}%
       </TdTh>
       <TdTh isRight>
         <Coin7dChart chartDataset={history7d} />

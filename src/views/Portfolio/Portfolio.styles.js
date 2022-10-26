@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: 3rem 2rem 3rem 2.5rem;
-  border-radius: 1.5rem;
+  border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.secondary};
 
   overflow: auto;

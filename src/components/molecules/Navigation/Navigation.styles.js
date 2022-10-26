@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 export const LinksWrapper = styled.nav`
   width: 100%;
   max-width: 92rem;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 1.5rem;
 
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@ export const LinksWrapper = styled.nav`
   }
 `;
 
-export const StyledLink = styled(NavLink)`
+export const StyledNavLink = styled(NavLink)`
   padding: 0.3em 4rem;
   letter-spacing: 0.3px;
   transition: all 0.3s;
@@ -56,7 +56,7 @@ export const StyledLink = styled(NavLink)`
       right: 0;
       height: 0.2rem;
       background-color: ${({ theme }) => theme.colors.primary};
-      transform: translateY(0.9em);
+      transform: translateY(0.8em);
       opacity: 0;
       transition: all 0.3s;
     }

@@ -1,17 +1,16 @@
 import React from 'react';
-import { LinksWrapper, StyledLink, Wrapper } from './Navigation.styles';
+import { LinksWrapper, StyledNavLink, Wrapper } from './Navigation.styles';
 
 const Navigation = () => {
   return (
     <Wrapper>
       <LinksWrapper>
-        <StyledLink to="/coins">
+        <StyledNavLink to="/coins">
           <span>Coins</span>
-        </StyledLink>
-        <StyledLink to="/portfolio">
-          {' '}
+        </StyledNavLink>
+        <StyledNavLink to="/portfolio">
           <span>Portfolio</span>
-        </StyledLink>
+        </StyledNavLink>
       </LinksWrapper>
     </Wrapper>
   );
