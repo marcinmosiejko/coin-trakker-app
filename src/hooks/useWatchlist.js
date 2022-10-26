@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
+import { useLcwCoinsData } from './useLcwCoinsData';
 
 const usersWatchlist = getFromLocalStorage('usersWatchlist');
 

@@ -17,7 +17,10 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
   const [currentCoinData, setCurrentCoinData] = useState(null);
   // To avoid repeatedly fetching 7d history data for same coin
-  const { history7dCoinsList } = useHistory7d(coinsCurPageCoinsList);
+  const { history7dCoinsList } = useHistory7d(
+    coinsCurPageCoinsList,
+    currentCoinData
+  );
   const { usersWatchlist, watchlistCoinCodes, handleUpdateWatchlist } =
     useWatchlist();
 

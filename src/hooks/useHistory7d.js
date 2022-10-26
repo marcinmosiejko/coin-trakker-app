@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 import { getHistory7dCoinsList } from 'helpers/lcwApi';
 
-export const useHistory7d = (coinsCurPageCoinsList) => {
+export const useHistory7d = (coinsCurPageCoinsList, currentCoinData) => {
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
+        // Combine coinsCurPageCoinsList and currentCoinData into one array (guard against coinsCurPageCoinsList or currentCoinData being null / undefined)
+        let coinsList = coinsCurPageCoinsList ? coinsCurPageCoinsList : [];
+        coinsList = currentCoinData
+          ? [...coinsList, currentCoinData]
+          : coinsList;
+
         const newHistory7dCoins = await getHistory7dCoinsList(
-          coinsCurPageCoinsList,
-          history7dCoinsList
+          history7dCoinsList,
+          coinsList
         );
 
         // Avoid updating state if there's nothing to add, and there won't be nothign to add if the history data for specified coins was already in state
@@ -25,7 +31,7 @@ export const useHistory7d = (coinsCurPageCoinsList) => {
         console.error(err);
       }
     })();
-  }, [coinsCurPageCoinsList, history7dCoinsList]);
+  }, [currentCoinData, coinsCurPageCoinsList, history7dCoinsList]);
 
   return { history7dCoinsList };
 };

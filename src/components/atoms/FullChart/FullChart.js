@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Wrapper } from './FullChart.styles';
+import { Wrapper, ChartWrapper, ChartCaption } from './FullChart.styles';
 import { getFullChartConfig } from 'helpers/chartConfig';
 import { Line } from 'react-chartjs-2';
 import {
@@ -9,9 +9,20 @@ import {
   PointElement,
   LineElement,
   Title,
+  // Tooltip,
 } from 'chart.js';
 
-ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title
+  // Tooltip,
+);
+
+// ChartJS.defaults.font.size = '13';
+// ChartJS.defaults.color = '#ffffff';
 
 const FullChart = ({ chartDataset }) => {
   const [chartData, setChartData] = useState(null);
@@ -26,9 +37,12 @@ const FullChart = ({ chartDataset }) => {
 
   return (
     <Wrapper>
-      {chartData && chartOptions ? (
-        <Line options={chartOptions} data={chartData} />
-      ) : null}
+      <ChartWrapper>
+        {chartData && chartOptions ? (
+          <Line options={chartOptions} data={chartData} />
+        ) : null}
+        <ChartCaption>7D Live Chart</ChartCaption>
+      </ChartWrapper>
     </Wrapper>
   );
 };

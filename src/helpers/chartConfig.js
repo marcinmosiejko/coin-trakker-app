@@ -5,6 +5,7 @@ export const getTableChartConfig = (chartDataset) => {
     chartDataset?.at(0) > chartDataset?.at(-1)
       ? theme.colors.red
       : theme.colors.primary;
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -39,7 +40,7 @@ export const getTableChartConfig = (chartDataset) => {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Price Action',
         data: chartDataset,
         borderColor: color,
         fill: true,
@@ -59,32 +60,44 @@ export const getFullChartConfig = (chartDataset) => {
     chartDataset?.at(0) > chartDataset?.at(-1)
       ? theme.colors.red
       : theme.colors.primary;
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    aspectRatio: 2,
+    aspectRatio: 3,
     plugins: {
       legend: {
-        display: true,
+        display: false,
       },
       title: {
         display: false,
       },
     },
     animation: true,
-    scales: { x: { display: false }, y: { display: false } },
+    scales: {
+      x: { display: false },
+      y: {
+        display: true,
+        ticks: {
+          color: `${theme.colors.tintSecondary.light7}`,
+          font: { family: 'Roboto', size: '13' },
+          maxTicksLimit: 7,
+          callback: function (value) {
+            return '$' + value;
+          },
+        },
+      },
+    },
     elements: {
       point: {
-        display: false,
+        display: true,
         hoverRadius: 0,
       },
     },
     layout: {
       padding: 0,
     },
-    interaction: {
-      intersect: false,
-    },
+    // tooltips: { enabled: true, intersect: false },
   };
 
   const labels = chartDataset?.map((dp, i) => i);
@@ -93,11 +106,11 @@ export const getFullChartConfig = (chartDataset) => {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Price',
         data: chartDataset,
         borderColor: color,
         fill: true,
-        backgroundColor: 'rgba(99, 230, 190, 0.1)',
+        backgroundColor: color,
         borderWidth: 1,
         pointRadius: 0,
         tension: 0,
