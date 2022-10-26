@@ -36,7 +36,7 @@ const CoinDetails = () => {
       (coin) => coin.code.toUpperCase() === code.toUpperCase()
     );
     handleSetCurrentCoinData(data);
-  }, [code, coinsData]);
+  }, [code, coinsData, handleSetCurrentCoinData]);
 
   return (
     <WrapperWrapperWrapper>
