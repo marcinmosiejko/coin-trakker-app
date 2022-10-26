@@ -1,20 +1,23 @@
+import { scrollbar } from 'assets/styles/mixins';
 import styled from 'styled-components';
 
 export const WrapperWrapperWrapper = styled.div`
   width: 100%;
-  max-width: 91rem;
+  max-width: 70rem;
   min-height: 60rem;
   padding: 3rem 2rem;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.secondary};
 
   overflow: auto;
+  ${scrollbar}
 `;
 
 export const WrapperWrapper = styled.div`
   padding: 2rem 0;
 
   overflow: auto;
+  ${scrollbar}
 `;
 
 export const Wrapper = styled.div`
@@ -53,6 +56,7 @@ export const Rate = styled.div`
 `;
 
 export const MainStats = styled.div`
+  margin-left: auto;
   display: flex;
   gap: 3.8rem;
 `;
@@ -63,7 +67,9 @@ export const Line = styled.div`
 `;
 
 export const PriceChangeStats = styled.div`
+  /* margin-left: auto; */
   display: flex;
+  justify-content: space-between;
   gap: 3.8rem;
   margin-bottom: 1.2rem;
 `;

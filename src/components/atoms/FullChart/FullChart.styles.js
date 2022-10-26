@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 export const ChartWrapper = styled.div`
   padding: 2rem 1.5rem 1.5rem;
   width: 100%;
-  min-width: 60rem;
+  min-width: 25rem;
   background-color: ${({ theme }) => theme.colors.tintSecondary.dark5};
 
   canvas {
