@@ -1,4 +1,5 @@
 import { theme } from 'assets/styles/theme';
+import { RoundSmallValue } from './general';
 
 export const getTableChartConfig = (chartDataset) => {
   const color =
@@ -83,7 +84,7 @@ export const getFullChartConfig = (chartDataset) => {
           font: { family: 'Roboto', size: '13' },
           maxTicksLimit: 7,
           callback: function (value) {
-            return '$' + value;
+            return '$' + RoundSmallValue(value);
           },
         },
       },
