@@ -23,7 +23,8 @@ export const useCoins = () => {
 
   useEffect(() => {
     if (!coinsData) return;
-
+    console.log(currentPage);
+    console.log(lastPage);
     const pageStartIndex = currentPage * perPageLimit;
     const pageEndIndex = (currentPage + 1) * perPageLimit;
 
