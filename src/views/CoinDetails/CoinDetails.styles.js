@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { breakPoints } from 'assets/styles/breakPoints';
 import { scrollbar } from 'assets/styles/mixins';
 
 export const WrapperWrapperWrapper = styled.div`
