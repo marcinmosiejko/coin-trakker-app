@@ -23,7 +23,7 @@ export const useCoins = () => {
 
   useEffect(() => {
     handleSetCurPage(0);
-  }, [showWatchlist]);
+  }, [showWatchlist, handleSetCurPage]);
 
   useEffect(() => {
     if (!coinsData) return;
@@ -35,7 +35,6 @@ export const useCoins = () => {
     if (!showWatchlist || watchlistCoinCodes.length === 0) {
       curPageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
       setShowWatchlist(false);
-      handleSetLastPage(getLastPage(coinsData, perPageLimit));
     } else {
       // Get watchlistCoinsList from watchlistCoinCodes and based on that calculate last page as watchlistCoinCodes will be stored in localStorage / backend and between user sessions coinsData may change and not all coins that are stored will be avaiable on coinsData (due to new coins getting into top fetched coins) which may skew the result
       const watchlistCoinsList = getWatchlistCoinsList(
@@ -43,7 +42,6 @@ export const useCoins = () => {
         watchlistCoinCodes
       );
       curPageCoinsList = watchlistCoinsList.slice(pageStartIndex, pageEndIndex);
-      handleSetLastPage(getLastPage(watchlistCoinsList, perPageLimit));
     }
 
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
@@ -63,7 +61,13 @@ export const useCoins = () => {
     if (showWatchlist)
       handleSetLastPage(getLastPage(watchlistCoinCodes, perPageLimit));
     if (!showWatchlist) handleSetLastPage(getLastPage(coinsData, perPageLimit));
-  }, [coinsData, watchlistCoinCodes, perPageLimit, handleSetLastPage]);
+  }, [
+    showWatchlist,
+    coinsData,
+    watchlistCoinCodes,
+    perPageLimit,
+    handleSetLastPage,
+  ]);
 
   const handleSetShowWatchlist = useCallback(() => {
     setShowWatchlist((prevState) => !prevState);
