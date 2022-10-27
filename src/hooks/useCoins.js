@@ -22,9 +22,11 @@ export const useCoins = () => {
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
   useEffect(() => {
+    handleSetCurPage(0);
+  }, [showWatchlist]);
+
+  useEffect(() => {
     if (!coinsData) return;
-    console.log(currentPage);
-    console.log(lastPage);
     const pageStartIndex = currentPage * perPageLimit;
     const pageEndIndex = (currentPage + 1) * perPageLimit;
 
@@ -41,9 +43,7 @@ export const useCoins = () => {
         watchlistCoinCodes
       );
       curPageCoinsList = watchlistCoinsList.slice(pageStartIndex, pageEndIndex);
-      const lastPage = getLastPage(watchlistCoinsList, perPageLimit);
-      handleSetLastPage(lastPage);
-      lastPage === 0 ? handleSetCurPage(-1) : handleSetCurPage(0);
+      handleSetLastPage(getLastPage(watchlistCoinsList, perPageLimit));
     }
 
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
@@ -60,9 +60,10 @@ export const useCoins = () => {
 
   useEffect(() => {
     if (!coinsData) return;
-
-    handleSetLastPage(Math.ceil(coinsData.length / perPageLimit));
-  }, [coinsData, perPageLimit, handleSetLastPage]);
+    if (showWatchlist)
+      handleSetLastPage(getLastPage(watchlistCoinCodes, perPageLimit));
+    if (!showWatchlist) handleSetLastPage(getLastPage(coinsData, perPageLimit));
+  }, [coinsData, watchlistCoinCodes, perPageLimit, handleSetLastPage]);
 
   const handleSetShowWatchlist = useCallback(() => {
     setShowWatchlist((prevState) => !prevState);

@@ -1,7 +1,12 @@
 import { compareObjBy } from 'helpers/general';
 
 export function getLastPage(data, perPageLimit) {
-  return Math.ceil(data.length / perPageLimit);
+  const division = data.length / perPageLimit;
+  const modulo = data.length % perPageLimit;
+
+  if (division < 1) return 0;
+  if (modulo === 0) return division;
+  return Math.ceil(division);
 }
 
 export function getWatchlistCoinsList(coinsData, watchlistCoinCodes) {
