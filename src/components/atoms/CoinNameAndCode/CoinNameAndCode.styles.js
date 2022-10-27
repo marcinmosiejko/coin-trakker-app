@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,6 +20,7 @@ export const Code = styled.div`
 `;
 
 export const Name = styled.div`
+  width: 100%;
   font-size: ${({ isCoinDetails, isSearchResult }) => {
     if (isCoinDetails) return '2.8rem';
     if (isSearchResult) return '1.4rem';

@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 export const Input = styled.input`
   position: relative;
-  font-size: 1.6rem;
+  font-size: ${({ isSearch }) => {
+    if (isSearch) return '1.5rem';
+    return '1.6rem';
+  }};
   width: 100%;
-  padding: ${({ isAddCoin }) =>
-    isAddCoin ? '1.3rem 1.3rem 1.3rem 5rem' : '1.3rem 1.3rem'};
+  padding: ${({ isAddCoin, isSearch }) => {
+    if (isAddCoin) return '1.3rem 1.3rem 1.3rem 5rem';
+    if (isSearch) return '1.1rem';
+    return '1.3rem';
+  }};
   border: none;
   box-sizing: border-box;
   border-radius: 9px;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { scrollbar } from 'assets/styles/mixins';
+import { Link } from 'react-router-dom';
 
 export const SearchWrapper = styled.div`
   width: 100%;
@@ -36,4 +37,8 @@ export const SelectedCoin = styled.div`
     width: 2.6rem;
     height: 2.6rem;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
