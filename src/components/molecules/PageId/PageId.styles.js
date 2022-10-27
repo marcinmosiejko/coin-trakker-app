@@ -13,8 +13,17 @@ export const Wrapper = styled.div`
   max-width: 92rem;
   padding: 2rem 0;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   @media only screen and (max-width: ${breakPoints.xxl}) {
     padding: 2rem 1rem;
+  }
+
+  @media only screen and (max-width: ${breakPoints.l}) {
+    flex-direction: column;
+    gap: 1rem;
   }
 `;
 
@@ -27,7 +36,11 @@ export const Logo = styled.div`
 
   span {
     font-weight: 600;
-    font-size: 4.2rem;
+    font-size: 3.2rem;
     color: ${({ theme }) => theme.colors.primary};
   }
+`;
+
+export const SearchWrapper = styled.div`
+  width: 25rem;
 `;

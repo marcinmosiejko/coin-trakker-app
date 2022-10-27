@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Wrapper, StyledForm, StyledButton } from './AddCoin.styles';
 import { Input } from 'components/atoms/Input/Input';
@@ -23,7 +23,6 @@ const AddCoin = ({
   handleAddPortfolioCoin,
   findPortfolioCoins,
 }) => {
-  const [selectedCoin, setSelectedCoin] = useState(null);
   const {
     handleSubmit,
     control,
@@ -31,10 +30,6 @@ const AddCoin = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const handleSetSelectedCoin = (coin) => {
-    setSelectedCoin(coin);
-  };
 
   const onSubmit = ({ coin, quantity }) => {
     handleAddPortfolioCoin({
@@ -55,9 +50,8 @@ const AddCoin = ({
           render={({ field: { ref, ...rest } }) => (
             <Downshift
               isAddCoin
-              handleSetSelectedCoin={handleSetSelectedCoin}
-              selectedCoin={selectedCoin}
               findCoins={findPortfolioCoins}
+              placeholder="Find a coin..."
               {...rest}
             />
           )}

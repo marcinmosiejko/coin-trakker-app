@@ -3,27 +3,26 @@ import {
   SearchWrapper,
   SearchResultsWrapper,
   SelectedCoin,
+  StyledLink,
 } from './Downshift.styles';
 import { Input } from 'components/atoms/Input/Input';
-import debounce from 'lodash.debounce';
 import { useCombobox } from 'downshift';
 import SearchResultsItem from 'components/atoms/SearchResultsItem/SearchResultsItem';
 
 const Downshift = ({
-  onChange,
-  selectedCoin,
-  handleSetSelectedCoin,
-  isAddCoin,
   findCoins,
+  isAddCoin,
+  isSearch,
+  onChange,
+  placeholder,
 }) => {
-  const [coinInputValue, setCoinInputValue] = useState('');
   const [matchingCoins, setMatchingCoins] = useState([]);
+  const [selectedCoin, setSelectedCoin] = useState(null);
 
-  const getMatchingCoins = debounce(({ inputValue }) => {
+  const getMatchingCoins = ({ inputValue }) => {
     const coins = findCoins(inputValue);
     setMatchingCoins(coins);
-    setCoinInputValue(inputValue);
-  }, 1);
+  };
 
   const {
     isOpen,
@@ -32,14 +31,19 @@ const Downshift = ({
     highlightedIndex,
     getItemProps,
     setInputValue,
+    reset,
   } = useCombobox({
     items: matchingCoins,
     onInputValueChange: getMatchingCoins,
     onSelectedItemChange: ({ selectedItem }) => {
-      const input = `${selectedItem.code.toUpperCase()}.${selectedItem.name.toUpperCase()}`;
-      setInputValue(input);
-      onChange(input);
-      handleSetSelectedCoin(selectedItem);
+      if (isAddCoin) {
+        const input = `${selectedItem.code.toUpperCase()}.${selectedItem.name.toUpperCase()}`;
+        setInputValue(input);
+        setSelectedCoin(selectedItem);
+        onChange(input);
+      } else {
+        reset();
+      }
     },
   });
 
@@ -49,9 +53,9 @@ const Downshift = ({
         {...getInputProps()}
         name="coin"
         id="coin"
-        placeholder="Find a coin..."
-        value={coinInputValue}
+        placeholder={placeholder}
         isAddCoin={isAddCoin}
+        isSearch={isSearch}
       />
 
       {isAddCoin ? (
@@ -69,14 +73,28 @@ const Downshift = ({
         {...getMenuProps()}
         aria-label="results"
       >
-        {matchingCoins.map((item, index) => (
-          <SearchResultsItem
-            isHighlighted={highlightedIndex === index}
-            key={item.code + item.name}
-            data={item}
-            {...getItemProps({ item, index })}
-          />
-        ))}
+        {matchingCoins.map((item, index) => {
+          if (isAddCoin) {
+            return (
+              <SearchResultsItem
+                isHighlighted={highlightedIndex === index}
+                key={item.code + item.name}
+                data={item}
+                {...getItemProps({ item, index })}
+              />
+            );
+          } else {
+            return (
+              <StyledLink key={item.code + item.name} to={`/coin/${item.code}`}>
+                <SearchResultsItem
+                  isHighlighted={highlightedIndex === index}
+                  data={item}
+                  {...getItemProps({ item, index })}
+                />
+              </StyledLink>
+            );
+          }
+        })}
       </SearchResultsWrapper>
     </SearchWrapper>
   );

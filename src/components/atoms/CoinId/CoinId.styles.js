@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
-  width: ${({ isCoinDetails }) => {
-    if (isCoinDetails) return '18rem';
+  width: ${({ isCoinDetails, isSearchResult }) => {
+    if (isCoinDetails || isSearchResult) return '22rem';
     return '13rem';
   }};
   height: ${({ isSearchResult }) => {

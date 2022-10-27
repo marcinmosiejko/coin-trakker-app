@@ -11,7 +11,7 @@ const CoinNameAndCode = ({ name, code, isCoinDetails, isSearchResult }) => {
         </Code>
       ) : null}
       <Name isCoinDetails={isCoinDetails} isSearchResult={isSearchResult}>
-        {isSearchResult ? truncateString(name, 30) : truncateString(name, 13)}
+        {isSearchResult ? truncateString(name, 25) : truncateString(name, 13)}
       </Name>
       {isCoinDetails ? (
         <Code isCoinDetails={isCoinDetails}>
