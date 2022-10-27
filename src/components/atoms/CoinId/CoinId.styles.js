@@ -1,29 +1,35 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
-  width: 13rem;
-  height: ${({ isSearchResult }) => (isSearchResult ? '7rem' : ' 8rem')};
+  width: ${({ isCoinDetails }) => {
+    if (isCoinDetails) return '18rem';
+    return '13rem';
+  }};
+  height: ${({ isSearchResult }) => {
+    if (isSearchResult) return '7rem';
+  }};
 
   display: flex;
   align-items: center;
   gap: 1.2rem;
 `;
 
-export const Name = styled.div`
-  font-size: ${({ isSearchResult }) => (isSearchResult ? '1.4rem' : ' 1.3rem')};
-  color: ${({ theme }) => theme.colors.tintSecondary.light10};
-`;
-
 export const StyledImage = styled.img`
-  width: 2.4rem;
-  height: 2.4rem;
+  width: ${({ isCoinDetails }) => {
+    if (isCoinDetails) return '4.8rem';
+    return ' 2.8rem';
+  }};
+
+  @media only screen and (max-width: ${breakPoints.l}) {
+    font-size: ${({ isCoinDetails }) => {
+      if (isCoinDetails) return '4rem';
+      return ' 2.8rem';
+    }};
+  }
 `;
 
-export const NameWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.2rem;
-
-  text-align: left;
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;

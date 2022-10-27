@@ -30,7 +30,7 @@ const PortfolioTableRow = ({
     <>
       <StyledRow>
         <TdTh isLeft>
-          <CoinId data={data} />
+          <CoinId isLink data={data} />
         </TdTh>
         <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
         <TdTh isRight>{RoundSmallValue(quantity)}</TdTh>

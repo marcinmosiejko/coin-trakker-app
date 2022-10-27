@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Wrapper } from './Coin7dChart.styles';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
-import { getChartConfig } from 'helpers/chartConfig';
+import { Wrapper } from './Table7dChart.styles';
+import { getTableChartConfig } from 'helpers/chartConfig';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -14,16 +13,15 @@ import {
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
-const Coin7dChart = ({ chartDataset }) => {
-  const { history7dCoinsList } = useLcwCoinsData();
+const Table7dChart = ({ chartDataset }) => {
   const [chartData, setChartData] = useState(null);
   const [chartOptions, setChartOptions] = useState(null);
 
   useEffect(() => {
-    const { chartData, chartOptions } = getChartConfig(chartDataset);
+    const { chartData, chartOptions } = getTableChartConfig(chartDataset);
     setChartData(chartData);
     setChartOptions(chartOptions);
-  }, [history7dCoinsList, chartDataset]);
+  }, [chartDataset]);
 
   return (
     <Wrapper>
@@ -34,4 +32,4 @@ const Coin7dChart = ({ chartDataset }) => {
   );
 };
 
-export default Coin7dChart;
+export default Table7dChart;

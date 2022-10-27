@@ -13,7 +13,13 @@ export const scrollbar = () => {
         
         &::-webkit-scrollbar-thumb {
             box-shadow: inset 0 0 9px 7px ${theme.colors.tintSecondary.dark11};
-            border-radius: 4px;
+            border-radius: 5px;
         }
     `;
+};
+
+export const getChangeColor = (change, theme) => {
+  if (!change) return '';
+  if (change < 1) return theme.colors.red;
+  if (change >= 1) return theme.colors.primary;
 };

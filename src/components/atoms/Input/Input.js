@@ -8,7 +8,7 @@ export const Input = styled.input`
     isAddCoin ? '1.3rem 1.3rem 1.3rem 5rem' : '1.3rem 1.3rem'};
   border: none;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 9px;
   color: ${({ theme }) => theme.colors.tintSecondary.light2};
   background-color: ${({ theme }) => theme.colors.tintSecondary.dark4};
 

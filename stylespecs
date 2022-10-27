@@ -11,13 +11,10 @@
 
 - Line heights:
   Default: 1
-  Small: 1.05
-  Medium: 1.2
-  Paragraph default: 1.6
-  Large: 1.8
 
 - Letter spacing
-  0.5px;
+  0.3px;
+  3px;
 
 --- 02 COLORS
 
@@ -29,6 +26,9 @@
 --- 03 SHADOWS
 
 --- 04 BORDER-RADIUS
+5px
+9px
+15px
 
 Default: 5px
 Medium: 9px

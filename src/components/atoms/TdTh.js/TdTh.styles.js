@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-
-// const getWidth = (type, theme) => {
-//   const width = theme.tableStyle.coins.tdth.width[type];
-//   if (!width) return '15rem';
-//   return width;
-// };
+import { getChangeColor } from 'assets/styles/mixins';
 
 const getTextAlign = (isLeft, isRight) => {
   if (isLeft) return 'left';
@@ -12,16 +7,10 @@ const getTextAlign = (isLeft, isRight) => {
   return 'center';
 };
 
-const getColor = (change, theme) => {
-  if (!change) return '';
-  if (change < 1) return theme.colors.red;
-  if (change >= 1) return theme.colors.primary;
-};
-
 export const Td = styled.td`
   width: ${({ width }) => (width ? `${width}rem` : '100%')};
   text-align: ${({ isLeft, isRight }) => getTextAlign(isLeft, isRight)};
-  color: ${({ change, theme }) => getColor(change, theme)};
+  color: ${({ change, theme }) => getChangeColor(change, theme)};
 `;
 
 export const Th = styled.th(Td);

@@ -4,7 +4,7 @@ import { breakPoints } from 'assets/styles/breakPoints';
 
 export const TableWrapper = styled.div`
   width: 100%;
-  min-height: 50rem;
+  min-height: 30rem;
   position: relative;
 
   table {

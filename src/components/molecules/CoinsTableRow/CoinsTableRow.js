@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  round,
   RoundSmallValue,
   roundLargeValue,
   getPercentageChange,
@@ -8,7 +7,7 @@ import {
 import { StyledRow } from './CoinsTableRow.styles';
 import CoinId from 'components/atoms/CoinId/CoinId';
 import TdTh from 'components/atoms/TdTh.js/TdTh';
-import Coin7dChart from 'components/atoms/List7dChart/Coin7dChart';
+import Table7dChart from 'components/atoms/Table7dChart/Table7dChart';
 import RankAndWatch from 'components/atoms/RankAndWatch/RankAndWatch';
 
 const CoinsTableRow = ({
@@ -32,16 +31,16 @@ const CoinsTableRow = ({
         </RankAndWatch>
       </TdTh>
       <TdTh>
-        <CoinId data={data} />
+        <CoinId isLink data={data} />
       </TdTh>
       <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
       <TdTh isRight>${roundLargeValue(cap)}</TdTh>
       <TdTh isRight>${roundLargeValue(volume)}</TdTh>
       <TdTh isRight change={day}>
-        {round(getPercentageChange(day))}%
+        {getPercentageChange(day)}%
       </TdTh>
       <TdTh isRight>
-        <Coin7dChart chartDataset={history7d} />
+        <Table7dChart chartDataset={history7d} />
       </TdTh>
     </StyledRow>
   );

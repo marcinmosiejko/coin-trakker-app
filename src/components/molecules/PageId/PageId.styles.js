@@ -22,7 +22,8 @@ export const Logo = styled.div`
   -ms-user-select: none;
   user-select: none;
   font-size: 2.8rem;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 
   span {
     font-weight: 600;

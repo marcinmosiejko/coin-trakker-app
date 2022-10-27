@@ -44,21 +44,17 @@ export const fetchCoinsHistoryData = async (code) => {
   }
 };
 
-export const getHistory7dCoinsList = async (
-  pageCoinsList,
-  history7dCoinsList
-) => {
-  // Iterate through pageCoinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
-  if (!pageCoinsList) return;
+export const getHistory7dCoinsList = async (history7dCoinsList, coinsList) => {
+  // Iterate through coinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
+  if (!coinsList || coinsList.length === 0) return;
 
   let historyList = await Promise.all(
-    pageCoinsList.map(async (pc) => {
+    coinsList.map(async (pc) => {
       const existingHistoryData = history7dCoinsList?.find(
         (hc) => hc.name === pc.name && hc.code === pc.code
       );
 
       if (existingHistoryData) return;
-
       const { history: historyData } = await fetchCoinsHistoryData(pc.code);
 
       const finalHistoryData = historyData.map((obj) => obj.rate);
