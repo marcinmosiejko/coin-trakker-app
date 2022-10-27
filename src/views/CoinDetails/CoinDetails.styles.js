@@ -1,4 +1,3 @@
-import { breakPoints } from 'assets/styles/breakPoints';
 import { scrollbar } from 'assets/styles/mixins';
 import styled from 'styled-components';
 
@@ -50,43 +49,9 @@ export const CoinDescriptionNarrow = styled.div`
   }
 `;
 
-export const Rate = styled.div`
-  font-size: 4.2rem;
-
-  @media only screen and (max-width: ${breakPoints.l}) {
-    font-size: 3.8rem;
-  }
-`;
-
-export const MainStats = styled.div`
-  margin-left: auto;
-  display: flex;
-  gap: 3.8rem;
-`;
-
 export const Line = styled.div`
   margin: 2rem 0;
   border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark5};
-`;
-
-export const PriceChangeStats = styled.div`
-  /* margin-left: auto; */
-  display: flex;
-  justify-content: space-between;
-  gap: 3.8rem;
-  margin-bottom: 1.2rem;
-`;
-
-export const PageError = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3.2rem;
-`;
-export const Message = styled.div`
-  span {
-    color: ${({ theme }) => theme.colors.primary};
-  }
 `;
 
 // export const CoinDescription = styled.div``;

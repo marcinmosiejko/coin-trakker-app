@@ -2,13 +2,7 @@ import React from 'react';
 import { Wrapper, Name, Code } from './CoinNameAndCode.styles';
 import { truncateString, trimUnderscoresAndSpaces } from 'helpers/general';
 
-const CoinNameAndCode = ({
-  name,
-  code,
-  isCoinDetails,
-  isSearchResult,
-  ...props
-}) => {
+const CoinNameAndCode = ({ name, code, isCoinDetails, isSearchResult }) => {
   return (
     <Wrapper>
       {!isCoinDetails ? (

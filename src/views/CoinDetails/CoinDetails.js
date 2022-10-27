@@ -1,29 +1,19 @@
-import CoinDataPoint from 'components/atoms/CoinDataPoint/CoinDataPoint';
-import CoinId from 'components/atoms/CoinId/CoinId';
-import FullChart from 'components/atoms/FullChart/FullChart';
-import SadIcon from 'components/atoms/SadIcon/SadIcon';
-import Spinner from 'components/atoms/Spinner/Spinner';
-import {
-  roundLargeValue,
-  RoundSmallValue,
-  getPercentageChange,
-} from 'helpers/general';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import React, { useEffect } from 'react';
+import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import { useParams } from 'react-router-dom';
+import FullChart from 'components/atoms/FullChart/FullChart';
+import OnPageError from 'components/molecules/OnPageError/OnPageError';
+import Spinner from 'components/atoms/Spinner/Spinner';
+import CoinMainStats from 'components/molecules/CoinMainStats/CoinMainStats';
+import PriceChangeStats from 'components/molecules/PriceChangeStats/PriceChangeStats';
+
 import {
   WrapperWrapperWrapper,
   WrapperWrapper,
   Wrapper,
-  CoinDescriptionWide,
-  CoinDescriptionNarrow,
-  Rate,
-  MainStats,
-  PriceChangeStats,
   Line,
-  PageError,
-  Message,
 } from './CoinDetails.styles';
+import DetailsHeader from 'components/molecules/DetailsHeader/DetailsHeader';
 
 const CoinDetails = () => {
   const { currentCoinData, coinsData, handleSetCurrentCoinData } =
@@ -40,88 +30,19 @@ const CoinDetails = () => {
 
   return (
     <WrapperWrapperWrapper>
-      {currentCoinData ? (
-        <CoinDescriptionWide>
-          <CoinId isCoinDetails data={currentCoinData} />
-          <Rate>${RoundSmallValue(currentCoinData.rate)}</Rate>
-        </CoinDescriptionWide>
-      ) : null}
+      {currentCoinData ? <DetailsHeader isWide data={currentCoinData} /> : null}
       <WrapperWrapper>
         <Wrapper>
           {currentCoinData === null ? <Spinner /> : null}
           {currentCoinData === undefined ? (
-            <PageError>
-              <SadIcon />
-              <Message>
-                Sorry, there's no <span>{`${code}`}</span> coin in our database
-              </Message>
-            </PageError>
+            <OnPageError code={currentCoinData.code} />
           ) : null}
           {currentCoinData ? (
             <>
-              <CoinDescriptionNarrow>
-                <CoinId isCoinDetails data={currentCoinData} />
-                <Rate>${RoundSmallValue(currentCoinData.rate)}</Rate>
-              </CoinDescriptionNarrow>
-              <MainStats>
-                <CoinDataPoint
-                  description="MARKET CAP"
-                  dataPoint={`${roundLargeValue(currentCoinData.cap)}`}
-                />
-                <CoinDataPoint
-                  description="24H VOLUME"
-                  dataPoint={`$${roundLargeValue(currentCoinData.volume)}`}
-                />
-                <CoinDataPoint
-                  description="ALL TIME HIGH"
-                  dataPoint={`$${69420.33}`}
-                />
-              </MainStats>
+              <DetailsHeader isNarrow data={currentCoinData} />
+              <CoinMainStats data={currentCoinData} />
               <Line />
-              <PriceChangeStats>
-                <CoinDataPoint
-                  dataPoint={`${getPercentageChange(
-                    currentCoinData.delta.hour
-                  )}%`}
-                  description="1H"
-                  change={currentCoinData.delta.hour}
-                />
-                <CoinDataPoint
-                  dataPoint={`${getPercentageChange(
-                    currentCoinData.delta.day
-                  )}%`}
-                  description="24H"
-                  change={currentCoinData.delta.day}
-                />
-                <CoinDataPoint
-                  dataPoint={`${getPercentageChange(
-                    currentCoinData.delta.week
-                  )}%`}
-                  description="7D"
-                  change={currentCoinData.delta.week}
-                />
-                <CoinDataPoint
-                  dataPoint={`${getPercentageChange(
-                    currentCoinData.delta.month
-                  )}%`}
-                  description="30D"
-                  change={currentCoinData.delta.month}
-                />
-                <CoinDataPoint
-                  dataPoint={`${getPercentageChange(
-                    currentCoinData.delta.quarter
-                  )}%`}
-                  description="90D"
-                  change={currentCoinData.delta.quarter}
-                />
-                <CoinDataPoint
-                  dataPoint={`${getPercentageChange(
-                    currentCoinData.delta.year
-                  )}%`}
-                  description="1Y"
-                  change={currentCoinData.delta.year}
-                />
-              </PriceChangeStats>
+              <PriceChangeStats data={currentCoinData.delta} />
               <FullChart chartDataset={currentCoinData.history7d} />
             </>
           ) : null}

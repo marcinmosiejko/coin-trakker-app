@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Wrapper, ChartWrapper, ChartCaption } from './FullChart.styles';
 import { getFullChartConfig } from 'helpers/chartConfig';
 import { Line } from 'react-chartjs-2';
@@ -45,6 +46,10 @@ const FullChart = ({ chartDataset }) => {
       </ChartWrapper>
     </Wrapper>
   );
+};
+
+FullChart.propTypes = {
+  chartDataset: PropTypes.array,
 };
 
 export default FullChart;
