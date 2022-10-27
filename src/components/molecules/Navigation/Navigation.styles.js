@@ -46,7 +46,7 @@ export const StyledNavLink = styled(NavLink)`
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  span {
+  /* span {
     position: relative;
     &::after {
       content: '';
@@ -60,15 +60,15 @@ export const StyledNavLink = styled(NavLink)`
       opacity: 0;
       transition: all 0.3s;
     }
-  }
+  } */
 
   &.active {
     color: ${({ theme }) => theme.colors.primary};
 
-    span {
+    /* span {
       &::after {
         opacity: 1;
       }
-    }
+    } */
   }
 `;
