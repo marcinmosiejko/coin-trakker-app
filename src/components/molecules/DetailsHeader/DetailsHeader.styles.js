@@ -18,8 +18,9 @@ export const WrapperNarrow = styled.div`
 
   @media only screen and (max-width: 25em) {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    gap: 3rem;
     margin-bottom: 0.2rem;
   }
 `;

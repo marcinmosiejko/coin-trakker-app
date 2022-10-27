@@ -26,29 +26,6 @@ export const Wrapper = styled.div`
   gap: 2.8rem;
 `;
 
-export const CoinDescriptionWide = styled.div`
-  min-width: 40rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3.2rem;
-
-  @media only screen and (max-width: 25em) {
-    display: none;
-  }
-`;
-
-export const CoinDescriptionNarrow = styled.div`
-  display: none;
-
-  @media only screen and (max-width: 25em) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.2rem;
-  }
-`;
-
 export const Line = styled.div`
   margin: 2rem 0;
   border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark5};
