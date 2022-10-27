@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Wrapper, StyledImage, StyledLink } from './CoinId.styles';
 import CoinNameAndCode from '../CoinNameAndCode/CoinNameAndCode';
 
@@ -36,6 +37,15 @@ const CoinId = ({
       )}
     </Wrapper>
   );
+};
+
+CoinId.propTypes = {
+  name: PropTypes.string,
+  code: PropTypes.string,
+  webp64: PropTypes.string,
+  isCoinDetails: PropTypes.bool,
+  isSearchResult: PropTypes.bool,
+  isLink: PropTypes.bool,
 };
 
 export default CoinId;
