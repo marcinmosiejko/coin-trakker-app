@@ -26,4 +26,5 @@ export const Description = styled.span`
 export const Value = styled.span`
   font-size: 3.2rem;
   font-weight: 600;
+  color: ${({ theme }) => theme.colors.tintSecondary.light2};
 `;
