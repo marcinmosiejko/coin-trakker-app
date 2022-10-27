@@ -7,4 +7,4 @@ export const API_CALLS = COINS_AMOUNT_IN_HUNDREDS;
 export const DATA_REFRESH_INTERVAL = 30 * 60 * 1000; // 30 min
 
 // Coins
-export const PER_PAGE_LIMIT_DEFAULT = 20;
+export const PER_PAGE_LIMIT_DEFAULT = 25;

@@ -22,8 +22,11 @@ export const useCoins = () => {
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
   useEffect(() => {
-    if (!coinsData) return;
+    handleSetCurPage(0);
+  }, [showWatchlist, handleSetCurPage]);
 
+  useEffect(() => {
+    if (!coinsData) return;
     const pageStartIndex = currentPage * perPageLimit;
     const pageEndIndex = (currentPage + 1) * perPageLimit;
 
@@ -32,7 +35,6 @@ export const useCoins = () => {
     if (!showWatchlist || watchlistCoinCodes.length === 0) {
       curPageCoinsList = coinsData.slice(pageStartIndex, pageEndIndex);
       setShowWatchlist(false);
-      handleSetLastPage(getLastPage(coinsData, perPageLimit));
     } else {
       // Get watchlistCoinsList from watchlistCoinCodes and based on that calculate last page as watchlistCoinCodes will be stored in localStorage / backend and between user sessions coinsData may change and not all coins that are stored will be avaiable on coinsData (due to new coins getting into top fetched coins) which may skew the result
       const watchlistCoinsList = getWatchlistCoinsList(
@@ -40,9 +42,6 @@ export const useCoins = () => {
         watchlistCoinCodes
       );
       curPageCoinsList = watchlistCoinsList.slice(pageStartIndex, pageEndIndex);
-      const lastPage = getLastPage(watchlistCoinsList, perPageLimit);
-      handleSetLastPage(lastPage);
-      lastPage === 0 ? handleSetCurPage(-1) : handleSetCurPage(0);
     }
 
     handleSetCoinsCurPageCoinsList(curPageCoinsList);
@@ -59,9 +58,16 @@ export const useCoins = () => {
 
   useEffect(() => {
     if (!coinsData) return;
-
-    handleSetLastPage(Math.ceil(coinsData.length / perPageLimit));
-  }, [coinsData, perPageLimit, handleSetLastPage]);
+    if (showWatchlist)
+      handleSetLastPage(getLastPage(watchlistCoinCodes, perPageLimit));
+    if (!showWatchlist) handleSetLastPage(getLastPage(coinsData, perPageLimit));
+  }, [
+    showWatchlist,
+    coinsData,
+    watchlistCoinCodes,
+    perPageLimit,
+    handleSetLastPage,
+  ]);
 
   const handleSetShowWatchlist = useCallback(() => {
     setShowWatchlist((prevState) => !prevState);
