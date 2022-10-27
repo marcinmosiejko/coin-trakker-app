@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   gap: 3.8rem;
   margin-bottom: 1.2rem;
 
-  @media only screen and (max-width: ${breakPoints.xl}) {
+  @media only screen and (max-width: ${breakPoints.l}) {
     gap: 3.2rem;
     justify-content: start;
   }

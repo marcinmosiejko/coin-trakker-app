@@ -1,5 +1,6 @@
-import { scrollbar } from 'assets/styles/mixins';
 import styled from 'styled-components';
+import { breakPoints } from 'assets/styles/breakPoints';
+import { scrollbar } from 'assets/styles/mixins';
 
 export const WrapperWrapperWrapper = styled.div`
   width: 100%;
@@ -20,7 +21,7 @@ export const WrapperWrapper = styled.div`
 
 export const Wrapper = styled.div`
   height: 100%;
-  min-width: 40rem;
+  min-width: 32rem;
   display: flex;
   flex-direction: column;
   gap: 2.8rem;
