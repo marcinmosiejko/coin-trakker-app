@@ -23,20 +23,20 @@ export const Wrapper = styled.div`
 
   @media only screen and (max-width: ${breakPoints.l}) {
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
   }
 `;
 
 export const Logo = styled.div`
   -ms-user-select: none;
   user-select: none;
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   letter-spacing: 1.5px;
   font-weight: 600;
 
   span {
     font-weight: 600;
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
