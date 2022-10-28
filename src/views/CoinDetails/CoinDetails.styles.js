@@ -4,7 +4,7 @@ import { breakPoints } from 'assets/styles/breakPoints';
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 80rem;
+  max-width: 84rem;
   min-height: 60rem;
   padding: 3rem 2rem;
   border-radius: 15px;

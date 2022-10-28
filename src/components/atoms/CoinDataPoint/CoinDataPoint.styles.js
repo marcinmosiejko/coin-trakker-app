@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { getChangeColor } from 'assets/styles/mixins';
 
 export const Wrapper = styled.div`
+  min-width: ${({ isS }) => {
+    if (isS) return '8rem';
+    return '11rem';
+  }};
+
   display: flex;
   flex-direction: column;
   gap: 0.6rem;

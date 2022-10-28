@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper, Description, DataPoint } from './CoinDataPoint.styles';
 
-const CoinDataPoint = ({ dataPoint, description, change }) => {
+const CoinDataPoint = ({ dataPoint, description, change, isS }) => {
   return (
-    <Wrapper>
+    <Wrapper isS={isS}>
       <Description>{description}</Description>
       <DataPoint change={change}>{dataPoint}</DataPoint>
     </Wrapper>
