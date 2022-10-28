@@ -36,8 +36,8 @@ export const RankBackground = styled.div`
 
 export const Rank = styled.div`
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 2rem;
+  right: 1rem;
   width: 4rem;
   height: 4rem;
   transform: rotate(45deg);
