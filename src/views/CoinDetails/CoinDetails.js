@@ -12,6 +12,8 @@ import {
   ChartContainer,
   StatsWrapper,
   Line,
+  SideShadow,
+  Test,
 } from './CoinDetails.styles';
 import DetailsHeader from 'components/molecules/DetailsHeader/DetailsHeader';
 
@@ -47,13 +49,16 @@ const CoinDetails = () => {
       ) : null}
 
       <ChartWrapper>
-        <ChartContainer>
-          {currentCoinData ? (
-            <>
-              <FullChart chartDataset={currentCoinData.history7d} />
-            </>
-          ) : null}
-        </ChartContainer>
+        <Test>
+          <SideShadow />
+          <ChartContainer>
+            {currentCoinData ? (
+              <>
+                <FullChart chartDataset={currentCoinData.history7d} />
+              </>
+            ) : null}
+          </ChartContainer>
+        </Test>
       </ChartWrapper>
     </Wrapper>
   );
