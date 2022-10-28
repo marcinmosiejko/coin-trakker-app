@@ -2,10 +2,8 @@ import { compareObjBy } from 'helpers/general';
 
 export function getLastPage(data, perPageLimit) {
   const division = data.length / perPageLimit;
-  const modulo = data.length % perPageLimit;
 
-  if (division < 1) return 0;
-  if (modulo === 0) return division;
+  if (division <= 1) return 0;
   return Math.ceil(division);
 }
 
