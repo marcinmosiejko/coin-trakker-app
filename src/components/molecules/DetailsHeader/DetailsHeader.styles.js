@@ -1,34 +1,48 @@
 import styled from 'styled-components';
 import { breakPoints } from 'assets/styles/breakPoints';
 
-export const WrapperWide = styled.div`
-  min-width: 30rem;
+export const Wrapper = styled.div`
+  margin-bottom: 4.8rem;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 3.2rem;
+  gap: 2rem;
 
-  @media only screen and (max-width: ${breakPoints.sm}) {
-    display: none;
-  }
-`;
-
-export const WrapperNarrow = styled.div`
-  display: none;
-
-  @media only screen and (max-width: ${breakPoints.sm}) {
+  @media only screen and (max-width: ${breakPoints.m}) {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-start;
     gap: 3rem;
-    margin-bottom: 0.2rem;
   }
 `;
 
 export const Rate = styled.div`
-  font-size: 4.2rem;
+  font-size: 4.8rem;
 
   @media only screen and (max-width: ${breakPoints.l}) {
     font-size: 3.8rem;
   }
+`;
+
+export const RankBackground = styled.div`
+  position: absolute;
+  top: -5rem;
+  right: -8rem;
+  transform: rotate(45deg);
+  width: 20rem;
+  height: 10rem;
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const Rank = styled.div`
+  text-align: center;
+  position: absolute;
+  top: 2rem;
+  right: 0.5rem;
+  width: 6rem;
+  height: 4rem;
+  transform: rotate(45deg);
+  z-index: 9;
+  font-size: 2.4rem;
+  color: ${({ theme }) => theme.colors.tintSecondary.dark1};
 `;

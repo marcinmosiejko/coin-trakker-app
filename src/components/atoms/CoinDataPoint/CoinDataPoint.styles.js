@@ -1,17 +1,15 @@
 import styled from 'styled-components';
-import { breakPoints } from 'assets/styles/breakPoints';
 import { getChangeColor } from 'assets/styles/mixins';
 
 export const Wrapper = styled.div`
+  min-width: ${({ isS }) => {
+    if (isS) return '8rem';
+    return '11rem';
+  }};
+
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-
-  @media only screen and (max-width: ${breakPoints.sm}) {
-    &:last-child {
-      display: none;
-    }
-  }
 `;
 
 export const Description = styled.div`

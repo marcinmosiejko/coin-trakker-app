@@ -10,35 +10,41 @@ const PriceChangeStats = ({
   return (
     <Wrapper>
       <CoinDataPoint
+        isS
         dataPoint={`${getPercentageChange(hour)}%`}
         description="1H"
         change={hour}
       />
       <CoinDataPoint
+        isS
         dataPoint={`${getPercentageChange(day)}%`}
         description="24H"
         change={day}
       />
       <CoinDataPoint
+        isS
         dataPoint={`${getPercentageChange(week)}%`}
         description="7D"
         change={week}
       />
       <CoinDataPoint
+        isS
         dataPoint={`${getPercentageChange(month)}%`}
         description="30D"
         change={month}
       />
       <CoinDataPoint
+        isS
         dataPoint={`${getPercentageChange(quarter)}%`}
         description="90D"
         change={quarter}
       />
       <CoinDataPoint
+        isS
         dataPoint={`${getPercentageChange(year)}%`}
         description="1Y"
         change={year}
-      />
+      />{' '}
     </Wrapper>
   );
 };
