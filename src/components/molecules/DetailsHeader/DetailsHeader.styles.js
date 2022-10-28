@@ -35,10 +35,11 @@ export const RankBackground = styled.div`
 `;
 
 export const Rank = styled.div`
+  text-align: center;
   position: absolute;
   top: 2rem;
-  right: 1rem;
-  width: 4rem;
+  right: 0.5rem;
+  width: 6rem;
   height: 4rem;
   transform: rotate(45deg);
   z-index: 9;
