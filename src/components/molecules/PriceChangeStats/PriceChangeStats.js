@@ -38,7 +38,7 @@ const PriceChangeStats = ({
         dataPoint={`${getPercentageChange(year)}%`}
         description="1Y"
         change={year}
-      />
+      />{' '}
     </Wrapper>
   );
 };

@@ -6,11 +6,11 @@ import OnPageError from 'components/molecules/OnPageError/OnPageError';
 import Spinner from 'components/atoms/Spinner/Spinner';
 import CoinMainStats from 'components/molecules/CoinMainStats/CoinMainStats';
 import PriceChangeStats from 'components/molecules/PriceChangeStats/PriceChangeStats';
-
 import {
-  WrapperWrapperWrapper,
-  WrapperWrapper,
   Wrapper,
+  ChartWrapper,
+  ChartContainer,
+  StatsWrapper,
   Line,
 } from './CoinDetails.styles';
 import DetailsHeader from 'components/molecules/DetailsHeader/DetailsHeader';
@@ -29,26 +29,33 @@ const CoinDetails = () => {
   }, [code, coinsData, handleSetCurrentCoinData]);
 
   return (
-    <WrapperWrapperWrapper>
-      {currentCoinData ? <DetailsHeader isWide data={currentCoinData} /> : null}
-      <WrapperWrapper>
-        <Wrapper>
+    <Wrapper>
+      {currentCoinData ? (
+        <>
           {currentCoinData === null ? <Spinner /> : null}
           {currentCoinData === undefined ? (
             <OnPageError code={currentCoinData.code} />
           ) : null}
+
+          <DetailsHeader data={currentCoinData} />
+          <StatsWrapper>
+            <PriceChangeStats data={currentCoinData.delta} />
+            <CoinMainStats data={currentCoinData} />
+          </StatsWrapper>
+          <Line />
+        </>
+      ) : null}
+
+      <ChartWrapper>
+        <ChartContainer>
           {currentCoinData ? (
             <>
-              <DetailsHeader isNarrow data={currentCoinData} />
-              <CoinMainStats data={currentCoinData} />
-              <Line />
-              <PriceChangeStats data={currentCoinData.delta} />
               <FullChart chartDataset={currentCoinData.history7d} />
             </>
           ) : null}
-        </Wrapper>
-      </WrapperWrapper>
-    </WrapperWrapperWrapper>
+        </ChartContainer>
+      </ChartWrapper>
+    </Wrapper>
   );
 };
 
