@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 2rem;
 
-  @media only screen and (max-width: ${breakPoints.sm}) {
+  @media only screen and (max-width: ${breakPoints.m}) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
