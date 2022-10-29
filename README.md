@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-     <a href="https://study-buddy-hr.netlify.app/">
+     <a href="https://cointrakker.netlify.app/">
     <img src="https://github.com/mosiej803/trakker-app/blob/main/public/favicon.png" alt="Logo" width="64" height="64">
   </a>
 
@@ -13,7 +13,7 @@
     24/7 Cryptocurrency & Portfolio Tracker 
     <br />
     <br />
-    <a href="https://study-buddy-hr.netlify.app/">View Demo (under development)</a>
+    <a href="https://cointrakker.netlify.app/">View Demo (under development)</a>
   </p>
 </div>
 
