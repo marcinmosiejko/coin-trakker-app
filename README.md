@@ -58,7 +58,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/mosiej803/trakker-app
+   git clone https://github.com/mosiej803/coin-trakker-app
    ```
 2. Install NPM packages
    ```sh
@@ -80,7 +80,7 @@ LinkedIn - [Marcin Mosiejko](https://www.linkedin.com/in/marcin-mosiejko-4593705
 
 Twitter - [@mosiej803](https://twitter.com/mosiej803)
 
-Project Link - [https://github.com/mosiej803/trakker-app](https://github.com/mosiej803/trakker-app)
+Project Link - [https://github.com/mosiej803/coin-trakker-app](https://github.com/mosiej803/coin-trakker-app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
