@@ -4,16 +4,19 @@ import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 import { LcwCoinsDataProvider } from 'hooks/useLcwCoinsData';
+import { OnPageErrorProvider } from 'hooks/useOnPageError';
 
 const AppProviders = ({ children }) => {
   return (
     <>
       <Router>
         <ThemeProvider theme={theme}>
-          <LcwCoinsDataProvider>
-            <GlobalStyle />
-            {children}
-          </LcwCoinsDataProvider>
+          <OnPageErrorProvider>
+            <LcwCoinsDataProvider>
+              <GlobalStyle />
+              {children}
+            </LcwCoinsDataProvider>
+          </OnPageErrorProvider>
         </ThemeProvider>
       </Router>
     </>

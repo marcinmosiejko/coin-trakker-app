@@ -27,7 +27,7 @@ export const useHistory7d = (coinsCurPageCoinsList, currentCoinData) => {
           return [...prevState, ...newHistory7dCoins];
         });
       } catch (err) {
-        console.error(err);
+        console.error('history', err);
       }
     })();
   }, [currentCoinData, coinsCurPageCoinsList, history7dCoinsList]);

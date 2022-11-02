@@ -12,14 +12,8 @@ export const Wrapper = styled.div`
     opacity: 0.95;
     stroke: ${({ theme }) => theme.colors.tintPrimary.light10};
     fill: none;
-    opacity: 0.7;
+    opacity: 0.8;
 
     transition: all 0.15s;
-
-    cursor: pointer;
-
-    &:hover {
-      opacity: 1;
-    }
   }
 `;

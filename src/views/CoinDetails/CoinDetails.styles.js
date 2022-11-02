@@ -30,6 +30,7 @@ export const StatsWrapper = styled.div`
 
 export const ChartWrapper = styled.div`
   position: relative;
+  min-height: 24rem;
 `;
 
 export const Test = styled.div`

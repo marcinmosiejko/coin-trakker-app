@@ -25,7 +25,7 @@ export const fetchCoinsData = async (meta = false) => {
     }
     return finalData;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 
@@ -40,7 +40,7 @@ export const fetchCoinsHistoryData = async (code) => {
     });
     return data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 
@@ -139,6 +139,8 @@ const isCoinValueMatchingQuery = (coin, key, query) => {
 };
 
 export const filterByCoinNameOrCode = (coinsToFilter, queryString) => {
+  if (!coinsToFilter) return [];
+
   return coinsToFilter.filter(
     (coin) =>
       isCoinValueMatchingQuery(coin, 'name', queryString) ||
