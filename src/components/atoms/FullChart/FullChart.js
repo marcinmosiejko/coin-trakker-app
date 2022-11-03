@@ -50,8 +50,7 @@ const FullChart = ({ chartDataset }) => {
             isDark
             isS
             hasPageWrapper={false}
-            message="History data is not available. We sincerely apologize for your
-              inconvinience."
+            message={onPageErrors.history7dData.message.fullChart}
           />
         ) : (
           <>

@@ -6,6 +6,11 @@ const OnPageErrorsContext = createContext({});
 const errorMessages = {
   coinsData:
     "Coins data couldn't be obtained. Please try refreshing the page. We sincerely apologize for your inconvinience.",
+  history7dData: {
+    tableChart: 'Data unavailable ;(',
+    fullChart:
+      'History data is not available. We sincerely apologize for your inconvinience.',
+  },
 };
 
 const OnPageError = class {

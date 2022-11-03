@@ -32,7 +32,12 @@ const Table7dChart = ({ chartDataset }) => {
   return (
     <Wrapper>
       {onPageErrors.history7dData?.isError && !chartDataset ? (
-        <PageError message="Data unavailable ;(" hasIcon={false} isS isDark />
+        <PageError
+          message={onPageErrors.history7dData.message.tableChart}
+          hasIcon={false}
+          isS
+          isDark
+        />
       ) : (
         <>
           {chartData && chartOptions ? (
