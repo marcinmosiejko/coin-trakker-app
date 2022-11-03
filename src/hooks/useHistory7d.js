@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getHistory7dCoinsList } from 'helpers/lcwApi';
+import { useOnPageErrors } from './useOnPageError';
 
 export const useHistory7d = (coinsCurPageCoinsList, currentCoinData) => {
   const [history7dCoinsList, setHistory7dCoinsList] = useState(null);
+  const { dispatchOnPageError } = useOnPageErrors();
 
   useEffect(() => {
     (async () => {
@@ -27,10 +29,15 @@ export const useHistory7d = (coinsCurPageCoinsList, currentCoinData) => {
           return [...prevState, ...newHistory7dCoins];
         });
       } catch (err) {
-        console.error(err);
+        dispatchOnPageError('history7dData', err.response.status);
       }
     })();
-  }, [currentCoinData, coinsCurPageCoinsList, history7dCoinsList]);
+  }, [
+    currentCoinData,
+    coinsCurPageCoinsList,
+    history7dCoinsList,
+    dispatchOnPageError,
+  ]);
 
   return { history7dCoinsList };
 };

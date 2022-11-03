@@ -32,7 +32,7 @@ export const ChartWrapper = styled.div`
   position: relative;
 `;
 
-export const Test = styled.div`
+export const SideShadowWrapper = styled.div`
   width: 100%;
   overflow: auto;
   ${scrollbar}

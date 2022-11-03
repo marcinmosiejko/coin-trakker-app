@@ -19,7 +19,7 @@ const Table = ({ data, tableRef, children, isCoins, isPortfolio }) => {
 
   return (
     <TableWrapper>
-      {!data && <Spinner />}
+      {!data && <Spinner padding="5rem 0" />}
       <TableContainer ref={tableContainerRef}>
         {data && <SideShadow />}
         <StyledTable ref={tableRef}>{children}</StyledTable>

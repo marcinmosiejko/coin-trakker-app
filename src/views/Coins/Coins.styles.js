@@ -4,6 +4,7 @@ import { breakPoints } from 'assets/styles/breakPoints';
 export const Wrapper = styled.div`
   /* width: 100%;
   max-width: 95.5rem; */
+  min-height: 80rem;
   padding: 3rem 2rem 3rem 2.5rem;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.secondary};

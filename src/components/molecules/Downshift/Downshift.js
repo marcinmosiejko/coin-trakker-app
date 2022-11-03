@@ -57,7 +57,6 @@ const Downshift = ({
         isAddCoin={isAddCoin}
         isSearch={isSearch}
       />
-
       {isAddCoin ? (
         <SelectedCoin>
           {selectedCoin ? (

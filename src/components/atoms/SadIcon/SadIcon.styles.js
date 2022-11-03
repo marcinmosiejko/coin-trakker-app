@@ -8,18 +8,12 @@ export const Wrapper = styled.div`
 
   svg {
     height: 16rem;
-    stroke-width: 1px;
+    stroke-width: 0.7px;
     opacity: 0.95;
     stroke: ${({ theme }) => theme.colors.tintPrimary.light10};
     fill: none;
-    opacity: 0.7;
+    opacity: 0.8;
 
     transition: all 0.15s;
-
-    cursor: pointer;
-
-    &:hover {
-      opacity: 1;
-    }
   }
 `;

@@ -9,6 +9,7 @@ import {
 } from 'helpers/lcwApi';
 import { useHistory7d } from './useHistory7d';
 import { useWatchlist } from './useWatchlist';
+import { useOnPageErrors } from './useOnPageError';
 
 const LcwCoinsDataContext = React.createContext({});
 
@@ -23,6 +24,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
   );
   const { usersWatchlist, watchlistCoinCodes, handleUpdateWatchlist } =
     useWatchlist();
+  const { dispatchOnPageError } = useOnPageErrors();
 
   const handleSetCoinsCurPageCoinsList = useCallback((data) => {
     setCoinsCurPageCoinsList(data);
@@ -55,28 +57,22 @@ export const LcwCoinsDataProvider = ({ children }) => {
           setCoinsData((prevState) => getUpdatedCoinsData(prevState, newData));
         }, DATA_REFRESH_INTERVAL);
       } catch (err) {
-        console.error(err);
+        dispatchOnPageError('coinsData', err.response.status);
       }
     })();
     // Won't cause rerenders as usersWatchlist gets created at app start and doesn't get updated
-  }, [usersWatchlist]);
+  }, [usersWatchlist, dispatchOnPageError]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        // Add 7d history data to coinsData so all data for rendering views listing coins can bo sourced from one place
-        setCoinsData((prevState) => {
-          if (!prevState) return;
-          const enrichedState = add7DayHistoryDataToCoinsData(
-            prevState,
-            history7dCoinsList
-          );
-          return enrichedState;
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    })();
+    // Add 7d history data to coinsData so all data for rendering views listing coins can bo sourced from one place
+    setCoinsData((prevState) => {
+      if (!prevState) return;
+      const enrichedState = add7DayHistoryDataToCoinsData(
+        prevState,
+        history7dCoinsList
+      );
+      return enrichedState;
+    });
   }, [history7dCoinsList]);
 
   useEffect(() => {
@@ -108,7 +104,9 @@ export const useLcwCoinsData = () => {
   const useLcwCoinsDataContext = useContext(LcwCoinsDataContext);
 
   if (!useLcwCoinsDataContext)
-    throw Error('useLcwApi needs to be used inside useLcwCoinsDataContext');
+    throw new Error(
+      'useLcwCoinsData needs to be used inside useLcwCoinsDataContext'
+    );
 
   return useLcwCoinsDataContext;
 };
