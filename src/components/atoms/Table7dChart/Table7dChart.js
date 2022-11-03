@@ -12,7 +12,7 @@ import {
   Title,
 } from 'chart.js';
 import PageError from 'components/molecules/PageError/PageError';
-import Spinner from '../Spinner/Spinner';
+import Loader from '../Loader/Loader';
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
@@ -43,7 +43,7 @@ const Table7dChart = ({ chartDataset }) => {
           {chartData && chartOptions ? (
             <Line options={chartOptions} data={chartData} />
           ) : (
-            <Spinner width="2.8rem" />
+            <Loader width="3rem" />
           )}
         </>
       )}
