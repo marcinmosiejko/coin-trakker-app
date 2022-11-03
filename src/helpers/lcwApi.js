@@ -1,8 +1,16 @@
 import axios from 'axios';
-import { LCW_API_URL, API_LIMIT, API_CALLS } from 'config';
+import {
+  LCW_API_URL,
+  API_LIMIT,
+  API_CALLS,
+  LCW_API_DEFAULT_TIMEOUT,
+} from 'config';
 import dayjs from 'dayjs';
 
-const lcwAPI = axios.create({ baseURL: LCW_API_URL, timeout: 5000 });
+const lcwAPI = axios.create({
+  baseURL: LCW_API_URL,
+  timeout: LCW_API_DEFAULT_TIMEOUT,
+});
 lcwAPI.defaults.headers = {
   'content-type': 'application/json',
   'x-api-key': process.env.REACT_APP_LCW_TOKEN,
@@ -45,32 +53,36 @@ export const fetchCoinsHistoryData = async (code) => {
 };
 
 export const getHistory7dCoinsList = async (history7dCoinsList, coinsList) => {
-  // Iterate through coinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
-  if (!coinsList || coinsList.length === 0) return;
+  try {
+    // Iterate through coinsList and check if in history7dCoinsList is data for each coin. If there is, return. If there isn't, fetch history data for that coin.
+    if (!coinsList || coinsList.length === 0) return;
 
-  let historyList = await Promise.all(
-    coinsList.map(async (pc) => {
-      const existingHistoryData = history7dCoinsList?.find(
-        (hc) => hc.name === pc.name && hc.code === pc.code
-      );
+    let historyList = await Promise.all(
+      coinsList.map(async (pc) => {
+        const existingHistoryData = history7dCoinsList?.find(
+          (hc) => hc.name === pc.name && hc.code === pc.code
+        );
 
-      if (existingHistoryData) return;
-      const { history: historyData } = await fetchCoinsHistoryData(pc.code);
+        if (existingHistoryData) return;
+        const { history: historyData } = await fetchCoinsHistoryData(pc.code);
 
-      const finalHistoryData = historyData.map((obj) => obj.rate);
+        const finalHistoryData = historyData.map((obj) => obj.rate);
 
-      return {
-        name: pc.name,
-        code: pc.code,
-        history: finalHistoryData,
-      };
-    })
-  );
+        return {
+          name: pc.name,
+          code: pc.code,
+          history: finalHistoryData,
+        };
+      })
+    );
 
-  // Filter out undefined values (a result of 'if (existingHistoryData) return;' statement when historical data for specified coin is already in state)
-  historyList = historyList.filter((i) => i !== undefined);
+    // Filter out undefined values (a result of 'if (existingHistoryData) return;' statement when historical data for specified coin is already in state)
+    historyList = historyList.filter((i) => i !== undefined);
 
-  return historyList;
+    return historyList;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export const getUpdatedCoinsData = (prevState, newData) => {

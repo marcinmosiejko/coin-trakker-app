@@ -5,17 +5,17 @@ import Coins from 'views/Coins/Coins';
 import Portfolio from './Portfolio/Portfolio';
 import CoinDetails from './CoinDetails/CoinDetails';
 import ScrollToTop from 'components/templates/ScrollToTop/ScrollToTop';
-import { useOnPageError } from 'hooks/useOnPageError';
+import { useOnPageErrors } from 'hooks/useOnPageError';
 import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 
 const Root = () => {
-  const { onPageError, PageErrorComponent } = useOnPageError();
+  const { onPageErrors, PageErrorComponent } = useOnPageErrors();
   const { coinsData } = useLcwCoinsData();
 
   return (
     <MainTemplate>
-      {onPageError.isError && !coinsData ? (
-        <PageErrorComponent />
+      {onPageErrors.coinsData && !coinsData ? (
+        <PageErrorComponent errorName="coinsData" />
       ) : (
         <>
           <ScrollToTop />

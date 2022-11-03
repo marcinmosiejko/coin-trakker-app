@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: 10rem;
+  padding: ${({ padding }) => (padding ? padding : '1rem 0 2rem')};
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   svg {
-    width: 100%;
+    width: ${({ width }) => (width ? width : '100%')};
     height: auto;
     stroke-linecap: round;
   }

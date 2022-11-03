@@ -2,6 +2,8 @@ import { theme } from 'assets/styles/theme';
 import { RoundSmallValue } from './general';
 
 export const getTableChartConfig = (chartDataset) => {
+  if (!chartDataset) return { chartOptions: null, chartData: null };
+
   const color =
     chartDataset?.at(0) > chartDataset?.at(-1)
       ? theme.colors.red

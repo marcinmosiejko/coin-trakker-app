@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
   svg {
     height: 16rem;
-    stroke-width: 1px;
+    stroke-width: 0.7px;
     opacity: 0.95;
     stroke: ${({ theme }) => theme.colors.tintPrimary.light10};
     fill: none;

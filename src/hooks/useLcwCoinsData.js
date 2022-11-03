@@ -9,7 +9,7 @@ import {
 } from 'helpers/lcwApi';
 import { useHistory7d } from './useHistory7d';
 import { useWatchlist } from './useWatchlist';
-import { useOnPageError } from './useOnPageError';
+import { useOnPageErrors } from './useOnPageError';
 
 const LcwCoinsDataContext = React.createContext({});
 
@@ -24,7 +24,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
   );
   const { usersWatchlist, watchlistCoinCodes, handleUpdateWatchlist } =
     useWatchlist();
-  const { dispatchOnPageError } = useOnPageError();
+  const { dispatchOnPageError } = useOnPageErrors();
 
   const handleSetCoinsCurPageCoinsList = useCallback((data) => {
     setCoinsCurPageCoinsList(data);
@@ -57,10 +57,7 @@ export const LcwCoinsDataProvider = ({ children }) => {
           setCoinsData((prevState) => getUpdatedCoinsData(prevState, newData));
         }, DATA_REFRESH_INTERVAL);
       } catch (err) {
-        dispatchOnPageError(
-          err.response.status,
-          "Coins data couldn't be obtained. Please try refreshing the page. We sincerely apologize for your inconvinience. "
-        );
+        dispatchOnPageError('coinsData', err.response.status);
       }
     })();
     // Won't cause rerenders as usersWatchlist gets created at app start and doesn't get updated

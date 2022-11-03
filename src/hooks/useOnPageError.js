@@ -1,39 +1,69 @@
 import React, { useState, createContext, useContext, useCallback } from 'react';
 import PageError from 'components/molecules/PageError/PageError';
 
-const OnPageErrorContext = createContext({});
+const OnPageErrorsContext = createContext({});
 
-export const OnPageErrorProvider = ({ children }) => {
-  const [onPageError, setOnPageError] = useState({
-    isError: false,
-    code: '',
-    message: '',
-  });
+const errorMessages = {
+  coinsData:
+    "Coins data couldn't be obtained. Please try refreshing the page. We sincerely apologize for your inconvinience.",
+};
 
-  const dispatchOnPageError = useCallback((code, message) => {
-    setOnPageError({ isError: true, code, message });
+const OnPageError = class {
+  constructor({ errorName, code = '', isError = true }) {
+    this.isError = isError;
+    this.code = code;
+    this.message = errorMessages[errorName] || '';
+  }
+};
+
+export const OnPageErrorsProvider = ({ children }) => {
+  const [onPageErrors, setOnPageErrors] = useState({});
+
+  const dispatchOnPageError = useCallback((errorName, code) => {
+    setOnPageErrors((prevState) => ({
+      ...prevState,
+      [errorName]: new OnPageError({ errorName, code }),
+    }));
   }, []);
 
-  const PageErrorComponent = () => {
-    return <PageError message={onPageError.message} code={onPageError.code} />;
+  const resetOnPageError = useCallback((errorName) => {
+    setOnPageErrors((prevState) => ({
+      ...prevState,
+      [errorName]: new OnPageError({ errorName, isError: false }),
+    }));
+  }, []);
+
+  const PageErrorComponent = ({ errorName }) => {
+    return (
+      <PageError
+        message={onPageErrors[errorName].message}
+        code={onPageErrors[errorName].code}
+        hasPageWrapper={true}
+      />
+    );
   };
 
   return (
-    <OnPageErrorContext.Provider
-      value={{ onPageError, dispatchOnPageError, PageErrorComponent }}
+    <OnPageErrorsContext.Provider
+      value={{
+        onPageErrors,
+        dispatchOnPageError,
+        resetOnPageError,
+        PageErrorComponent,
+      }}
     >
       {children}
-    </OnPageErrorContext.Provider>
+    </OnPageErrorsContext.Provider>
   );
 };
 
-export const useOnPageError = () => {
-  const useOnPageErrorContext = useContext(OnPageErrorContext);
+export const useOnPageErrors = () => {
+  const useOnPageErrorsContext = useContext(OnPageErrorsContext);
 
-  if (!useOnPageErrorContext)
+  if (!useOnPageErrorsContext)
     throw new Error(
-      'useOnPageError needs to be used inside useOnPageErrorContext'
+      'useOnPageErrors needs to be used inside useOnPageErrorsContext'
     );
 
-  return useOnPageErrorContext;
+  return useOnPageErrorsContext;
 };

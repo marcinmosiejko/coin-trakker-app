@@ -13,7 +13,7 @@ import {
   StatsWrapper,
   Line,
   SideShadow,
-  Test,
+  SideShadowWrapper,
 } from './CoinDetails.styles';
 import DetailsHeader from 'components/molecules/DetailsHeader/DetailsHeader';
 
@@ -35,6 +35,7 @@ const CoinDetails = () => {
       {currentCoinData === null ? <Spinner /> : null}
       {currentCoinData === undefined ? (
         <PageError
+          hasPageWrapper={true}
           message={`Sorry, there's no ${code} coin in our database.`}
         />
       ) : null}
@@ -47,12 +48,12 @@ const CoinDetails = () => {
           </StatsWrapper>
           <Line />
           <ChartWrapper>
-            <Test>
+            <SideShadowWrapper>
               <SideShadow />
               <ChartContainer>
                 <FullChart chartDataset={currentCoinData.history7d} />
               </ChartContainer>
-            </Test>
+            </SideShadowWrapper>
           </ChartWrapper>
         </>
       ) : null}

@@ -11,12 +11,17 @@ export const ChartWrapper = styled.div`
   padding: 2rem 1.5rem 1.5rem;
   width: 100%;
   min-width: 32rem;
+  height: 28rem;
   background-color: ${({ theme }) => theme.colors.tintSecondary.dark5};
 
   canvas {
     // Without this, on (random) re-renders charts would be rendered in default (large) size and then adjusted / replaced with proper ones resulting in unexpected behavior
     height: 20rem !important;
   }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ChartCaption = styled.div`
@@ -24,4 +29,11 @@ export const ChartCaption = styled.div`
   font-size: 1.4rem;
   text-align: center;
   color: ${({ theme }) => theme.colors.tintSecondary.light11};
+`;
+
+export const ErrorMessage = styled.div`
+  padding-top: 1.5rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.tintSecondary.light5};
 `;
