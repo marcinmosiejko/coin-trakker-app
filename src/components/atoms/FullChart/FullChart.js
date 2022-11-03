@@ -40,7 +40,7 @@ const FullChart = ({ chartDataset }) => {
     setChartOptions(chartOptions);
 
     return resetOnPageError('history7dData');
-  }, [chartDataset]);
+  }, [chartDataset, resetOnPageError]);
 
   return (
     <Wrapper>
