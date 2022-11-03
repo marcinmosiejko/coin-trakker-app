@@ -5,6 +5,7 @@ import CoinNameAndCode from '../CoinNameAndCode/CoinNameAndCode';
 
 const CoinId = ({
   data: { name, code, webp64 },
+  maxNameLength,
   isCoinDetails,
   isSearchResult,
   isLink,
@@ -25,6 +26,7 @@ const CoinId = ({
             code={code}
             isCoinDetails={isCoinDetails}
             isSearchResult={isSearchResult}
+            maxNameLength={maxNameLength}
           />
         </StyledLink>
       ) : (
@@ -33,6 +35,7 @@ const CoinId = ({
           code={code}
           isCoinDetails={isCoinDetails}
           isSearchResult={isSearchResult}
+          maxNameLength={maxNameLength}
         />
       )}
     </Wrapper>
@@ -41,6 +44,7 @@ const CoinId = ({
 
 CoinId.propTypes = {
   name: PropTypes.string,
+  nameLength: PropTypes.number,
   code: PropTypes.string,
   webp64: PropTypes.string,
   isCoinDetails: PropTypes.bool,

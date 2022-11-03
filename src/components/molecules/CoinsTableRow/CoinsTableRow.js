@@ -31,7 +31,7 @@ const CoinsTableRow = ({
         </RankAndWatch>
       </TdTh>
       <TdTh>
-        <CoinId isLink data={data} />
+        <CoinId isLink data={data} maxNameLength={13} />
       </TdTh>
       <TdTh isRight>${RoundSmallValue(rate)}</TdTh>
       <TdTh isRight>${roundLargeValue(cap)}</TdTh>

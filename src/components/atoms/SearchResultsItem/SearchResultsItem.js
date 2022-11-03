@@ -6,7 +6,7 @@ const SearchResultsItem = React.forwardRef(
   ({ data, isHighlighted, ...props }, ref) => {
     return (
       <StyledLi ref={ref} isHighlighted={isHighlighted} {...props}>
-        <CoinId data={data} isSearchResult />
+        <CoinId data={data} isSearchResult maxNameLength={24} />
       </StyledLi>
     );
   }
