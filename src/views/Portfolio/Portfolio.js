@@ -16,15 +16,12 @@ import { usePortfolio } from 'hooks/usePortfolio';
 
 const Portfolio = () => {
   const {
-    handleAddPortfolioCoin,
-    handleDeletePortfolioCoin,
     findPortfolioCoins,
     portfolioCurPageCoinsList,
     portfolioSummary,
     currentPage,
     lastPage,
     handlePageChange,
-    handleEditPortfolioCoin,
   } = usePortfolio();
   const {
     isOpen: isAddCoinOpen,
@@ -58,7 +55,6 @@ const Portfolio = () => {
         >
           <AddCoin
             handleCloseModal={handleCloseAddCoinModal}
-            handleAddPortfolioCoin={handleAddPortfolioCoin}
             findPortfolioCoins={findPortfolioCoins}
           />
         </Modal>
@@ -70,7 +66,6 @@ const Portfolio = () => {
         >
           <DeleteCoin
             handleCloseModal={handleCloseDeleteCoinModal}
-            handleDeletePortfolioCoin={handleDeletePortfolioCoin}
             coinData={coinBeingEditedOrDeleted}
           />
         </Modal>
@@ -82,7 +77,6 @@ const Portfolio = () => {
         >
           <EditCoin
             handleCloseModal={handleCloseEditCoinModal}
-            handleEditPortfolioCoin={handleEditPortfolioCoin}
             coinData={coinBeingEditedOrDeleted}
           />
         </Modal>

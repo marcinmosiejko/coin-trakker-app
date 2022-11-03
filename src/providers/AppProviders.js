@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 import { LcwCoinsDataProvider } from 'hooks/useLcwCoinsData';
 import { OnPageErrorsProvider } from 'hooks/useOnPageError';
+import { Provider } from 'react-redux';
+import { store } from 'store';
 
 const AppProviders = ({ children }) => {
   return (
@@ -13,8 +15,10 @@ const AppProviders = ({ children }) => {
         <ThemeProvider theme={theme}>
           <OnPageErrorsProvider>
             <LcwCoinsDataProvider>
-              <GlobalStyle />
-              {children}
+              <Provider store={store}>
+                <GlobalStyle />
+                {children}
+              </Provider>
             </LcwCoinsDataProvider>
           </OnPageErrorsProvider>
         </ThemeProvider>

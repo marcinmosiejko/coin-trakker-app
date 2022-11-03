@@ -2,15 +2,14 @@ import Button from 'components/atoms/Button/Button';
 import CoinId from 'components/atoms/CoinId/CoinId';
 import React from 'react';
 import { Wrapper, ButtonsWrapper, ContentWrapper } from './DeleteCoin.styles';
+import { deletePortfolioCoin } from 'store/portfolioSlice';
+import { useDispatch } from 'react-redux';
 
-const DeleteCoin = ({
-  coinData,
-  handleCloseModal,
-  handleDeletePortfolioCoin,
-}) => {
+const DeleteCoin = ({ coinData, handleCloseModal }) => {
+  const dispatch = useDispatch();
   const onDelete = () => {
     handleCloseModal();
-    handleDeletePortfolioCoin(coinData.code);
+    dispatch(deletePortfolioCoin({ code: coinData.code }));
   };
 
   return (

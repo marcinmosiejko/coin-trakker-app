@@ -13,6 +13,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { allowOnlyNumber } from 'helpers/general';
 import { Input } from 'components/atoms/Input/Input';
+import { editPortfolioCoin } from 'store/portfolioSlice';
+import { useDispatch } from 'react-redux';
 
 const schema = yup
   .object({
@@ -23,6 +25,7 @@ const schema = yup
   .required();
 
 const EditCoin = ({ coinData, handleCloseModal, handleEditPortfolioCoin }) => {
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -32,6 +35,12 @@ const EditCoin = ({ coinData, handleCloseModal, handleEditPortfolioCoin }) => {
   });
 
   const onSubmit = ({ quantity }) => {
+    dispatch(
+      editPortfolioCoin({
+        code: coinData.code,
+        quantity: +(quantity + '').replaceAll(/^0+/g, ''),
+      })
+    );
     handleEditPortfolioCoin({
       code: coinData.code,
       quantity: +(quantity + '').replaceAll(/^0+/g, ''),

@@ -7,6 +7,8 @@ import Downshift from '../Downshift/Downshift';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { allowOnlyNumber } from 'helpers/general';
+import { addPortfolioCoin } from 'store/portfolioSlice';
+import { useDispatch } from 'react-redux';
 
 const schema = yup
   .object({
@@ -23,6 +25,7 @@ const AddCoin = ({
   handleAddPortfolioCoin,
   findPortfolioCoins,
 }) => {
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -32,6 +35,12 @@ const AddCoin = ({
   });
 
   const onSubmit = ({ coin, quantity }) => {
+    dispatch(
+      addPortfolioCoin({
+        code: coin.split('.').at(0),
+        quantity: +(quantity + '').replaceAll(/^0+/g, ''),
+      })
+    );
     handleAddPortfolioCoin({
       code: coin.split('.').at(0),
       quantity: +(quantity + '').replaceAll(/^0+/g, ''),
