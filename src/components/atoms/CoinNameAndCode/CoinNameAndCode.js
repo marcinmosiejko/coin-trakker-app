@@ -2,7 +2,13 @@ import React from 'react';
 import { Wrapper, Name, Code } from './CoinNameAndCode.styles';
 import { truncateString, trimUnderscoresAndSpaces } from 'helpers/general';
 
-const CoinNameAndCode = ({ name, code, isCoinDetails, isSearchResult }) => {
+const CoinNameAndCode = ({
+  name,
+  code,
+  isCoinDetails,
+  isSearchResult,
+  maxNameLength,
+}) => {
   return (
     <Wrapper>
       {!isCoinDetails ? (
@@ -11,7 +17,9 @@ const CoinNameAndCode = ({ name, code, isCoinDetails, isSearchResult }) => {
         </Code>
       ) : null}
       <Name isCoinDetails={isCoinDetails} isSearchResult={isSearchResult}>
-        {isSearchResult ? truncateString(name, 25) : truncateString(name, 13)}
+        {isSearchResult
+          ? truncateString(name, maxNameLength)
+          : truncateString(name, maxNameLength)}
       </Name>
       {isCoinDetails ? (
         <Code isCoinDetails={isCoinDetails}>

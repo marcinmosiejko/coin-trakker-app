@@ -20,10 +20,11 @@ export function roundLargeValue(cap) {
   return round(cap);
 }
 
-export function truncateString(string, desiredLength) {
-  if (string.length <= desiredLength) return string;
+export function truncateString(string, maxLength) {
+  if (!maxLength) return string;
+  if (string.length <= maxLength) return string;
 
-  return string.slice(0, desiredLength - 3) + '...';
+  return string.slice(0, maxLength - 3) + '...';
 }
 
 export function compareObjBy(a, b, key, isAscending) {
