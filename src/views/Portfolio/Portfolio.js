@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Wrapper, ButtonWrapper } from './Portfolio.styles';
 import Table from 'components/organisms/Table/Table';
 import PortfolioSummary from 'components/molecules/PortfolioSummary/PortfolioSummary';
@@ -16,15 +16,13 @@ import { usePortfolio } from 'hooks/usePortfolio';
 
 const Portfolio = () => {
   const {
-    handleAddPortfolioCoin,
-    handleDeletePortfolioCoin,
-    findPortfolioCoins,
     portfolioCurPageCoinsList,
     portfolioSummary,
     currentPage,
     lastPage,
     handlePageChange,
-    handleEditPortfolioCoin,
+    coinBeingEditedOrDeleted,
+    handleSetCoinBeingEditedOrDeleted,
   } = usePortfolio();
   const {
     isOpen: isAddCoinOpen,
@@ -42,12 +40,6 @@ const Portfolio = () => {
     handleCloseModal: handleCloseEditCoinModal,
   } = useModal(false);
   const tableRef = useRef(null);
-  const [coinBeingEditedOrDeleted, setCoinBeingEditedOrDeleted] =
-    useState(null);
-
-  const handleSetCoinBeingEditedOrDeleted = (coin) => {
-    setCoinBeingEditedOrDeleted(coin);
-  };
 
   return (
     <Wrapper>
@@ -56,11 +48,7 @@ const Portfolio = () => {
           isOpen={isAddCoinOpen}
           handleCloseModal={handleCloseAddCoinModal}
         >
-          <AddCoin
-            handleCloseModal={handleCloseAddCoinModal}
-            handleAddPortfolioCoin={handleAddPortfolioCoin}
-            findPortfolioCoins={findPortfolioCoins}
-          />
+          <AddCoin handleCloseModal={handleCloseAddCoinModal} />
         </Modal>
       ) : null}
       {isDeleteCoinOpen ? (
@@ -70,7 +58,6 @@ const Portfolio = () => {
         >
           <DeleteCoin
             handleCloseModal={handleCloseDeleteCoinModal}
-            handleDeletePortfolioCoin={handleDeletePortfolioCoin}
             coinData={coinBeingEditedOrDeleted}
           />
         </Modal>
@@ -82,7 +69,6 @@ const Portfolio = () => {
         >
           <EditCoin
             handleCloseModal={handleCloseEditCoinModal}
-            handleEditPortfolioCoin={handleEditPortfolioCoin}
             coinData={coinBeingEditedOrDeleted}
           />
         </Modal>

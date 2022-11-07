@@ -7,6 +7,9 @@ import Downshift from '../Downshift/Downshift';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { allowOnlyNumber } from 'helpers/general';
+import { addPortfolioCoin } from 'store/portfolioRawDataSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterByCoinNameOrCode } from 'helpers/coinsData';
 
 const schema = yup
   .object({
@@ -18,11 +21,9 @@ const schema = yup
   })
   .required();
 
-const AddCoin = ({
-  handleCloseModal,
-  handleAddPortfolioCoin,
-  findPortfolioCoins,
-}) => {
+const AddCoin = ({ handleCloseModal }) => {
+  const { coinsData, portfolioRawData } = useSelector((state) => state);
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -31,11 +32,25 @@ const AddCoin = ({
     resolver: yupResolver(schema),
   });
 
+  const findPortfolioCoins = (queryString) => {
+    // Filters matching coins from coinsData so there are no coins that are already in portfolio -> use won't be able to add same coin more then once
+    const coins = filterByCoinNameOrCode(coinsData, queryString);
+
+    if (portfolioRawData?.length === 0) return coins;
+
+    return coins.filter(
+      (coin) => !portfolioRawData.find(({ code }) => code === coin.code)
+    );
+  };
+
   const onSubmit = ({ coin, quantity }) => {
-    handleAddPortfolioCoin({
-      code: coin.split('.').at(0),
-      quantity: +(quantity + '').replaceAll(/^0+/g, ''),
-    });
+    dispatch(
+      addPortfolioCoin({
+        code: coin.split('.').at(0),
+        quantity: +(quantity + '').replaceAll(/^0+/g, ''),
+      })
+    );
+
     handleCloseModal();
   };
 

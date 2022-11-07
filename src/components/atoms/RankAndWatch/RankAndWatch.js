@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, Rank } from './RankAndWatch.styles';
 import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
+import { useLcwCoinsData } from 'hooks/useCoinsData';
 
 const RankAndWatch = ({ onWatchlist, coinCode, children }) => {
   const { handleUpdateWatchlist } = useLcwCoinsData();

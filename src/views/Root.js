@@ -6,11 +6,11 @@ import Portfolio from './Portfolio/Portfolio';
 import CoinDetails from './CoinDetails/CoinDetails';
 import ScrollToTop from 'components/templates/ScrollToTop/ScrollToTop';
 import { useOnPageErrors } from 'hooks/useOnPageError';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
+import { useSelector } from 'react-redux';
 
 const Root = () => {
+  const coinsData = useSelector((state) => state.coinsData);
   const { onPageErrors, PageErrorComponent } = useOnPageErrors();
-  const { coinsData } = useLcwCoinsData();
 
   return (
     <MainTemplate>
