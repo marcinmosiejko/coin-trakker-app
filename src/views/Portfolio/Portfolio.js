@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Wrapper, ButtonWrapper } from './Portfolio.styles';
 import Table from 'components/organisms/Table/Table';
 import PortfolioSummary from 'components/molecules/PortfolioSummary/PortfolioSummary';
