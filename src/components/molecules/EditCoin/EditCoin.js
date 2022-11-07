@@ -13,7 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { allowOnlyNumber } from 'helpers/general';
 import { Input } from 'components/atoms/Input/Input';
-import { editPortfolioCoin } from 'store/portfolioSlice';
+import { editPortfolioCoin } from 'store/portfolioRawDataSlice';
 import { useDispatch } from 'react-redux';
 
 const schema = yup

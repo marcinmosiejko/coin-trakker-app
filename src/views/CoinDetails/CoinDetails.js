@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
+import { useLcwCoinsData } from 'hooks/useCoinsData';
 import { useParams } from 'react-router-dom';
 import FullChart from 'components/atoms/FullChart/FullChart';
 import PageError from 'components/molecules/PageError/PageError';
@@ -16,10 +16,11 @@ import {
   SideShadowWrapper,
 } from './CoinDetails.styles';
 import DetailsHeader from 'components/molecules/DetailsHeader/DetailsHeader';
+import { useSelector } from 'react-redux';
 
 const CoinDetails = () => {
-  const { currentCoinData, coinsData, handleSetCurrentCoinData } =
-    useLcwCoinsData();
+  const coinsData = useSelector((state) => state.coinsData);
+  const { currentCoinData, handleSetCurrentCoinData } = useLcwCoinsData();
   const { code } = useParams();
 
   useEffect(() => {

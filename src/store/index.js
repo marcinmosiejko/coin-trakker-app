@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { portfolioSlice } from './portfolioSlice';
+import { portfolioRawDataSlice } from './portfolioRawDataSlice';
+import { coinsDataSlice } from './coinsDataSlice';
+// import { portfolioCoinsListSlice } from './portfolioCoinsListSlice';
 
 export const store = configureStore({
   reducer: {
-    portfolio: portfolioSlice.reducer,
+    coinsData: coinsDataSlice.reducer,
+    portfolioRawData: portfolioRawDataSlice.reducer,
+    // portfolioCoinsList: portfolioCoinsListSlice.reducer,
   },
 });

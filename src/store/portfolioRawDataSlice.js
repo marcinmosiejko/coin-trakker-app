@@ -3,11 +3,13 @@ import { getFromLocalStorage, saveToLocalStorage } from 'helpers/general';
 
 const usersPortfolio = getFromLocalStorage('portfolio');
 
-const initialPortfolioState = usersPortfolio || [{ code: 'BTC', quantity: 7 }];
+const initialPortfolioRawDataState = usersPortfolio || [
+  { code: 'BTC', quantity: 7 },
+];
 
-export const portfolioSlice = createSlice({
-  name: 'portfolio',
-  initialState: initialPortfolioState,
+export const portfolioRawDataSlice = createSlice({
+  name: 'portfolioRawData',
+  initialState: initialPortfolioRawDataState,
   reducers: {
     addPortfolioCoin(state, action) {
       const newState = state.concat(action.payload);
@@ -38,4 +40,4 @@ export const portfolioSlice = createSlice({
 });
 
 export const { addPortfolioCoin, deletePortfolioCoin, editPortfolioCoin } =
-  portfolioSlice.actions;
+  portfolioRawDataSlice.actions;

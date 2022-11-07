@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
-import { useLcwCoinsData } from './useLcwCoinsData';
-import { getLastPage, getWatchlistCoinsList } from 'helpers/coins';
+import { useLcwCoinsData } from './useCoinsData';
+import { getLastPage } from 'helpers/general';
+import { getWatchlistCoinsList } from 'helpers/coinsData';
 import { usePages } from './usePages';
+import { useSelector } from 'react-redux';
 
 export const useCoins = () => {
+  const coinsData = useSelector((state) => state.coinsData);
   const {
-    coinsData,
     coinsCurPageCoinsList,
     handleSetCoinsCurPageCoinsList,
     watchlistCoinCodes,

@@ -53,3 +53,10 @@ export function allowOnlyNumber(value) {
   const matchingValue = value.match(/(?:\d+(?:\.\d*)?|\.\d+)/);
   if (matchingValue) return matchingValue[0];
 }
+
+export function getLastPage(data, perPageLimit) {
+  const division = data.length / perPageLimit;
+
+  if (division <= 1) return 0;
+  return Math.ceil(division);
+}

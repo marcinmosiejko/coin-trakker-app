@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getHistory7dCoinsList } from 'helpers/lcwApi';
+import { getHistory7dCoinsList } from 'helpers/coinsData';
 import { useOnPageErrors } from './useOnPageError';
 
 export const useHistory7d = (coinsCurPageCoinsList, currentCoinData) => {

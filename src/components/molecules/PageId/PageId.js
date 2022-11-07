@@ -1,10 +1,15 @@
 import React from 'react';
-import { useLcwCoinsData } from 'hooks/useLcwCoinsData';
 import Downshift from '../Downshift/Downshift';
 import { Wrapper, WrapperWrapper, Logo, SearchWrapper } from './PageId.styles';
+import { useSelector } from 'react-redux';
+import { filterByCoinNameOrCode } from 'helpers/coinsData';
 
 const PageId = () => {
-  const { findCoins } = useLcwCoinsData();
+  const { coinsData } = useSelector((state) => state);
+
+  const findCoins = (queryString) => {
+    return filterByCoinNameOrCode(coinsData, queryString);
+  };
 
   return (
     <WrapperWrapper>

@@ -1,20 +1,24 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { DATA_REFRESH_INTERVAL } from 'config';
-import {
-  add7DayHistoryDataToCoinsData,
-  fetchCoinsData,
-  getUpdatedCoinsData,
-  getUpdatedCoinsDataWithWatchlist,
-  filterByCoinNameOrCode,
-} from 'helpers/lcwApi';
+import { fetchCoinsData } from 'helpers/lcwApi';
+import { filterByCoinNameOrCode } from 'helpers/coinsData';
 import { useHistory7d } from './useHistory7d';
 import { useWatchlist } from './useWatchlist';
 import { useOnPageErrors } from './useOnPageError';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setCoinsData,
+  updateCoinsData,
+  addHistory7dData,
+  addWatchlistData,
+} from 'store/coinsDataSlice';
 
 const LcwCoinsDataContext = React.createContext({});
 
 export const LcwCoinsDataProvider = ({ children }) => {
-  const [coinsData, setCoinsData] = useState(null);
+  const coinsData = useSelector((state) => state.coinsData);
+  const dispatch = useDispatch();
+  // const [coinsData, setCoinsData] = useState(null);
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
   const [currentCoinData, setCurrentCoinData] = useState(null);
   // To avoid repeatedly fetching 7d history data for same coin
@@ -44,17 +48,14 @@ export const LcwCoinsDataProvider = ({ children }) => {
         // Fetch and set coinsData
         const meta = true;
         const data = await fetchCoinsData(meta);
-        setCoinsData(data);
-        // Update coinsData onWatchlist based on localStorage (usersWatchlist)
+        dispatch(setCoinsData({ data }));
+        // Update coinsData onWatchlist property based on localStorage (usersWatchlist)
         if (usersWatchlist)
-          setCoinsData((prevState) =>
-            getUpdatedCoinsDataWithWatchlist(prevState, usersWatchlist)
-          );
+          dispatch(addWatchlistData({ watchlistData: usersWatchlist }));
         // Fetch new coins data without metadata to keep it up to date
         setInterval(async () => {
           const newData = await fetchCoinsData();
-
-          setCoinsData((prevState) => getUpdatedCoinsData(prevState, newData));
+          dispatch(updateCoinsData({ newData }));
         }, DATA_REFRESH_INTERVAL);
       } catch (err) {
         dispatchOnPageError('coinsData', err.response.status);
@@ -64,21 +65,12 @@ export const LcwCoinsDataProvider = ({ children }) => {
   }, [usersWatchlist, dispatchOnPageError]);
 
   useEffect(() => {
-    // Add 7d history data to coinsData so all data for rendering views listing coins can bo sourced from one place
-    setCoinsData((prevState) => {
-      if (!prevState) return;
-      const enrichedState = add7DayHistoryDataToCoinsData(
-        prevState,
-        history7dCoinsList
-      );
-      return enrichedState;
-    });
+    // Add 7d history data to coinsData so all data for rendering views with coins table can bo sourced from one place
+    dispatch(addHistory7dData({ history7dCoinsList }));
   }, [history7dCoinsList]);
 
   useEffect(() => {
-    setCoinsData((prevState) =>
-      getUpdatedCoinsDataWithWatchlist(prevState, watchlistCoinCodes)
-    );
+    dispatch(addWatchlistData({ watchlistData: watchlistCoinCodes }));
   }, [watchlistCoinCodes]);
 
   return (

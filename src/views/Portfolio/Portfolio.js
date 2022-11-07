@@ -16,12 +16,13 @@ import { usePortfolio } from 'hooks/usePortfolio';
 
 const Portfolio = () => {
   const {
-    findPortfolioCoins,
     portfolioCurPageCoinsList,
     portfolioSummary,
     currentPage,
     lastPage,
     handlePageChange,
+    coinBeingEditedOrDeleted,
+    handleSetCoinBeingEditedOrDeleted,
   } = usePortfolio();
   const {
     isOpen: isAddCoinOpen,
@@ -39,12 +40,6 @@ const Portfolio = () => {
     handleCloseModal: handleCloseEditCoinModal,
   } = useModal(false);
   const tableRef = useRef(null);
-  const [coinBeingEditedOrDeleted, setCoinBeingEditedOrDeleted] =
-    useState(null);
-
-  const handleSetCoinBeingEditedOrDeleted = (coin) => {
-    setCoinBeingEditedOrDeleted(coin);
-  };
 
   return (
     <Wrapper>
@@ -53,10 +48,7 @@ const Portfolio = () => {
           isOpen={isAddCoinOpen}
           handleCloseModal={handleCloseAddCoinModal}
         >
-          <AddCoin
-            handleCloseModal={handleCloseAddCoinModal}
-            findPortfolioCoins={findPortfolioCoins}
-          />
+          <AddCoin handleCloseModal={handleCloseAddCoinModal} />
         </Modal>
       ) : null}
       {isDeleteCoinOpen ? (
