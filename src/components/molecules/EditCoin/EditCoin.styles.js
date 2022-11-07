@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -16,7 +16,7 @@ export const ButtonsWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
 export const StyledForm = styled.form`
