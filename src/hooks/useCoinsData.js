@@ -62,16 +62,16 @@ export const LcwCoinsDataProvider = ({ children }) => {
       }
     })();
     // Won't cause rerenders as usersWatchlist gets created at app start and doesn't get updated
-  }, [usersWatchlist, dispatchOnPageError]);
+  }, [usersWatchlist, dispatchOnPageError, dispatch]);
 
   useEffect(() => {
     // Add 7d history data to coinsData so all data for rendering views with coins table can bo sourced from one place
     dispatch(addHistory7dData({ history7dCoinsList }));
-  }, [history7dCoinsList]);
+  }, [history7dCoinsList, dispatch]);
 
   useEffect(() => {
     dispatch(addWatchlistData({ watchlistData: watchlistCoinCodes }));
-  }, [watchlistCoinCodes]);
+  }, [watchlistCoinCodes, dispatch]);
 
   return (
     <LcwCoinsDataContext.Provider
