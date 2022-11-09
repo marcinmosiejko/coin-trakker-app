@@ -54,9 +54,6 @@ export function allowOnlyNumber(value) {
   if (matchingValue) return matchingValue[0];
 }
 
-export function getLastPage(data, perPageLimit) {
-  const division = data.length / perPageLimit;
-
-  if (division <= 1) return 0;
-  return Math.ceil(division);
+export function getPageCount(data, perPageLimit) {
+  return Math.ceil(data.length / perPageLimit);
 }

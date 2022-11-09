@@ -19,7 +19,7 @@ const Portfolio = () => {
     portfolioCurPageCoinsList,
     portfolioSummary,
     currentPage,
-    lastPage,
+    pageCount,
     handlePageChange,
     coinBeingEditedOrDeleted,
     handleSetCoinBeingEditedOrDeleted,
@@ -106,13 +106,15 @@ const Portfolio = () => {
           </Table>
         </div>
 
-        <Pagination
-          currentPage={currentPage}
-          lastPage={lastPage}
-          handlePageChange={({ selected }) =>
-            handlePageChange(selected, tableRef)
-          }
-        />
+        {pageCount > 1 ? (
+          <Pagination
+            currentPage={currentPage}
+            pageCount={pageCount}
+            handlePageChange={({ selected }) =>
+              handlePageChange(selected, tableRef)
+            }
+          />
+        ) : null}
       </>
     </Wrapper>
   );

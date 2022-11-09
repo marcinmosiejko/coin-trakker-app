@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useCoins } from 'hooks/useCoins';
 import Table from 'components/organisms/Table/Table';
 import CoinsTableHead from 'components/molecules/CoinsTableHead/CoinsTableHead';
@@ -12,14 +12,12 @@ const Coins = () => {
   const {
     coinsCurPageCoinsList,
     currentPage,
-    lastPage,
+    pageCount,
     handlePageChange,
     handleSetShowWatchlist,
     showWatchlist,
   } = useCoins();
   const tableRef = useRef(null);
-
-  useEffect(() => {}, [coinsCurPageCoinsList]);
 
   return (
     <Wrapper>
@@ -42,13 +40,15 @@ const Coins = () => {
           </Table>
         </div>
 
-        <Pagination
-          currentPage={currentPage}
-          lastPage={lastPage}
-          handlePageChange={({ selected }) =>
-            handlePageChange(selected, tableRef)
-          }
-        />
+        {pageCount > 1 ? (
+          <Pagination
+            currentPage={currentPage}
+            pageCount={pageCount}
+            handlePageChange={({ selected }) =>
+              handlePageChange(selected, tableRef)
+            }
+          />
+        ) : null}
       </>
     </Wrapper>
   );
