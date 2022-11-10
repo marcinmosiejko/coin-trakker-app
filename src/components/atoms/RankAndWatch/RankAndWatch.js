@@ -13,7 +13,6 @@ const RankAndWatch = ({ onWatchlist, coinCode, children }) => {
       <WatchlistIcon
         isYellow={onWatchlist}
         onClick={() => handleUpdateWatchlist(coinCode)}
-        data-testid={coinCode}
       />
     </Wrapper>
   );

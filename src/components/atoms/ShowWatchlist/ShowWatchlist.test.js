@@ -10,14 +10,14 @@ describe('RankAndWatch', () => {
 
   it('Renders grey star when showWatchlist is false', () => {
     render(<ShowWatchlist />);
-    expect(screen.getByTestId('show')).toHaveStyle(
+    expect(screen.getByTestId('watchlistIcon')).toHaveStyle(
       `fill: ${theme.colors.secondary}`
     );
   });
 
   it('Renders yellow star when showWatchlist is true', () => {
     render(<ShowWatchlist showWatchlist />);
-    expect(screen.getByTestId('show')).toHaveStyle(
+    expect(screen.getByTestId('watchlistIcon')).toHaveStyle(
       `fill: ${theme.colors.yellow}`
     );
   });

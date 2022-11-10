@@ -6,7 +6,7 @@ import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
 const ShowWatchlist = ({ showWatchlist, ...props }) => {
   return (
     <StyledButton {...props}>
-      <WatchlistIcon isYellow={showWatchlist} data-testid="show" />
+      <WatchlistIcon isYellow={showWatchlist} />
       <span>Watchlist</span>
     </StyledButton>
   );

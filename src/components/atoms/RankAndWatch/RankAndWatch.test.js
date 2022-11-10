@@ -12,24 +12,22 @@ describe('RankAndWatch', () => {
   });
 
   it('Renders grey when NOT onWatchlist', () => {
-    coinsCurPageCoinsList.forEach((coin) => {
-      render(<RankAndWatch coinCode={coin.code}>{coin.rank}</RankAndWatch>);
-      expect(screen.getByTestId(coin.code)).toHaveStyle(
-        `fill: ${theme.colors.secondary}`
-      );
-    });
+    const coin = coinsCurPageCoinsList.at(0);
+    render(<RankAndWatch coinCode={coin.code}>{coin.rank}</RankAndWatch>);
+    expect(screen.getByTestId('watchlistIcon')).toHaveStyle(
+      `fill: ${theme.colors.secondary}`
+    );
   });
 
   it('Renders yellow when onWatchlist', () => {
-    coinsCurPageCoinsList.forEach((coin) => {
-      render(
-        <RankAndWatch onWatchlist coinCode={coin.code}>
-          {coin.rank}
-        </RankAndWatch>
-      );
-      expect(screen.getByTestId(coin.code)).toHaveStyle(
-        `fill: ${theme.colors.yellow}`
-      );
-    });
+    const coin = coinsCurPageCoinsList.at(0);
+    render(
+      <RankAndWatch onWatchlist coinCode={coin.code}>
+        {coin.rank}
+      </RankAndWatch>
+    );
+    expect(screen.getByTestId('watchlistIcon')).toHaveStyle(
+      `fill: ${theme.colors.yellow}`
+    );
   });
 });
