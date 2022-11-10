@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useForm, Controller } from 'react-hook-form';
 import { Wrapper, StyledForm, StyledButton } from './AddCoin.styles';
 import { Input } from 'components/atoms/Input/Input';
@@ -92,6 +93,10 @@ const AddCoin = ({ handleCloseModal }) => {
       </StyledForm>
     </Wrapper>
   );
+};
+
+AddCoin.propTypes = {
+  handleCloseModal: PropTypes.func,
 };
 
 export default AddCoin;
