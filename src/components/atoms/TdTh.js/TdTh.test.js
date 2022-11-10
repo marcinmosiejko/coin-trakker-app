@@ -5,7 +5,11 @@ describe('TdTh', () => {
   it('Renders the component', () => {
     render(
       <table>
-        <TdTh>Test</TdTh>
+        <tbody>
+          <tr>
+            <TdTh>Test</TdTh>
+          </tr>
+        </tbody>
       </table>
     );
     screen.getByText('Test');
