@@ -13,4 +13,8 @@ export const Td = styled.td`
   color: ${({ change, theme }) => getChangeColor(change, theme)};
 `;
 
-export const Th = styled.th(Td);
+export const Th = styled.th`
+  width: ${({ width }) => (width ? `${width}rem` : '100%')};
+  text-align: ${({ isLeft, isRight }) => getTextAlign(isLeft, isRight)};
+  color: ${({ change, theme }) => getChangeColor(change, theme)};
+`;

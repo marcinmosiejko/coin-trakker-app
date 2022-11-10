@@ -10,7 +10,7 @@ export const StyledRow = styled.tr`
 
   td:nth-last-of-type(2) {
     border-left: 3px solid ${({ theme }) => theme.colors.tintSecondary.dark5};
-    padding-left: 4.5rem;
+    padding-left: 3.5rem;
     padding-right: 0rem;
   }
 
