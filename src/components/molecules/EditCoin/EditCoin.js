@@ -24,7 +24,7 @@ const schema = yup
   })
   .required();
 
-const EditCoin = ({ coinData, handleCloseModal, handleEditPortfolioCoin }) => {
+const EditCoin = ({ coinData, handleCloseModal }) => {
   const dispatch = useDispatch();
   const {
     handleSubmit,
@@ -41,10 +41,6 @@ const EditCoin = ({ coinData, handleCloseModal, handleEditPortfolioCoin }) => {
         quantity: +(quantity + '').replaceAll(/^0+/g, ''),
       })
     );
-    handleEditPortfolioCoin({
-      code: coinData.code,
-      quantity: +(quantity + '').replaceAll(/^0+/g, ''),
-    });
     handleCloseModal();
   };
 
