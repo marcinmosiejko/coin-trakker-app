@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Wrapper,
   TotalValue,
@@ -16,6 +17,10 @@ const PortfolioSummary = ({ data }) => {
       </TotalValue>
     </Wrapper>
   );
+};
+
+PortfolioSummary.propTypes = {
+  data: PropTypes.object,
 };
 
 export default PortfolioSummary;
