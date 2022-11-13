@@ -1,6 +1,7 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'components/atoms/Button/Button';
 import CoinId from 'components/atoms/CoinId/CoinId';
-import React from 'react';
 import { Wrapper, ButtonsWrapper, ContentWrapper } from './DeleteCoin.styles';
 import { deletePortfolioCoin } from 'store/portfolioRawDataSlice';
 import { useDispatch } from 'react-redux';
@@ -29,6 +30,11 @@ const DeleteCoin = ({ coinData, handleCloseModal }) => {
       </ButtonsWrapper>
     </Wrapper>
   );
+};
+
+DeleteCoin.propTypes = {
+  coinData: PropTypes.object,
+  handleCloseModal: PropTypes.func,
 };
 
 export default DeleteCoin;
