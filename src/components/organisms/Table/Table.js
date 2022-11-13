@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyledTable,
   TableWrapper,
@@ -32,6 +33,13 @@ const Table = ({ data, tableRef, children, isCoins, isPortfolio }) => {
       </TableContainer>
     </TableWrapper>
   );
+};
+
+Table.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  isCoins: PropTypes.bool,
+  isPortfolio: PropTypes.bool,
+  tableRef: PropTypes.object,
 };
 
 export default Table;
