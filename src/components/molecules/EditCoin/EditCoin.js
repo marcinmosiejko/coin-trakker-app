@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Wrapper,
   ButtonsWrapper,
@@ -46,7 +47,7 @@ const EditCoin = ({ coinData, handleCloseModal }) => {
 
   return (
     <Wrapper>
-      <h2>Edit Coin</h2>
+      <h2>Edit coin</h2>
       <ContentWrapper>
         <CoinId data={coinData} />
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -75,6 +76,11 @@ const EditCoin = ({ coinData, handleCloseModal }) => {
       </ContentWrapper>
     </Wrapper>
   );
+};
+
+EditCoin.propTypes = {
+  coinData: PropTypes.object,
+  handleCloseModal: PropTypes.func,
 };
 
 export default EditCoin;
