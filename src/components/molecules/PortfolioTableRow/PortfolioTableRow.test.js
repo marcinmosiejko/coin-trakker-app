@@ -11,7 +11,9 @@ describe('PortfolioTableRow', () => {
   it('Renders the component', () => {
     render(
       <table>
-        <PortfolioTableRow data={portfolioCurPageCoinsList.at(0)} />
+        <tbody>
+          <PortfolioTableRow data={portfolioCurPageCoinsList.at(0)} />
+        </tbody>
       </table>
     );
   });
@@ -21,7 +23,9 @@ describe('PortfolioTableRow', () => {
       const { code, name, value, quantity, rate, share } = coin;
       render(
         <table>
-          <PortfolioTableRow data={coin} />
+          <tbody>
+            <PortfolioTableRow data={coin} />
+          </tbody>
         </table>
       );
       screen.getByText(code);
