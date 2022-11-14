@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Wrapper, Relative } from './Modal.styles';
 // import Button from 'components/atoms/Button/Button';
 
@@ -32,6 +33,11 @@ const Modal = ({ isOpen, handleCloseModal, children }) => {
       {/* <Button onClick={handleCloseModal}>Close</Button> */}
     </Wrapper>
   );
+};
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool,
+  handleCloseModal: PropTypes.func,
 };
 
 export default Modal;

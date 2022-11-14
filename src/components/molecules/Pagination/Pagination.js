@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledPagination } from './Pagination.styles';
 
-const Pagination = ({ lastPage, currentPage, handlePageChange }) => {
+const Pagination = ({ pageCount, currentPage, handlePageChange }) => {
   return (
     <StyledPagination
       forcePage={currentPage}
@@ -10,7 +10,7 @@ const Pagination = ({ lastPage, currentPage, handlePageChange }) => {
       onPageChange={handlePageChange}
       pageRangeDisplayed={1}
       marginPagesDisplayed={1}
-      pageCount={lastPage}
+      pageCount={pageCount}
       previousLabel="<"
       renderOnZeroPageCount={null}
     />

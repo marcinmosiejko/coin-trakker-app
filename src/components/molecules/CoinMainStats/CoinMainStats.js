@@ -5,14 +5,13 @@ import CoinDataPoint from 'components/atoms/CoinDataPoint/CoinDataPoint';
 import { roundLargeValue } from 'helpers/general';
 
 const CoinMainStats = ({
-  data,
   data: { cap, volume, circulatingSupply, totalSupply, maxSupply, rate },
 }) => {
   return (
     <Wrapper>
       <CoinDataPoint
         description="MARKET CAP"
-        dataPoint={`${roundLargeValue(cap)}`}
+        dataPoint={`$${roundLargeValue(cap)}`}
       />
       <CoinDataPoint
         description="24H VOLUME"
@@ -45,6 +44,8 @@ CoinMainStats.propTypes = {
   volume: PropTypes.number,
   circulatingSupply: PropTypes.number,
   totalSupply: PropTypes.number,
+  maxSupply: PropTypes.number,
+  rate: PropTypes.number,
 };
 
 export default CoinMainStats;

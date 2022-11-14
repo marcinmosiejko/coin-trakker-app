@@ -4,7 +4,11 @@ import { Wrapper } from './EditIcon.styles';
 const EditIcon = ({ ...props }) => {
   return (
     <Wrapper {...props}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        data-testid="editIcon"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"

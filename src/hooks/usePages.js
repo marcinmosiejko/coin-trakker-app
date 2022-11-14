@@ -2,14 +2,14 @@ import { useCallback, useState } from 'react';
 
 export const usePages = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [lastPage, setLastPage] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
 
   const handleSetCurPage = useCallback((curPage) => {
     setCurrentPage(curPage);
   }, []);
 
-  const handleSetLastPage = useCallback((lastPage) => {
-    setLastPage(lastPage);
+  const handleSetLastPage = useCallback((pageCount) => {
+    setPageCount(pageCount);
   }, []);
 
   const handlePageChange = (curPage, tableRef) => {
@@ -25,7 +25,7 @@ export const usePages = () => {
 
   return {
     currentPage,
-    lastPage,
+    pageCount,
     handlePageChange,
     handleSetCurPage,
     handleSetLastPage,

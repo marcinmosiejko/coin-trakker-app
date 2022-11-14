@@ -44,7 +44,7 @@ const CoinId = ({
 
 CoinId.propTypes = {
   name: PropTypes.string,
-  nameLength: PropTypes.number,
+  maxNameLength: PropTypes.number,
   code: PropTypes.string,
   webp64: PropTypes.string,
   isCoinDetails: PropTypes.bool,

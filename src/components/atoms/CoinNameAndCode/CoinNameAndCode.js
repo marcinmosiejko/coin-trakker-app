@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Wrapper, Name, Code } from './CoinNameAndCode.styles';
 import { truncateString, trimUnderscoresAndSpaces } from 'helpers/general';
 
@@ -17,9 +18,7 @@ const CoinNameAndCode = ({
         </Code>
       ) : null}
       <Name isCoinDetails={isCoinDetails} isSearchResult={isSearchResult}>
-        {isSearchResult
-          ? truncateString(name, maxNameLength)
-          : truncateString(name, maxNameLength)}
+        {truncateString(name, maxNameLength)}
       </Name>
       {isCoinDetails ? (
         <Code isCoinDetails={isCoinDetails}>
@@ -28,6 +27,14 @@ const CoinNameAndCode = ({
       ) : null}
     </Wrapper>
   );
+};
+
+CoinNameAndCode.propTypes = {
+  name: PropTypes.string,
+  code: PropTypes.string,
+  isCoinDetails: PropTypes.bool,
+  isSearchResult: PropTypes.bool,
+  maxNameLength: PropTypes.number,
 };
 
 export default CoinNameAndCode;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   RoundSmallValue,
   roundLargeValue,
@@ -44,6 +45,10 @@ const CoinsTableRow = ({
       </TdTh>
     </StyledRow>
   );
+};
+
+CoinsTableRow.propTypes = {
+  data: PropTypes.object,
 };
 
 export default CoinsTableRow;

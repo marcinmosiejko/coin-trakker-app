@@ -31,6 +31,8 @@ PageError.propTypes = {
   message: PropTypes.string,
   hasPageWrapper: PropTypes.bool,
   hasIcon: PropTypes.bool,
+  isS: PropTypes.bool,
+  isDark: PropTypes.bool,
 };
 
 export default PageError;

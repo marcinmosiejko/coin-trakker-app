@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   RoundSmallValue,
   getPercentageChange,
@@ -63,6 +64,13 @@ const PortfolioTableRow = ({
       </StyledRow>
     </>
   );
+};
+
+PortfolioTableRow.propTypes = {
+  data: PropTypes.object,
+  handleOpenDeleteCoinModal: PropTypes.func,
+  handleOpenEditCoinModal: PropTypes.func,
+  handleSetCoinBeingEditedOrDeleted: PropTypes.func,
 };
 
 export default PortfolioTableRow;

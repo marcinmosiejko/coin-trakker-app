@@ -12,7 +12,7 @@ export const usePortfolio = () => {
   const [portfolioCurPageCoinsList, setPortfolioCurPageCoinsList] =
     useState(null);
   const [portfolioSummary, setPortfolioSummary] = useState({ totalValue: 0 });
-  const { currentPage, lastPage, handlePageChange } = usePages();
+  const { currentPage, pageCount, handlePageChange } = usePages();
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
   const handleSetCoinBeingEditedOrDeleted = (coin) => {
@@ -74,7 +74,7 @@ export const usePortfolio = () => {
     portfolioCurPageCoinsList,
     portfolioSummary,
     currentPage,
-    lastPage,
+    pageCount,
     handlePageChange,
     coinBeingEditedOrDeleted,
     handleSetCoinBeingEditedOrDeleted,

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 import { useLcwCoinsData } from './useCoinsData';
-import { getLastPage } from 'helpers/general';
+import { getPageCount } from 'helpers/general';
 import { getWatchlistCoinsList } from 'helpers/coinsData';
 import { usePages } from './usePages';
 import { useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ export const useCoins = () => {
   } = useLcwCoinsData();
   const {
     currentPage,
-    lastPage,
+    pageCount,
     handlePageChange,
     handleSetLastPage,
     handleSetCurPage,
@@ -61,8 +61,9 @@ export const useCoins = () => {
   useEffect(() => {
     if (!coinsData) return;
     if (showWatchlist)
-      handleSetLastPage(getLastPage(watchlistCoinCodes, perPageLimit));
-    if (!showWatchlist) handleSetLastPage(getLastPage(coinsData, perPageLimit));
+      handleSetLastPage(getPageCount(watchlistCoinCodes, perPageLimit));
+    if (!showWatchlist)
+      handleSetLastPage(getPageCount(coinsData, perPageLimit));
   }, [
     showWatchlist,
     coinsData,
@@ -78,7 +79,7 @@ export const useCoins = () => {
   return {
     coinsCurPageCoinsList,
     currentPage,
-    lastPage,
+    pageCount,
     showWatchlist,
     handlePageChange,
     handleSetShowWatchlist,

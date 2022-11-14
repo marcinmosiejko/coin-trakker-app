@@ -5,7 +5,8 @@ export const TableHeadRow = styled.tr`
   border-bottom: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark4};
   border-top: 2px solid ${({ theme }) => theme.colors.tintSecondary.dark4};
 
-  td {
+  th {
+    padding: 0.8rem 1.5rem;
     padding-top: 1.6rem !important;
   }
 `;

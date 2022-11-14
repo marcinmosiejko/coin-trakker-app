@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledButton } from './ShowWatchlist.styles';
 import WatchlistIcon from '../WatchlistIcon/WatchlistIcon';
 
@@ -9,6 +10,10 @@ const ShowWatchlist = ({ showWatchlist, ...props }) => {
       <span>Watchlist</span>
     </StyledButton>
   );
+};
+
+ShowWatchlist.propTypes = {
+  showWatchlist: PropTypes.bool,
 };
 
 export default ShowWatchlist;

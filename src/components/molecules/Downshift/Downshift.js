@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   SearchWrapper,
   SearchResultsWrapper,
@@ -97,6 +98,14 @@ const Downshift = ({
       </SearchResultsWrapper>
     </SearchWrapper>
   );
+};
+
+Downshift.propTypes = {
+  findCoins: PropTypes.func,
+  isAddCoin: PropTypes.bool,
+  isSearch: PropTypes.bool,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
 };
 
 export default Downshift;
