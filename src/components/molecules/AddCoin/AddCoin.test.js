@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from 'test-utils';
 import AddCoin from './AddCoin';
 
-describe('CoinDataPoint', () => {
+describe('AddCoin', () => {
   it('Renders the component', () => {
     render(<AddCoin />);
     // Title
