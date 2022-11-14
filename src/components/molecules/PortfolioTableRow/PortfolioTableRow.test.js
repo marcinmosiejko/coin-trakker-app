@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from 'test-utils';
+import { render, screen } from 'test-utils';
 import { portfolioCurPageCoinsList } from 'testData/portfolioCurPageCoinsList';
 import {
   RoundSmallValue,
