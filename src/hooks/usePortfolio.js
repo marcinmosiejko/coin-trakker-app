@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { usePages } from 'hooks/usePages';
-import { compareObjBy } from 'helpers/general';
+import { compareObjBy, getPageCount } from 'helpers/general';
 import { PER_PAGE_LIMIT_DEFAULT } from 'config';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +12,8 @@ export const usePortfolio = () => {
   const [portfolioCurPageCoinsList, setPortfolioCurPageCoinsList] =
     useState(null);
   const [portfolioSummary, setPortfolioSummary] = useState({ totalValue: 0 });
-  const { currentPage, pageCount, handlePageChange } = usePages();
+  const { currentPage, pageCount, handlePageChange, handleSetPageCount } =
+    usePages();
   const perPageLimit = PER_PAGE_LIMIT_DEFAULT;
 
   const handleSetCoinBeingEditedOrDeleted = (coin) => {
@@ -29,14 +30,14 @@ export const usePortfolio = () => {
           (coin) => coin.code === portfolioCoinCode
         );
         // In case no coins with specified code were found
-        if (!portfolioCoin) return undefined;
+        if (!portfolioCoin) return null;
 
         const { code, name, rate, webp64, delta } = portfolioCoin;
         const value = rate * quantity;
         return { code, name, rate, webp64, delta, quantity, value };
       })
       // In case no coins with specified code were found
-      .filter((item) => item !== undefined);
+      .filter((item) => item !== null);
 
     // Based on portfolioAllCoinsList calculate total value
     const totalValue = unsortedPortfolioAllCoinsList.reduce(
@@ -53,6 +54,7 @@ export const usePortfolio = () => {
       .sort((a, b) => compareObjBy(a, b, 'share', false));
 
     setPortfolioAllCoinsList(portfolioAllCoinsList);
+
     setPortfolioSummary((prevState) => ({ ...prevState, totalValue }));
   }, [coinsData, portfolioRawData]);
 
@@ -69,6 +71,14 @@ export const usePortfolio = () => {
 
     setPortfolioCurPageCoinsList(curPageCoinsList);
   }, [portfolioAllCoinsList, currentPage, perPageLimit]);
+
+  useEffect(() => {
+    if (!portfolioAllCoinsList) return;
+
+    handleSetPageCount(
+      getPageCount(portfolioAllCoinsList, PER_PAGE_LIMIT_DEFAULT)
+    );
+  }, [portfolioAllCoinsList, handleSetPageCount]);
 
   return {
     portfolioCurPageCoinsList,
