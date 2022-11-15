@@ -18,10 +18,10 @@ lcwAPI.defaults.headers = {
 
 export const fetchCoinsData = async (meta = false) => {
   try {
-    let finalData = [];
+    const dataPromises = [];
 
     for (let i = 0; i < API_CALLS; i++) {
-      const { data } = await lcwAPI.post('/coins/list', {
+      const dataPromise = lcwAPI.post('/coins/list', {
         currency: 'USD',
         sort: 'rank',
         order: 'ascending',
@@ -29,8 +29,15 @@ export const fetchCoinsData = async (meta = false) => {
         limit: API_LIMIT,
         meta,
       });
-      finalData = [...finalData, ...data];
+      dataPromises.push(dataPromise);
     }
+
+    const responses = await Promise.all(dataPromises);
+    const finalData = responses.reduce(
+      (acc, data) => [...acc, ...data.data],
+      []
+    );
+
     return finalData;
   } catch (err) {
     throw err;
