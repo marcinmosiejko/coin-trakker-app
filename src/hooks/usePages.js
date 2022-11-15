@@ -8,7 +8,7 @@ export const usePages = () => {
     setCurrentPage(curPage);
   }, []);
 
-  const handleSetLastPage = useCallback((pageCount) => {
+  const handleSetPageCount = useCallback((pageCount) => {
     setPageCount(pageCount);
   }, []);
 
@@ -28,6 +28,6 @@ export const usePages = () => {
     pageCount,
     handlePageChange,
     handleSetCurPage,
-    handleSetLastPage,
+    handleSetPageCount,
   };
 };

@@ -1,3 +1,5 @@
+import { PER_PAGE_LIMIT_DEFAULT } from 'config';
+
 export function getPercentageChange(value) {
   return round((value - 1) * 100);
 }
@@ -54,6 +56,6 @@ export function allowOnlyNumber(value) {
   if (matchingValue) return matchingValue[0];
 }
 
-export function getPageCount(data, perPageLimit) {
+export function getPageCount(data, perPageLimit = PER_PAGE_LIMIT_DEFAULT) {
   return Math.ceil(data.length / perPageLimit);
 }

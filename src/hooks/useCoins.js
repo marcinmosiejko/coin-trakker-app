@@ -17,7 +17,7 @@ export const useCoins = () => {
     currentPage,
     pageCount,
     handlePageChange,
-    handleSetLastPage,
+    handleSetPageCount,
     handleSetCurPage,
   } = usePages();
   const [showWatchlist, setShowWatchlist] = useState(false);
@@ -54,22 +54,22 @@ export const useCoins = () => {
     showWatchlist,
     handleSetCoinsCurPageCoinsList,
     watchlistCoinCodes,
-    handleSetLastPage,
+    handleSetPageCount,
     handleSetCurPage,
   ]);
 
   useEffect(() => {
     if (!coinsData) return;
     if (showWatchlist)
-      handleSetLastPage(getPageCount(watchlistCoinCodes, perPageLimit));
+      handleSetPageCount(getPageCount(watchlistCoinCodes, perPageLimit));
     if (!showWatchlist)
-      handleSetLastPage(getPageCount(coinsData, perPageLimit));
+      handleSetPageCount(getPageCount(coinsData, perPageLimit));
   }, [
     showWatchlist,
     coinsData,
     watchlistCoinCodes,
     perPageLimit,
-    handleSetLastPage,
+    handleSetPageCount,
   ]);
 
   const handleSetShowWatchlist = useCallback(() => {
