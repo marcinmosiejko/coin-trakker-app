@@ -44,7 +44,7 @@ export const usePortfolio = () => {
       0
     );
 
-    // Use calculated total value to store share value of each coin so the coins can be sorted by share and displayed that way by default
+    // Use calculated total value to store share of each coin so the coins can be sorted by share and displayed that way by default
     const portfolioAllCoinsList = unsortedPortfolioAllCoinsList
       .map((coin) => ({
         ...coin,
