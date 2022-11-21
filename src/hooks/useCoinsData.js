@@ -1,11 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { DATA_REFRESH_INTERVAL } from 'config';
 import { fetchCoinsData } from 'helpers/lcwApi';
-import { filterByCoinNameOrCode } from 'helpers/coinsData';
 import { useHistory7d } from './useHistory7d';
 import { useWatchlist } from './useWatchlist';
 import { useOnPageErrors } from './useOnPageError';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   setCoinsData,
   updateCoinsData,
@@ -16,7 +15,6 @@ import {
 const LcwCoinsDataContext = React.createContext({});
 
 export const LcwCoinsDataProvider = ({ children }) => {
-  const coinsData = useSelector((state) => state.coinsData);
   const dispatch = useDispatch();
   // const [coinsData, setCoinsData] = useState(null);
   const [coinsCurPageCoinsList, setCoinsCurPageCoinsList] = useState(null);
@@ -37,10 +35,6 @@ export const LcwCoinsDataProvider = ({ children }) => {
   const handleSetCurrentCoinData = useCallback((coin) => {
     setCurrentCoinData(coin);
   }, []);
-
-  const findCoins = (queryString) => {
-    return filterByCoinNameOrCode(coinsData, queryString);
-  };
 
   useEffect(() => {
     (async () => {
@@ -76,7 +70,6 @@ export const LcwCoinsDataProvider = ({ children }) => {
   return (
     <LcwCoinsDataContext.Provider
       value={{
-        coinsData,
         currentCoinData,
         coinsCurPageCoinsList,
         history7dCoinsList,
@@ -84,7 +77,6 @@ export const LcwCoinsDataProvider = ({ children }) => {
         handleSetCoinsCurPageCoinsList,
         handleUpdateWatchlist,
         watchlistCoinCodes,
-        findCoins,
       }}
     >
       {children}
